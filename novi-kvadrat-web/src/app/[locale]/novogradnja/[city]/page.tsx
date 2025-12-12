@@ -287,7 +287,7 @@ export default function ProjectsListingPage() {
             {t('nav.newDevelopments')} {cityName}
           </h1>
           <p className="text-gray-600">
-            {t('projects.projectsCount', { count: total })}
+            {t('projects.projectsCount', { count: String(total) })}
           </p>
         </div>
       </div>
