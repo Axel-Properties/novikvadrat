@@ -1,8 +1,11 @@
-import { locales } from '@/i18n/config'
 import { ReactNode } from 'react'
 
-export function generateStaticParams(): Array<{ locale: "en" | "sr" | "sr-cyrl" }> {
-  return locales.map((locale) => ({ locale }))
+export function generateStaticParams() {
+  return [
+    { locale: 'en' as const },
+    { locale: 'sr' as const },
+    { locale: 'sr-cyrl' as const }
+  ]
 }
 
 type Props = {
