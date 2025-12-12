@@ -66,7 +66,9 @@
   "projectDetail": {
     "constructionProgress": "Construction Progress",
     "completed": "completed",
+    "percentCompleted": "{percent}% completed",
     "aboutProject": "About Project",
+    "projectDescriptionPlaceholder": "Project description will be added soon.",
     "numberOfBuildings": "Number of buildings",
     "numberOfFloors": "Number of floors",
     "totalApartments": "Total apartments",
@@ -80,12 +82,68 @@
     "layouts": "Layouts",
     "location": "Location",
     "amenities": "Amenities",
-    "mortgage": "Mortgage Calculator",
+    "mortgage": "Mortgage",
+    "credit": "Credit",
     "similarProjects": "Similar Projects",
     "onRequest": "On request",
     "address": "Address",
     "mapComingSoon": "Map will be added soon",
-    "featured": "Featured"
+    "featured": "Featured",
+    "priceFrom": "Price from",
+    "pricePerSqm": "Price per m²",
+    "priceWithVat": "Price includes VAT",
+    "vatRefundFirstBuyer": "VAT refund available for first-time buyers",
+    "verified": "Verified",
+    "projects": "projects",
+    "completedProjects": "completed",
+    "showPhone": "Show number",
+    "scheduleConsultation": "Schedule consultation",
+    "overview": "Overview",
+    "availableLayouts": "Available apartment layouts",
+    "area": "Area",
+    "terrace": "Terrace",
+    "rooms": "Rooms",
+    "bathrooms": "Bathrooms",
+    "available": "Available",
+    "elevator": "Elevator",
+    "garage": "Garage",
+    "energyClass": "Energy class",
+    "heatingTypes": {
+      "central": "Central heating",
+      "floor": "Floor heating",
+      "gas": "Gas heating",
+      "electric": "Electric heating",
+      "heat_pump": "Heat pump"
+    },
+    "layoutTypes": {
+      "studio": "Studio",
+      "one_bedroom": "One bedroom",
+      "two_bedroom": "Two bedroom",
+      "three_bedroom": "Three bedroom",
+      "four_bedroom": "Four bedroom",
+      "penthouse": "Penthouse"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "layouts": "Layouts",
+      "location": "Location",
+      "amenities": "Amenities",
+      "mortgage": "Credit"
+    },
+    "amenitiesAndFeatures": "Amenities and Features",
+    "amenitiesComingSoon": "Amenities information will be available soon.",
+    "mortgageCalculator": "Mortgage Calculator",
+    "propertyPrice": "Property Price",
+    "downPayment": "Down Payment",
+    "loanTerm": "Loan Term",
+    "interestRate": "Interest Rate",
+    "years": "years",
+    "monthlyPayment": "Monthly Payment",
+    "calculatePayment": "Calculate Payment",
+    "available": "Available",
+    "units": "units",
+    "loanAmount": "Loan Amount",
+    "total": "Total"
   },
   
   "developer": {
@@ -102,6 +160,130 @@
     "kragujevac": "Kragujevac"
   },
   
+  "about": {
+    "metadata": {
+      "title": "About Us - Novi Kvadrat",
+      "description": "Learn about Novi Kvadrat - Serbia's leading real estate platform for new developments and properties"
+    },
+    "hero": {
+      "title": "About Novi Kvadrat",
+      "subtitle": "Your Trusted Real Estate Partner",
+      "description": "We connect buyers with the best new developments and properties across Serbia, making your journey to homeownership simple and transparent."
+    },
+    "company": {
+      "title": "Who We Are",
+      "description": "Novi Kvadrat is Serbia's premier digital platform for discovering new construction projects and real estate opportunities. Founded with a mission to revolutionize the property search experience, we bring together buyers, developers, and real estate professionals in one comprehensive marketplace.",
+      "story": "Our journey began with a simple observation: finding the right property in Serbia's growing real estate market was unnecessarily complicated. We set out to change that by creating a platform that combines cutting-edge technology with deep local market expertise.",
+      "founded": "Founded",
+      "foundedYear": "2024"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower every Serbian to find their perfect home by providing transparent, comprehensive, and accessible real estate information."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the most trusted real estate platform in the Balkans, setting new standards for transparency and innovation in property transactions."
+    },
+    "stats": {
+      "title": "Platform in Numbers",
+      "properties": "Properties Listed",
+      "developers": "Trusted Developers",
+      "cities": "Cities Covered",
+      "users": "Happy Users"
+    },
+    "features": {
+      "title": "Why Choose Us",
+      "subtitle": "Discover what makes Novi Kvadrat the preferred choice for property seekers in Serbia",
+      "verified": {
+        "title": "Verified Listings",
+        "description": "Every property on our platform is verified for accuracy and authenticity, giving you peace of mind."
+      },
+      "search": {
+        "title": "Smart Search",
+        "description": "Our advanced search and filtering tools help you find exactly what you're looking for in seconds."
+      },
+      "database": {
+        "title": "Comprehensive Database",
+        "description": "Access the largest collection of new developments and properties across Serbia."
+      },
+      "developers": {
+        "title": "Trusted Developers",
+        "description": "We partner only with reputable developers who have a proven track record of quality construction."
+      },
+      "insights": {
+        "title": "Market Insights",
+        "description": "Stay informed with up-to-date market trends, pricing data, and neighborhood information."
+      },
+      "support": {
+        "title": "Dedicated Support",
+        "description": "Our team of real estate experts is here to guide you through every step of your property journey."
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The passionate people behind Novi Kvadrat",
+      "members": {
+        "member1": {
+          "name": "Marko Petrovic",
+          "position": "CEO & Founder",
+          "bio": "15+ years in real estate development"
+        },
+        "member2": {
+          "name": "Ana Jovanovic",
+          "position": "Head of Operations",
+          "bio": "Expert in real estate market analysis"
+        },
+        "member3": {
+          "name": "Stefan Nikolic",
+          "position": "Chief Technology Officer",
+          "bio": "Building innovative PropTech solutions"
+        },
+        "member4": {
+          "name": "Jelena Markovic",
+          "position": "Head of Partnerships",
+          "bio": "Connecting developers with opportunities"
+        }
+      }
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "events": {
+        "event1": {
+          "year": "2024",
+          "title": "Platform Launch",
+          "description": "Novi Kvadrat officially launches, bringing modern real estate technology to Serbia."
+        },
+        "event2": {
+          "year": "2024",
+          "title": "Belgrade Coverage",
+          "description": "Complete coverage of all new developments in Belgrade and surrounding areas."
+        },
+        "event3": {
+          "year": "2024",
+          "title": "Developer Partnerships",
+          "description": "Partnerships established with 50+ leading construction companies."
+        },
+        "event4": {
+          "year": "2025",
+          "title": "Expansion",
+          "description": "Expanding coverage to Novi Sad, Nis, and other major Serbian cities."
+        },
+        "event5": {
+          "year": "2025",
+          "title": "10,000 Users",
+          "description": "Reaching our first milestone of 10,000 registered users."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Find Your Dream Home?",
+      "description": "Start your property search today and discover why thousands trust Novi Kvadrat.",
+      "primaryBtn": "Browse Properties",
+      "secondaryBtn": "Contact Us"
+    }
+  },
+
   "contact": {
     "title": "Contact Us",
     "subtitle": "We're here to help you find your perfect property",
@@ -130,7 +312,7 @@
     "info": {
       "title": "Get in Touch",
       "address": "Address",
-      "addressValue": "Green Heart Complex, Bulevar Milutina Milankovića 11g, 11000 Belgrade, Serbia",
+      "addressValue": "Green Heart, Bulevar Milutina Milankovića 11b, Beograd 11070",
       "phone": "Phone",
       "email": "Email",
       "workingHours": "Working Hours",
@@ -140,6 +322,298 @@
     "office": {
       "title": "Our Office",
       "description": "Visit us at our headquarters in Belgrade"
+    }
+  },
+
+  "heroSearch": {
+    "tabs": {
+      "properties": "Properties",
+      "newProjects": "New Projects",
+      "agents": "Agents"
+    },
+    "purpose": {
+      "buy": "Buy",
+      "rent": "Rent"
+    },
+    "completionStatus": {
+      "all": "All",
+      "ready": "Ready",
+      "offPlan": "Off-Plan"
+    },
+    "propertyType": {
+      "title": "Property Type",
+      "residential": "Residential",
+      "commercial": "Commercial",
+      "types": {
+        "apartment": "Apartment",
+        "house": "House",
+        "villa": "Villa",
+        "townhouse": "Townhouse",
+        "penthouse": "Penthouse",
+        "studio": "Studio",
+        "duplex": "Duplex",
+        "land": "Land",
+        "office": "Office",
+        "retail": "Retail Space",
+        "warehouse": "Warehouse",
+        "building": "Building"
+      }
+    },
+    "bedsAndBaths": {
+      "title": "Beds & Baths",
+      "beds": "Beds",
+      "baths": "Baths",
+      "studio": "Studio"
+    },
+    "price": {
+      "title": "Price",
+      "priceRsd": "Price (RSD)",
+      "minimum": "Minimum",
+      "maximum": "Maximum",
+      "any": "Any"
+    },
+    "search": {
+      "placeholder": "Search projects, developers, neighborhoods..."
+    },
+    "newProjectsFilters": {
+      "handoverBy": "Handover By",
+      "paymentPlan": "Payment Plan",
+      "completion": "% Completion",
+      "years": {
+        "2024": "2024",
+        "2025": "2025",
+        "2026": "2026",
+        "2027": "2027",
+        "2028Plus": "2028+"
+      },
+      "paymentPlans": {
+        "any": "Any",
+        "installments": "Installments",
+        "mortgage": "Mortgage",
+        "cash": "Cash"
+      },
+      "completionLevels": {
+        "any": "Any",
+        "notStarted": "Not Started",
+        "underConstruction": "Under Construction",
+        "almostReady": "Almost Ready",
+        "completed": "Completed"
+      }
+    },
+    "actions": {
+      "search": "Search",
+      "reset": "Reset",
+      "done": "Done"
+    }
+  },
+
+  "privacy": {
+    "hero": {
+      "title": "Privacy Policy",
+      "description": "We are committed to protecting your privacy and ensuring the security of your personal information.",
+      "lastUpdated": "Last Updated",
+      "lastUpdatedDate": "January 2025"
+    },
+    "intro": {
+      "text": "This Privacy Policy explains how Novi Kvadrat (\"we\", \"us\", or \"our\") collects, uses, and protects your personal information when you use our real estate platform. By using our services, you agree to the collection and use of information in accordance with this policy."
+    },
+    "sections": {
+      "collection": {
+        "title": "Information We Collect",
+        "description": "We collect various types of information to provide and improve our services to you.",
+        "items": {
+          "personal": "Personal information: name, email address, phone number, and account credentials",
+          "property": "Property preferences: search history, saved properties, and inquiry history",
+          "usage": "Usage data: how you interact with our platform, pages visited, and features used",
+          "device": "Device information: IP address, browser type, device type, and operating system"
+        }
+      },
+      "usage": {
+        "title": "How We Use Your Information",
+        "description": "We use the information we collect for various purposes related to providing and improving our services.",
+        "items": {
+          "services": "To provide and maintain our real estate platform services",
+          "communication": "To communicate with you about properties, updates, and promotional offers",
+          "improvement": "To analyze usage patterns and improve our platform functionality",
+          "legal": "To comply with legal obligations and protect our rights"
+        }
+      },
+      "sharing": {
+        "title": "Information Sharing",
+        "description": "We may share your information with third parties in specific circumstances.",
+        "items": {
+          "developers": "With property developers and agents when you express interest in their listings",
+          "providers": "With service providers who assist us in operating our platform",
+          "legal": "When required by law or to protect our legal rights"
+        }
+      },
+      "cookies": {
+        "title": "Cookies and Tracking",
+        "description": "We use cookies and similar tracking technologies to track activity on our platform and store certain information. Cookies help us improve your experience by remembering your preferences and understanding how you use our platform. You can instruct your browser to refuse all cookies or indicate when a cookie is being sent."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "description": "You have certain rights regarding your personal information under applicable data protection laws.",
+        "items": {
+          "access": "Right to access: Request a copy of the personal data we hold about you",
+          "correction": "Right to correction: Request correction of inaccurate or incomplete data",
+          "deletion": "Right to deletion: Request deletion of your personal data",
+          "portability": "Right to data portability: Receive your data in a structured, machine-readable format",
+          "objection": "Right to object: Object to certain types of processing of your data"
+        }
+      },
+      "security": {
+        "title": "Data Security",
+        "description": "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security."
+      }
+    },
+    "contact": {
+      "title": "Contact Us About Privacy",
+      "description": "If you have any questions about this Privacy Policy or wish to exercise your privacy rights, please contact us at:"
+    },
+    "related": {
+      "title": "Related Documents",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    }
+  },
+
+  "terms": {
+    "hero": {
+      "title": "Terms of Service",
+      "description": "Please read these terms carefully before using Novi Kvadrat platform.",
+      "lastUpdated": "Last Updated",
+      "lastUpdatedDate": "January 2025"
+    },
+    "intro": {
+      "text": "Welcome to Novi Kvadrat. These Terms of Service (\"Terms\") govern your use of our website and services. By accessing or using Novi Kvadrat, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access our services."
+    },
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "description": "By creating an account or using any part of our platform, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you are using our services on behalf of an organization, you agree to these Terms on behalf of that organization."
+      },
+      "services": {
+        "title": "Our Services",
+        "description": "Novi Kvadrat provides an online platform that connects property buyers, sellers, developers, and real estate agents in Serbia. Our services include property listings, search functionality, developer profiles, mortgage calculators, and related real estate information. We act as an intermediary and do not own, manage, or sell any properties directly."
+      },
+      "userObligations": {
+        "title": "User Obligations",
+        "description": "As a user of our platform, you agree to the following obligations:",
+        "items": {
+          "accurate": "Provide accurate and complete information when creating an account or submitting inquiries",
+          "lawful": "Use our platform only for lawful purposes and in accordance with these Terms",
+          "respectful": "Treat other users, developers, and agents with respect and professionalism",
+          "security": "Maintain the security of your account credentials and notify us of any unauthorized access"
+        }
+      },
+      "propertyListings": {
+        "title": "Property Listings",
+        "description": "If you list properties on our platform, you agree to the following:",
+        "items": {
+          "accuracy": "All listing information must be accurate, complete, and not misleading",
+          "authorization": "You must have authorization to list the property",
+          "updates": "Keep listings updated and remove sold or unavailable properties promptly",
+          "compliance": "Comply with all applicable real estate laws and regulations in Serbia"
+        }
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "description": "All content on Novi Kvadrat, including but not limited to text, graphics, logos, images, and software, is the property of Novi Kvadrat or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, modify, or create derivative works from our content without explicit written permission."
+      },
+      "disclaimer": {
+        "title": "Disclaimer of Warranties",
+        "description": "Our platform is provided \"as is\" and \"as available\" without any warranties of any kind, either express or implied. We do not guarantee the accuracy, completeness, or reliability of any property listings or information provided by third parties. Users should independently verify all property information before making any decisions."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "description": "To the maximum extent permitted by law, Novi Kvadrat shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of our platform. Our total liability shall not exceed the amount you paid us, if any, in the twelve months preceding the claim."
+      },
+      "changes": {
+        "title": "Changes to Terms",
+        "description": "We reserve the right to modify these Terms at any time. We will notify users of significant changes by posting the new Terms on this page and updating the \"Last Updated\" date. Your continued use of the platform after changes constitutes acceptance of the modified Terms."
+      }
+    },
+    "governingLaw": {
+      "title": "Governing Law",
+      "description": "These Terms shall be governed by and construed in accordance with the laws of the Republic of Serbia. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts in Belgrade, Serbia."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have any questions about these Terms of Service, please contact us at:"
+    },
+    "related": {
+      "title": "Related Documents",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy"
+    }
+  },
+
+  "cookies": {
+    "hero": {
+      "title": "Cookie Policy",
+      "description": "Learn how we use cookies and similar technologies on our platform.",
+      "lastUpdated": "Last Updated",
+      "lastUpdatedDate": "January 2025"
+    },
+    "whatAreCookies": {
+      "title": "What Are Cookies?",
+      "description": "Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners. Cookies help us remember your preferences, understand how you use our platform, and improve your overall experience."
+    },
+    "types": {
+      "title": "Types of Cookies We Use",
+      "essential": {
+        "title": "Essential Cookies",
+        "description": "These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and account access. You cannot opt out of these cookies as the website cannot function properly without them.",
+        "examples": {
+          "1": "Session cookies for user authentication",
+          "2": "Security cookies to prevent fraud"
+        }
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve our platform and provide better services.",
+        "examples": {
+          "1": "Google Analytics for traffic analysis",
+          "2": "Page view and session duration tracking"
+        }
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "These cookies are used to track visitors across websites and display relevant advertisements. They help us measure the effectiveness of our advertising campaigns.",
+        "examples": {
+          "1": "Facebook Pixel for ad targeting",
+          "2": "Google Ads conversion tracking"
+        }
+      },
+      "functional": {
+        "title": "Functional Cookies",
+        "description": "These cookies enable enhanced functionality and personalization, such as remembering your preferences, language settings, and saved searches.",
+        "examples": {
+          "1": "Language preference cookies",
+          "2": "Saved property search criteria"
+        }
+      }
+    },
+    "required": "Required",
+    "examples": "Examples",
+    "thirdParty": {
+      "title": "Third-Party Cookies",
+      "description": "Some cookies on our website are placed by third-party services that appear on our pages. We use the following third-party services:"
+    },
+    "managing": {
+      "title": "Managing Your Cookie Preferences",
+      "description": "You can control and manage cookies in various ways. Please note that removing or blocking cookies may impact your user experience and some functionality may no longer be available.",
+      "browserSettings": "You can manage cookies through your browser settings:"
+    },
+    "contact": {
+      "title": "Questions About Cookies",
+      "description": "If you have any questions about our use of cookies, please contact us at:"
+    },
+    "related": {
+      "title": "Related Documents",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
     }
   }
 }

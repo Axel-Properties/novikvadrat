@@ -35,24 +35,24 @@ export function Footer() {
 
   const footerLinks = {
     about: [
-      { label: 'About Platform', href: '/about' },
-      { label: 'Contact Us', href: '/contact' },
+      { label: 'About Platform', href: `/${currentLocale}/o-nama` },
+      { label: 'Contact Us', href: `/${currentLocale}/kontakt` },
       { label: 'Careers', href: '/careers' },
       { label: "Buyer's Guide", href: '/guide' },
     ],
     terms: [
-      { label: 'Privacy Policy', href: '/privacy-policy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
+      { label: 'Privacy Policy', href: `/${currentLocale}/privacy-policy` },
+      { label: 'Terms of Service', href: `/${currentLocale}/terms` },
+      { label: 'Cookie Policy', href: `/${currentLocale}/cookies` },
     ],
     cities: [
-      { label: 'Belgrade', href: '/city/belgrade' },
-      { label: 'Novi Sad', href: '/city/novi-sad' },
-      { label: 'Niš', href: '/city/nis' },
-      { label: 'Kragujevac', href: '/city/kragujevac' },
+      { label: 'Belgrade', href: `/${currentLocale}/novogradnja/beograd` },
+      { label: 'Novi Sad', href: `/${currentLocale}/novogradnja/novi-sad` },
+      { label: 'Niš', href: `/${currentLocale}/novogradnja/nis` },
+      { label: 'Kragujevac', href: `/${currentLocale}/novogradnja/kragujevac` },
     ],
     categories: [
-      { label: 'New Projects', href: '/new-projects' },
+      { label: 'New Projects', href: `/${currentLocale}/novogradnja/beograd` },
       { label: 'Apartments for Sale', href: '/sale/apartments' },
       { label: 'Houses for Rent', href: '/rent/houses' },
       { label: 'Commercial Property', href: '/commercial' },

@@ -1,9 +1,12 @@
 {
   "/[locale]/kontakt/page": "app/[locale]/kontakt/page.js",
   "/[locale]/novogradnja/[city]/page": "app/[locale]/novogradnja/[city]/page.js",
+  "/[locale]/o-nama/page": "app/[locale]/o-nama/page.js",
   "/[locale]/page": "app/[locale]/page.js",
   "/[locale]/projekat/[slug]/page": "app/[locale]/projekat/[slug]/page.js",
+  "/[locale]/property/[id]/page": "app/[locale]/property/[id]/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/api/cities/route": "app/api/cities/route.js",
   "/api/projects/[slug]/route": "app/api/projects/[slug]/route.js",
   "/api/projects/route": "app/api/projects/route.js"
 }

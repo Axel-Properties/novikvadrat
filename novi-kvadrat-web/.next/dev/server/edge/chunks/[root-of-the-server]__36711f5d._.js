@@ -61,6 +61,26 @@ const slugTranslations = {
         sr: 'kontakt',
         'sr-cyrl': 'контакт'
     },
+    'o-nama': {
+        en: 'about',
+        sr: 'o-nama',
+        'sr-cyrl': 'о-нама'
+    },
+    'privacy-policy': {
+        en: 'privacy-policy',
+        sr: 'politika-privatnosti',
+        'sr-cyrl': 'политика-приватности'
+    },
+    'terms': {
+        en: 'terms',
+        sr: 'uslovi',
+        'sr-cyrl': 'услови'
+    },
+    'cookies': {
+        en: 'cookies',
+        sr: 'kolacici',
+        'sr-cyrl': 'колачићи'
+    },
     // Cities
     'beograd': {
         en: 'belgrade',

@@ -279,26 +279,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 // Status labels will use translations from t() function
-const heatingLabels = {
-    'centralno': 'Centralno grejanje',
-    'etazno': 'Etažno grejanje',
-    'gas': 'Gas',
-    'toplotna_pumpa': 'Toplotna pumpa',
-    'podno': 'Podno grejanje',
-    'ta_pec': 'TA peć'
-};
-const layoutLabels = {
-    'garsonjera': 'Garsonjera',
-    'jednosoban': 'Jednosoban',
-    'jednoiposoban': '1.5-soban',
-    'dvosoban': 'Dvosoban',
-    'dvoiposoban': '2.5-soban',
-    'trosoban': 'Trosoban',
-    'troiposoban': '3.5-soban',
-    'cetvorosoban': 'Četvorosoban',
-    'petosoban': 'Petosoban',
-    'penthouse': 'Penthouse'
-};
+// Heating and layout labels will use translations from t() function
 const amenityIcons = {
     'parking': __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$car$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Car$3e$__["Car"],
     'elevator': __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$up$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowUpDown$3e$__["ArrowUpDown"],
@@ -370,12 +351,12 @@ function ProjectDetailPage() {
                 className: "h-8 w-8 animate-spin"
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                lineNumber: 218,
+                lineNumber: 199,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-            lineNumber: 217,
+            lineNumber: 198,
             columnNumber: 7
         }, this);
     }
@@ -389,7 +370,7 @@ function ProjectDetailPage() {
                         className: "h-12 w-12 mx-auto text-gray-400 mb-4"
                     }, void 0, false, {
                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                        lineNumber: 227,
+                        lineNumber: 208,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -397,18 +378,18 @@ function ProjectDetailPage() {
                         children: "Projekat nije pronađen"
                     }, void 0, false, {
                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                        lineNumber: 228,
+                        lineNumber: 209,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                lineNumber: 226,
+                lineNumber: 207,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-            lineNumber: 225,
+            lineNumber: 206,
             columnNumber: 7
         }, this);
     }
@@ -437,7 +418,7 @@ function ProjectDetailPage() {
                                 children: "Početna"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 245,
+                                lineNumber: 226,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -445,7 +426,7 @@ function ProjectDetailPage() {
                                 children: "/"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 246,
+                                lineNumber: 227,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -457,7 +438,7 @@ function ProjectDetailPage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 247,
+                                lineNumber: 228,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -465,7 +446,7 @@ function ProjectDetailPage() {
                                 children: "/"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 250,
+                                lineNumber: 231,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -473,23 +454,23 @@ function ProjectDetailPage() {
                                 children: project.name
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 251,
+                                lineNumber: 232,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                        lineNumber: 244,
+                        lineNumber: 225,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                    lineNumber: 243,
+                    lineNumber: 224,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                lineNumber: 242,
+                lineNumber: 223,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -510,7 +491,7 @@ function ProjectDetailPage() {
                                             className: "object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 244,
                                             columnNumber: 17
                                         }, this),
                                         allImages.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -522,12 +503,12 @@ function ProjectDetailPage() {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 275,
+                                                        lineNumber: 256,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 252,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -537,12 +518,12 @@ function ProjectDetailPage() {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 281,
+                                                        lineNumber: 262,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 277,
+                                                    lineNumber: 258,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -554,7 +535,7 @@ function ProjectDetailPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 283,
+                                                    lineNumber: 264,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
@@ -562,7 +543,7 @@ function ProjectDetailPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 262,
+                                    lineNumber: 243,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "h-[400px] lg:h-[500px] bg-gray-200 rounded-lg flex items-center justify-center",
@@ -570,12 +551,12 @@ function ProjectDetailPage() {
                                         className: "h-16 w-16 text-gray-400"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 291,
+                                        lineNumber: 272,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 290,
+                                    lineNumber: 271,
                                     columnNumber: 15
                                 }, this),
                                 allImages.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -590,23 +571,23 @@ function ProjectDetailPage() {
                                                 className: "object-cover"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 306,
+                                                lineNumber: 287,
                                                 columnNumber: 21
                                             }, this)
                                         }, index, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 299,
+                                            lineNumber: 280,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 278,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                            lineNumber: 260,
+                            lineNumber: 241,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -619,7 +600,7 @@ function ProjectDetailPage() {
                                             children: project.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 321,
+                                            lineNumber: 302,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -631,12 +612,12 @@ function ProjectDetailPage() {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 324,
+                                                        lineNumber: 305,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 323,
+                                                    lineNumber: 304,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -646,24 +627,24 @@ function ProjectDetailPage() {
                                                         className: `h-5 w-5 ${isSaved ? 'fill-red-500 text-red-500' : ''}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 330,
+                                                        lineNumber: 311,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 326,
+                                                    lineNumber: 307,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 322,
+                                            lineNumber: 303,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 301,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -673,7 +654,7 @@ function ProjectDetailPage() {
                                             className: "h-5 w-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 336,
+                                            lineNumber: 317,
                                             columnNumber: 15
                                         }, this),
                                         project.municipality?.name_sr_lat && `${project.municipality.name_sr_lat}, `,
@@ -681,7 +662,7 @@ function ProjectDetailPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 335,
+                                    lineNumber: 316,
                                     columnNumber: 13
                                 }, this),
                                 project.address && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -689,7 +670,7 @@ function ProjectDetailPage() {
                                     children: project.address
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 342,
+                                    lineNumber: 323,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -701,7 +682,7 @@ function ProjectDetailPage() {
                                             children: t(`projects.status.${project.construction_status === 'u_izgradnji' ? 'underConstruction' : project.construction_status === 'siva_faza' ? 'grayFrame' : project.construction_status === 'useljivo' ? 'readyToMove' : project.construction_status === 'planning' ? 'planning' : project.construction_status === 'completed' ? 'completed' : project.construction_status}`)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 346,
+                                            lineNumber: 327,
                                             columnNumber: 15
                                         }, this),
                                         project.completion_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -712,7 +693,7 @@ function ProjectDetailPage() {
                                                     className: "h-4 w-4 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 356,
+                                                    lineNumber: 337,
                                                     columnNumber: 19
                                                 }, this),
                                                 t('common.completion'),
@@ -721,7 +702,7 @@ function ProjectDetailPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 355,
+                                            lineNumber: 336,
                                             columnNumber: 17
                                         }, this),
                                         project.completion_percentage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -732,21 +713,22 @@ function ProjectDetailPage() {
                                                     className: "h-4 w-4 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 362,
+                                                    lineNumber: 343,
                                                     columnNumber: 19
                                                 }, this),
-                                                project.completion_percentage,
-                                                "% završeno"
+                                                t('projectDetail.percentCompleted', {
+                                                    percent: project.completion_percentage
+                                                })
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 361,
+                                            lineNumber: 342,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 345,
+                                    lineNumber: 326,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -761,10 +743,10 @@ function ProjectDetailPage() {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 className: "text-sm text-gray-600",
-                                                                children: "Cena od"
+                                                                children: t('projectDetail.priceFrom')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 372,
+                                                                lineNumber: 353,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -772,23 +754,23 @@ function ProjectDetailPage() {
                                                                 children: project.price_from ? formatPrice(project.price_from) : t('projectDetail.onRequest')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 373,
+                                                                lineNumber: 354,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 371,
+                                                        lineNumber: 352,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 className: "text-sm text-gray-600",
-                                                                children: "Cena po m²"
+                                                                children: t('projectDetail.pricePerSqm')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 378,
+                                                                lineNumber: 359,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -796,19 +778,19 @@ function ProjectDetailPage() {
                                                                 children: project.price_per_sqm_from ? formatPrice(project.price_per_sqm_from) : t('projectDetail.onRequest')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 379,
+                                                                lineNumber: 360,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 377,
+                                                        lineNumber: 358,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 370,
+                                                lineNumber: 351,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -821,14 +803,14 @@ function ProjectDetailPage() {
                                                                 className: "h-4 w-4 mr-2"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 388,
+                                                                lineNumber: 369,
                                                                 columnNumber: 23
                                                             }, this),
-                                                            "Cena sa uračunatim PDV-om"
+                                                            t('projectDetail.priceWithVat')
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 387,
+                                                        lineNumber: 368,
                                                         columnNumber: 21
                                                     }, this),
                                                     project.first_buyer_vat_refund && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -838,31 +820,31 @@ function ProjectDetailPage() {
                                                                 className: "h-4 w-4 mr-2"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 394,
+                                                                lineNumber: 375,
                                                                 columnNumber: 23
                                                             }, this),
-                                                            "Mogućnost povraćaja PDV-a za prvi stan"
+                                                            t('projectDetail.vatRefundFirstBuyer')
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 393,
+                                                        lineNumber: 374,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 385,
+                                                lineNumber: 366,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 369,
+                                        lineNumber: 350,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 368,
+                                    lineNumber: 349,
                                     columnNumber: 13
                                 }, this),
                                 project.developer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -883,7 +865,7 @@ function ProjectDetailPage() {
                                                             className: "rounded mr-3"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 409,
+                                                            lineNumber: 390,
                                                             columnNumber: 25
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "w-12 h-12 bg-gray-200 rounded mr-3 flex items-center justify-center",
@@ -891,12 +873,12 @@ function ProjectDetailPage() {
                                                                 className: "h-6 w-6 text-gray-400"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 418,
+                                                                lineNumber: 399,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 417,
+                                                            lineNumber: 398,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -907,46 +889,49 @@ function ProjectDetailPage() {
                                                                     children: project.developer.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 422,
+                                                                    lineNumber: 403,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 project.developer.is_verified && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
                                                                     variant: "outline",
                                                                     className: "ml-2",
-                                                                    children: "Verifikovan"
+                                                                    children: t('projectDetail.verified')
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 429,
+                                                                    lineNumber: 410,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                     className: "text-sm text-gray-600",
                                                                     children: [
                                                                         project.developer.total_projects,
-                                                                        " projekata • ",
+                                                                        " ",
+                                                                        t('projectDetail.projects'),
+                                                                        " • ",
                                                                         project.developer.completed_projects,
-                                                                        " završeno"
+                                                                        " ",
+                                                                        t('projectDetail.completedProjects')
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 433,
+                                                                    lineNumber: 414,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 421,
+                                                            lineNumber: 402,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 407,
+                                                    lineNumber: 388,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 406,
+                                                lineNumber: 387,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -960,57 +945,57 @@ function ProjectDetailPage() {
                                                                 className: "h-4 w-4 mr-2"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 445,
+                                                                lineNumber: 426,
                                                                 columnNumber: 23
                                                             }, this),
-                                                            showPhone ? project.developer.phone : 'Prikaži broj'
+                                                            showPhone ? project.developer.phone : t('projectDetail.showPhone')
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 441,
+                                                        lineNumber: 422,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                         variant: "outline",
                                                         className: "flex-1",
-                                                        children: "Zakaži konsultaciju"
+                                                        children: t('projectDetail.scheduleConsultation')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 448,
+                                                        lineNumber: 429,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 440,
+                                                lineNumber: 421,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 405,
+                                        lineNumber: 386,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 404,
+                                    lineNumber: 385,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                            lineNumber: 319,
+                            lineNumber: 300,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                    lineNumber: 258,
+                    lineNumber: 239,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                lineNumber: 257,
+                lineNumber: 238,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1025,48 +1010,48 @@ function ProjectDetailPage() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
                                         value: "overview",
-                                        children: "Pregled"
+                                        children: t('projectDetail.tabs.overview')
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 463,
+                                        lineNumber: 444,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
                                         value: "layouts",
-                                        children: "Raspored"
+                                        children: t('projectDetail.tabs.layouts')
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 464,
+                                        lineNumber: 445,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
                                         value: "location",
-                                        children: "Lokacija"
+                                        children: t('projectDetail.tabs.location')
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 465,
+                                        lineNumber: 446,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
                                         value: "amenities",
-                                        children: "Sadržaji"
+                                        children: t('projectDetail.tabs.amenities')
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 466,
+                                        lineNumber: 447,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
                                         value: "mortgage",
-                                        children: "Kredit"
+                                        children: t('projectDetail.tabs.mortgage')
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 467,
+                                        lineNumber: 448,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 462,
+                                lineNumber: 443,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1080,25 +1065,25 @@ function ProjectDetailPage() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                        children: "O projektu"
+                                                        children: t('projectDetail.aboutProject')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 474,
+                                                        lineNumber: 455,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 473,
+                                                    lineNumber: 454,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-gray-600 mb-6",
-                                                            children: project.description || 'Opis projekta će biti dodat uskoro.'
+                                                            children: project.description || t('projectDetail.projectDescriptionPlaceholder')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 477,
+                                                            lineNumber: 458,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1108,10 +1093,10 @@ function ProjectDetailPage() {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm text-gray-600",
-                                                                            children: "Broj zgrada"
+                                                                            children: t('projectDetail.numberOfBuildings')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 483,
+                                                                            lineNumber: 464,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1119,23 +1104,23 @@ function ProjectDetailPage() {
                                                                             children: project.total_buildings
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 484,
+                                                                            lineNumber: 465,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 482,
+                                                                    lineNumber: 463,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm text-gray-600",
-                                                                            children: "Broj spratova"
+                                                                            children: t('projectDetail.numberOfFloors')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 487,
+                                                                            lineNumber: 468,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1143,23 +1128,23 @@ function ProjectDetailPage() {
                                                                             children: project.total_floors
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 488,
+                                                                            lineNumber: 469,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 486,
+                                                                    lineNumber: 467,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm text-gray-600",
-                                                                            children: "Ukupno stanova"
+                                                                            children: t('projectDetail.totalApartments')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 491,
+                                                                            lineNumber: 472,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1167,23 +1152,23 @@ function ProjectDetailPage() {
                                                                             children: project.total_units
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 492,
+                                                                            lineNumber: 473,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 490,
+                                                                    lineNumber: 471,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm text-gray-600",
-                                                                            children: "Dostupno stanova"
+                                                                            children: t('projectDetail.availableApartments')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 495,
+                                                                            lineNumber: 476,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1191,23 +1176,23 @@ function ProjectDetailPage() {
                                                                             children: project.available_units
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 496,
+                                                                            lineNumber: 477,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 494,
+                                                                    lineNumber: 475,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm text-gray-600",
-                                                                            children: "Parking mesta"
+                                                                            children: t('projectDetail.parkingSpaces')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 499,
+                                                                            lineNumber: 480,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1215,43 +1200,43 @@ function ProjectDetailPage() {
                                                                             children: project.parking_spaces || 'N/A'
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 500,
+                                                                            lineNumber: 481,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 498,
+                                                                    lineNumber: 479,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm text-gray-600",
-                                                                            children: "Grejanje"
+                                                                            children: t('projectDetail.heating')
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 503,
+                                                                            lineNumber: 484,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "font-semibold",
-                                                                            children: heatingLabels[project.heating_type] || 'N/A'
+                                                                            children: project.heating_type ? t(`projectDetail.heatingTypes.${project.heating_type}`) : 'N/A'
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 504,
+                                                                            lineNumber: 485,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 502,
+                                                                    lineNumber: 483,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 481,
+                                                            lineNumber: 462,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1264,14 +1249,14 @@ function ProjectDetailPage() {
                                                                             className: "h-4 w-4 mr-1"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 511,
+                                                                            lineNumber: 492,
                                                                             columnNumber: 25
                                                                         }, this),
-                                                                        "Lift"
+                                                                        t('projectDetail.elevator')
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 510,
+                                                                    lineNumber: 491,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 project.garage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1281,58 +1266,59 @@ function ProjectDetailPage() {
                                                                             className: "h-4 w-4 mr-1"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                            lineNumber: 517,
+                                                                            lineNumber: 498,
                                                                             columnNumber: 25
                                                                         }, this),
-                                                                        "Garaža"
+                                                                        t('projectDetail.garage')
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 516,
+                                                                    lineNumber: 497,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 project.energy_class && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
                                                                     variant: "secondary",
                                                                     children: [
-                                                                        "Energetski razred ",
+                                                                        t('projectDetail.energyClass'),
+                                                                        " ",
                                                                         project.energy_class
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 522,
+                                                                    lineNumber: 503,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 508,
+                                                            lineNumber: 489,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 476,
+                                                    lineNumber: 457,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 472,
+                                            lineNumber: 453,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                        children: "Dokumenti"
+                                                        children: t('projectDetail.documents')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 532,
+                                                        lineNumber: 513,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 531,
+                                                    lineNumber: 512,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1346,14 +1332,14 @@ function ProjectDetailPage() {
                                                                     className: "h-4 w-4 mr-2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 537,
+                                                                    lineNumber: 518,
                                                                     columnNumber: 23
                                                                 }, this),
-                                                                "Preuzmi brošuru"
+                                                                t('projectDetail.downloadBrochure')
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 536,
+                                                            lineNumber: 517,
                                                             columnNumber: 21
                                                         }, this),
                                                         project.virtual_tour_url && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1364,14 +1350,14 @@ function ProjectDetailPage() {
                                                                     className: "h-4 w-4 mr-2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 543,
+                                                                    lineNumber: 524,
                                                                     columnNumber: 23
                                                                 }, this),
-                                                                "Virtuelna tura"
+                                                                t('projectDetail.virtualTour')
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 542,
+                                                            lineNumber: 523,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1382,37 +1368,37 @@ function ProjectDetailPage() {
                                                                     className: "h-4 w-4 mr-2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 548,
+                                                                    lineNumber: 529,
                                                                     columnNumber: 21
                                                                 }, this),
-                                                                "Prikaži na mapi"
+                                                                t('projectDetail.showOnMap')
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 547,
+                                                            lineNumber: 528,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 534,
+                                                    lineNumber: 515,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 530,
+                                            lineNumber: 511,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 471,
+                                    lineNumber: 452,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 470,
+                                lineNumber: 451,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1422,15 +1408,15 @@ function ProjectDetailPage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                children: "Dostupni rasporedi stanova"
+                                                children: t('projectDetail.availableLayouts')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 559,
+                                                lineNumber: 540,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 558,
+                                            lineNumber: 539,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1448,7 +1434,7 @@ function ProjectDetailPage() {
                                                                     className: "object-contain p-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 568,
+                                                                    lineNumber: 549,
                                                                     columnNumber: 29
                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "flex items-center justify-center h-full",
@@ -1456,17 +1442,17 @@ function ProjectDetailPage() {
                                                                         className: "h-12 w-12 text-gray-400"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                        lineNumber: 576,
+                                                                        lineNumber: 557,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                    lineNumber: 575,
+                                                                    lineNumber: 556,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 566,
+                                                                lineNumber: 547,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1477,15 +1463,15 @@ function ProjectDetailPage() {
                                                                         children: layout.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                        lineNumber: 581,
+                                                                        lineNumber: 562,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                         className: "text-sm text-gray-600 mb-3",
-                                                                        children: layoutLabels[layout.layout_type] || layout.layout_type
+                                                                        children: layout.layout_type ? t(`projectDetail.layoutTypes.${layout.layout_type}`) : layout.layout_type
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                        lineNumber: 582,
+                                                                        lineNumber: 563,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1496,10 +1482,13 @@ function ProjectDetailPage() {
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                         className: "text-gray-600",
-                                                                                        children: "Površina:"
-                                                                                    }, void 0, false, {
+                                                                                        children: [
+                                                                                            t('projectDetail.area'),
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 588,
+                                                                                        lineNumber: 569,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1510,13 +1499,13 @@ function ProjectDetailPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 589,
+                                                                                        lineNumber: 570,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                lineNumber: 587,
+                                                                                lineNumber: 568,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             layout.terrace_area && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1524,10 +1513,13 @@ function ProjectDetailPage() {
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                         className: "text-gray-600",
-                                                                                        children: "Terasa:"
-                                                                                    }, void 0, false, {
+                                                                                        children: [
+                                                                                            t('projectDetail.terrace'),
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 593,
+                                                                                        lineNumber: 574,
                                                                                         columnNumber: 33
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1538,13 +1530,13 @@ function ProjectDetailPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 594,
+                                                                                        lineNumber: 575,
                                                                                         columnNumber: 33
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                lineNumber: 592,
+                                                                                lineNumber: 573,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1552,10 +1544,13 @@ function ProjectDetailPage() {
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                         className: "text-gray-600",
-                                                                                        children: "Sobe:"
-                                                                                    }, void 0, false, {
+                                                                                        children: [
+                                                                                            t('projectDetail.rooms'),
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 598,
+                                                                                        lineNumber: 579,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1563,13 +1558,13 @@ function ProjectDetailPage() {
                                                                                         children: layout.bedrooms
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 599,
+                                                                                        lineNumber: 580,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                lineNumber: 597,
+                                                                                lineNumber: 578,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1577,10 +1572,13 @@ function ProjectDetailPage() {
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                         className: "text-gray-600",
-                                                                                        children: "Kupatila:"
-                                                                                    }, void 0, false, {
+                                                                                        children: [
+                                                                                            t('projectDetail.bathrooms'),
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 602,
+                                                                                        lineNumber: 583,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1588,19 +1586,19 @@ function ProjectDetailPage() {
                                                                                         children: layout.bathrooms
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                        lineNumber: 603,
+                                                                                        lineNumber: 584,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                lineNumber: 601,
+                                                                                lineNumber: 582,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                        lineNumber: 586,
+                                                                        lineNumber: 567,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1611,7 +1609,7 @@ function ProjectDetailPage() {
                                                                                 children: layout.price_from ? formatPrice(layout.price_from) : t('projectDetail.onRequest')
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                lineNumber: 608,
+                                                                                lineNumber: 589,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1624,53 +1622,53 @@ function ProjectDetailPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                                lineNumber: 611,
+                                                                                lineNumber: 592,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                        lineNumber: 607,
+                                                                        lineNumber: 588,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 580,
+                                                                lineNumber: 561,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, layout.id, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 565,
+                                                        lineNumber: 546,
                                                         columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 563,
+                                                lineNumber: 544,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-gray-600",
                                                 children: "Informacije o rasporedima će biti dostupne uskoro."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 620,
+                                                lineNumber: 601,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 561,
+                                            lineNumber: 542,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 557,
+                                    lineNumber: 538,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 556,
+                                lineNumber: 537,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1683,12 +1681,12 @@ function ProjectDetailPage() {
                                                 children: "Lokacija"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 629,
+                                                lineNumber: 610,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 628,
+                                            lineNumber: 609,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1700,7 +1698,7 @@ function ProjectDetailPage() {
                                                             className: "h-12 w-12 text-gray-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 633,
+                                                            lineNumber: 614,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1708,13 +1706,13 @@ function ProjectDetailPage() {
                                                             children: t('projectDetail.mapComingSoon')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 634,
+                                                            lineNumber: 615,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 632,
+                                                    lineNumber: 613,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1728,7 +1726,7 @@ function ProjectDetailPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 637,
+                                                            lineNumber: 618,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1736,30 +1734,30 @@ function ProjectDetailPage() {
                                                             children: project.address || (project.municipality?.name_sr_lat && project.city?.name_sr_lat ? `${project.municipality.name_sr_lat}, ${project.city.name_sr_lat}` : project.city?.name_sr_lat || '')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 638,
+                                                            lineNumber: 619,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 636,
+                                                    lineNumber: 617,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 631,
+                                            lineNumber: 612,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 627,
+                                    lineNumber: 608,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 626,
+                                lineNumber: 607,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1769,15 +1767,15 @@ function ProjectDetailPage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                children: "Sadržaji i pogodnosti"
+                                                children: t('projectDetail.amenitiesAndFeatures')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 652,
+                                                lineNumber: 633,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 651,
+                                            lineNumber: 632,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1792,7 +1790,7 @@ function ProjectDetailPage() {
                                                                 className: "h-5 w-5 mr-3 text-blue-600"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 661,
+                                                                lineNumber: 642,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1800,42 +1798,42 @@ function ProjectDetailPage() {
                                                                 children: amenity.name_sr
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 662,
+                                                                lineNumber: 643,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, amenity.id, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 660,
+                                                        lineNumber: 641,
                                                         columnNumber: 25
                                                     }, this);
                                                 })
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 656,
+                                                lineNumber: 637,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-gray-600",
-                                                children: "Informacije o sadržajima će biti dostupne uskoro."
+                                                children: t('projectDetail.amenitiesComingSoon')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 668,
+                                                lineNumber: 649,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 654,
+                                            lineNumber: 635,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 650,
+                                    lineNumber: 631,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 649,
+                                lineNumber: 630,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1845,15 +1843,15 @@ function ProjectDetailPage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                children: "Kalkulator kredita"
+                                                children: t('projectDetail.mortgageCalculator')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 677,
+                                                lineNumber: 658,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 676,
+                                            lineNumber: 657,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1864,10 +1862,10 @@ function ProjectDetailPage() {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                                 className: "block text-sm font-medium mb-2",
-                                                                children: "Cena nekretnine"
+                                                                children: t('projectDetail.propertyPrice')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 682,
+                                                                lineNumber: 663,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1876,13 +1874,13 @@ function ProjectDetailPage() {
                                                                 defaultValue: project.price_from || 150000
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 683,
+                                                                lineNumber: 664,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 681,
+                                                        lineNumber: 662,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1892,7 +1890,7 @@ function ProjectDetailPage() {
                                                                 children: "Učešće (%)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 690,
+                                                                lineNumber: 671,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1901,13 +1899,13 @@ function ProjectDetailPage() {
                                                                 defaultValue: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 691,
+                                                                lineNumber: 672,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 689,
+                                                        lineNumber: 670,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1917,7 +1915,7 @@ function ProjectDetailPage() {
                                                                 children: "Period otplate (godine)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 698,
+                                                                lineNumber: 679,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1926,13 +1924,13 @@ function ProjectDetailPage() {
                                                                 defaultValue: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 699,
+                                                                lineNumber: 680,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 697,
+                                                        lineNumber: 678,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1942,7 +1940,7 @@ function ProjectDetailPage() {
                                                                 children: "Kamatna stopa (%)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 706,
+                                                                lineNumber: 687,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1952,13 +1950,13 @@ function ProjectDetailPage() {
                                                                 step: 0.1
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 707,
+                                                                lineNumber: 688,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 705,
+                                                        lineNumber: 686,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1968,42 +1966,42 @@ function ProjectDetailPage() {
                                                                 className: "h-4 w-4 mr-2"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                                lineNumber: 715,
+                                                                lineNumber: 696,
                                                                 columnNumber: 21
                                                             }, this),
                                                             "Izračunaj ratu"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 714,
+                                                        lineNumber: 695,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                lineNumber: 680,
+                                                lineNumber: 661,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 679,
+                                            lineNumber: 660,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                    lineNumber: 675,
+                                    lineNumber: 656,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 674,
+                                lineNumber: 655,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                        lineNumber: 461,
+                        lineNumber: 442,
                         columnNumber: 9
                     }, this),
                     project.similarProjects && project.similarProjects.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2014,7 +2012,7 @@ function ProjectDetailPage() {
                                 children: t('projectDetail.similarProjects')
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 727,
+                                lineNumber: 708,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2033,7 +2031,7 @@ function ProjectDetailPage() {
                                                         className: "object-cover"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 734,
+                                                        lineNumber: 715,
                                                         columnNumber: 25
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full h-full bg-gray-200 flex items-center justify-center",
@@ -2041,17 +2039,17 @@ function ProjectDetailPage() {
                                                             className: "h-12 w-12 text-gray-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 742,
+                                                            lineNumber: 723,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                        lineNumber: 741,
+                                                        lineNumber: 722,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 732,
+                                                    lineNumber: 713,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2062,7 +2060,7 @@ function ProjectDetailPage() {
                                                             children: similar.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 747,
+                                                            lineNumber: 728,
                                                             columnNumber: 23
                                                         }, this),
                                                         similar.municipality?.name_sr_lat && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2070,7 +2068,7 @@ function ProjectDetailPage() {
                                                             children: similar.municipality.name_sr_lat
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 749,
+                                                            lineNumber: 730,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2078,7 +2076,7 @@ function ProjectDetailPage() {
                                                             children: similar.price_from ? formatPrice(similar.price_from) : t('projectDetail.onRequest')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 751,
+                                                            lineNumber: 732,
                                                             columnNumber: 23
                                                         }, this),
                                                         similar.price_per_sqm_from && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2089,47 +2087,47 @@ function ProjectDetailPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                            lineNumber: 755,
+                                                            lineNumber: 736,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                                    lineNumber: 746,
+                                                    lineNumber: 727,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                            lineNumber: 731,
+                                            lineNumber: 712,
                                             columnNumber: 19
                                         }, this)
                                     }, similar.id, false, {
                                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                        lineNumber: 730,
+                                        lineNumber: 711,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                                lineNumber: 728,
+                                lineNumber: 709,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                        lineNumber: 726,
+                        lineNumber: 707,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-                lineNumber: 460,
+                lineNumber: 441,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/[locale]/projekat/[slug]/page.tsx",
-        lineNumber: 240,
+        lineNumber: 221,
         columnNumber: 5
     }, this);
 }

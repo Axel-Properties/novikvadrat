@@ -331,7 +331,7 @@ export default function ContactPage() {
           <div className="rounded-xl overflow-hidden shadow-lg">
             <div className="aspect-[16/9] lg:aspect-[21/9] bg-gray-200 flex items-center justify-center">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.4673276398566!2d20.4106!3d44.8025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa8c5c5c5c5%3A0x1234567890abcdef!2sGreen%20Heart%20Complex%2C%20Bulevar%20Milutina%20Milankovi%C4%87a%2011g%2C%20Beograd%2011000!5e0!3m2!1sen!2srs!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.4673276398566!2d20.4106!3d44.8025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa8c5c5c5c5%3A0x1234567890abcdef!2sGreen%20Heart%2C%20Bulevar%20Milutina%20Milankovi%C4%87a%2011b%2C%20Beograd%2011070!5e0!3m2!1sen!2srs!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '400px' }}

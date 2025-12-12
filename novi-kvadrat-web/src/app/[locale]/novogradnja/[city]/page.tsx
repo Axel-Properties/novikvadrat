@@ -404,6 +404,7 @@ export default function ProjectsListingPage() {
                   size="sm"
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={page === 1}
+                  className="w-10 h-10 p-0 text-gray-500 bg-transparent border-gray-300 hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
@@ -420,12 +421,15 @@ export default function ProjectsListingPage() {
                     pageNum = page - 2 + i
                   }
                   
+                  const isActive = page === pageNum
+                  
                   return (
                     <Button
                       key={pageNum}
-                      variant={page === pageNum ? 'default' : 'outline'}
+                      variant={isActive ? 'default' : 'outline'}
                       size="sm"
                       onClick={() => setPage(pageNum)}
+                      className={`w-10 h-10 p-0 ${isActive ? '' : 'text-gray-500 bg-transparent border-gray-300 hover:bg-gray-50 hover:text-gray-700'}`}
                     >
                       {pageNum}
                     </Button>
@@ -437,6 +441,7 @@ export default function ProjectsListingPage() {
                   size="sm"
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
+                  className="w-10 h-10 p-0 text-gray-500 bg-transparent border-gray-300 hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>

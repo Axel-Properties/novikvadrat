@@ -1277,11 +1277,12 @@ function ProjectsListingPage() {
                                     size: "sm",
                                     onClick: ()=>setPage((p)=>Math.max(1, p - 1)),
                                     disabled: page === 1,
+                                    className: "w-10 h-10 p-0 text-gray-500 bg-transparent border-gray-300 hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 408,
+                                        lineNumber: 409,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
@@ -1302,14 +1303,16 @@ function ProjectsListingPage() {
                                     } else {
                                         pageNum = page - 2 + i;
                                     }
+                                    const isActive = page === pageNum;
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                        variant: page === pageNum ? 'default' : 'outline',
+                                        variant: isActive ? 'default' : 'outline',
                                         size: "sm",
                                         onClick: ()=>setPage(pageNum),
+                                        className: `w-10 h-10 p-0 ${isActive ? '' : 'text-gray-500 bg-transparent border-gray-300 hover:bg-gray-50 hover:text-gray-700'}`,
                                         children: pageNum
                                     }, pageNum, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 424,
+                                        lineNumber: 427,
                                         columnNumber: 21
                                     }, this);
                                 }),
@@ -1318,16 +1321,17 @@ function ProjectsListingPage() {
                                     size: "sm",
                                     onClick: ()=>setPage((p)=>Math.min(totalPages, p + 1)),
                                     disabled: page === totalPages,
+                                    className: "w-10 h-10 p-0 text-gray-500 bg-transparent border-gray-300 hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 441,
+                                        lineNumber: 446,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 435,
+                                    lineNumber: 439,
                                     columnNumber: 17
                                 }, this)
                             ]

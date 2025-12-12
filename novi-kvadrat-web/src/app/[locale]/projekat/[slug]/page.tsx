@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import MortgageCalculator from '@/components/mortgage-calculator'
 import { 
   MapPin, Building2, Calendar, Euro, Heart, Phone, Share2, 
   ChevronLeft, ChevronRight, Loader2, Home, Car, Dumbbell,
@@ -121,27 +122,7 @@ interface Project {
 
 // Status labels will use translations from t() function
 
-const heatingLabels: { [key: string]: string } = {
-  'centralno': 'Centralno grejanje',
-  'etazno': 'Etažno grejanje',
-  'gas': 'Gas',
-  'toplotna_pumpa': 'Toplotna pumpa',
-  'podno': 'Podno grejanje',
-  'ta_pec': 'TA peć'
-}
-
-const layoutLabels: { [key: string]: string } = {
-  'garsonjera': 'Garsonjera',
-  'jednosoban': 'Jednosoban',
-  'jednoiposoban': '1.5-soban',
-  'dvosoban': 'Dvosoban',
-  'dvoiposoban': '2.5-soban',
-  'trosoban': 'Trosoban',
-  'troiposoban': '3.5-soban',
-  'cetvorosoban': 'Četvorosoban',
-  'petosoban': 'Petosoban',
-  'penthouse': 'Penthouse'
-}
+// Heating and layout labels will use translations from t() function
 
 const amenityIcons: { [key: string]: any } = {
   'parking': Car,
@@ -360,7 +341,7 @@ export default function ProjectDetailPage() {
               {project.completion_percentage && (
                 <Badge variant="outline" className="text-base py-1">
                   <BarChart3 className="h-4 w-4 mr-1" />
-                  {project.completion_percentage}% završeno
+                  {t('projectDetail.percentCompleted', { percent: project.completion_percentage })}
                 </Badge>
               )}
             </div>
@@ -369,13 +350,13 @@ export default function ProjectDetailPage() {
               <CardContent className="pt-6">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <p className="text-sm text-gray-600">Cena od</p>
+                    <p className="text-sm text-gray-600">{t('projectDetail.priceFrom')}</p>
                     <p className="text-2xl font-bold text-blue-600">
                       {project.price_from ? formatPrice(project.price_from) : t('projectDetail.onRequest')}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Cena po m²</p>
+                    <p className="text-sm text-gray-600">{t('projectDetail.pricePerSqm')}</p>
                     <p className="text-2xl font-bold">
                       {project.price_per_sqm_from ? formatPrice(project.price_per_sqm_from) : t('projectDetail.onRequest')}
                     </p>
@@ -386,13 +367,13 @@ export default function ProjectDetailPage() {
                   {project.vat_included && (
                     <div className="flex items-center text-green-600">
                       <ShieldCheck className="h-4 w-4 mr-2" />
-                      Cena sa uračunatim PDV-om
+                      {t('projectDetail.priceWithVat')}
                     </div>
                   )}
                   {project.first_buyer_vat_refund && (
                     <div className="flex items-center text-green-600">
                       <ShieldCheck className="h-4 w-4 mr-2" />
-                      Mogućnost povraćaja PDV-a za prvi stan
+                      {t('projectDetail.vatRefundFirstBuyer')}
                     </div>
                   )}
                 </div>
@@ -427,11 +408,11 @@ export default function ProjectDetailPage() {
                         </Link>
                         {project.developer.is_verified && (
                           <Badge variant="outline" className="ml-2">
-                            Verifikovan
+                            {t('projectDetail.verified')}
                           </Badge>
                         )}
                         <p className="text-sm text-gray-600">
-                          {project.developer.total_projects} projekata • {project.developer.completed_projects} završeno
+                          {project.developer.total_projects} {t('projectDetail.projects')} • {project.developer.completed_projects} {t('projectDetail.completedProjects')}
                         </p>
                       </div>
                     </div>
@@ -443,10 +424,10 @@ export default function ProjectDetailPage() {
                       onClick={() => setShowPhone(!showPhone)}
                     >
                       <Phone className="h-4 w-4 mr-2" />
-                      {showPhone ? project.developer.phone : 'Prikaži broj'}
+                      {showPhone ? project.developer.phone : t('projectDetail.showPhone')}
                     </Button>
                     <Button variant="outline" className="flex-1">
-                      Zakaži konsultaciju
+                      {t('projectDetail.scheduleConsultation')}
                     </Button>
                   </div>
                 </CardContent>
@@ -460,48 +441,48 @@ export default function ProjectDetailPage() {
       <div className="container mx-auto px-4 pb-8">
         <Tabs defaultValue="overview" className="mt-8">
           <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
-            <TabsTrigger value="overview">Pregled</TabsTrigger>
-            <TabsTrigger value="layouts">Raspored</TabsTrigger>
-            <TabsTrigger value="location">Lokacija</TabsTrigger>
-            <TabsTrigger value="amenities">Sadržaji</TabsTrigger>
-            <TabsTrigger value="mortgage">Kredit</TabsTrigger>
+            <TabsTrigger value="overview">{t('projectDetail.tabs.overview')}</TabsTrigger>
+            <TabsTrigger value="layouts">{t('projectDetail.tabs.layouts')}</TabsTrigger>
+            <TabsTrigger value="location">{t('projectDetail.tabs.location')}</TabsTrigger>
+            <TabsTrigger value="amenities">{t('projectDetail.tabs.amenities')}</TabsTrigger>
+            <TabsTrigger value="mortgage">{t('projectDetail.tabs.mortgage')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="mt-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <Card className="lg:col-span-2">
                 <CardHeader>
-                  <CardTitle>O projektu</CardTitle>
+                  <CardTitle>{t('projectDetail.aboutProject')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-6">
-                    {project.description || 'Opis projekta će biti dodat uskoro.'}
+                    {project.description || t('projectDetail.projectDescriptionPlaceholder')}
                   </p>
                   
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div>
-                      <p className="text-sm text-gray-600">Broj zgrada</p>
+                      <p className="text-sm text-gray-600">{t('projectDetail.numberOfBuildings')}</p>
                       <p className="font-semibold">{project.total_buildings}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600">Broj spratova</p>
+                      <p className="text-sm text-gray-600">{t('projectDetail.numberOfFloors')}</p>
                       <p className="font-semibold">{project.total_floors}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600">Ukupno stanova</p>
+                      <p className="text-sm text-gray-600">{t('projectDetail.totalApartments')}</p>
                       <p className="font-semibold">{project.total_units}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600">Dostupno stanova</p>
+                      <p className="text-sm text-gray-600">{t('projectDetail.availableApartments')}</p>
                       <p className="font-semibold">{project.available_units}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600">Parking mesta</p>
+                      <p className="text-sm text-gray-600">{t('projectDetail.parkingSpaces')}</p>
                       <p className="font-semibold">{project.parking_spaces || 'N/A'}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600">Grejanje</p>
-                      <p className="font-semibold">{heatingLabels[project.heating_type] || 'N/A'}</p>
+                      <p className="text-sm text-gray-600">{t('projectDetail.heating')}</p>
+                      <p className="font-semibold">{project.heating_type ? t(`projectDetail.heatingTypes.${project.heating_type}`) : 'N/A'}</p>
                     </div>
                   </div>
 
@@ -509,18 +490,18 @@ export default function ProjectDetailPage() {
                     {project.elevator && (
                       <Badge variant="secondary">
                         <ArrowUpDown className="h-4 w-4 mr-1" />
-                        Lift
+                        {t('projectDetail.elevator')}
                       </Badge>
                     )}
                     {project.garage && (
                       <Badge variant="secondary">
                         <Car className="h-4 w-4 mr-1" />
-                        Garaža
+                        {t('projectDetail.garage')}
                       </Badge>
                     )}
                     {project.energy_class && (
                       <Badge variant="secondary">
-                        Energetski razred {project.energy_class}
+                        {t('projectDetail.energyClass')} {project.energy_class}
                       </Badge>
                     )}
                   </div>
@@ -529,24 +510,24 @@ export default function ProjectDetailPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Dokumenti</CardTitle>
+                  <CardTitle>{t('projectDetail.documents')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {project.brochure_url && (
                     <Button variant="outline" className="w-full justify-start">
                       <FileText className="h-4 w-4 mr-2" />
-                      Preuzmi brošuru
+                      {t('projectDetail.downloadBrochure')}
                     </Button>
                   )}
                   {project.virtual_tour_url && (
                     <Button variant="outline" className="w-full justify-start">
                       <Camera className="h-4 w-4 mr-2" />
-                      Virtuelna tura
+                      {t('projectDetail.virtualTour')}
                     </Button>
                   )}
                   <Button variant="outline" className="w-full justify-start">
                     <Map className="h-4 w-4 mr-2" />
-                    Prikaži na mapi
+                    {t('projectDetail.showOnMap')}
                   </Button>
                 </CardContent>
               </Card>
@@ -556,7 +537,7 @@ export default function ProjectDetailPage() {
           <TabsContent value="layouts" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Dostupni rasporedi stanova</CardTitle>
+                <CardTitle>{t('projectDetail.availableLayouts')}</CardTitle>
               </CardHeader>
               <CardContent>
                 {project.layouts && project.layouts.length > 0 ? (
@@ -580,26 +561,26 @@ export default function ProjectDetailPage() {
                         <CardContent className="pt-4">
                           <h4 className="font-semibold mb-2">{layout.name}</h4>
                           <p className="text-sm text-gray-600 mb-3">
-                            {layoutLabels[layout.layout_type] || layout.layout_type}
+                            {layout.layout_type ? t(`projectDetail.layoutTypes.${layout.layout_type}`) : layout.layout_type}
                           </p>
                           
                           <div className="space-y-1 text-sm">
                             <div className="flex justify-between">
-                              <span className="text-gray-600">Površina:</span>
+                              <span className="text-gray-600">{t('projectDetail.area')}:</span>
                               <span className="font-medium">{layout.total_area} m²</span>
                             </div>
                             {layout.terrace_area && (
                               <div className="flex justify-between">
-                                <span className="text-gray-600">Terasa:</span>
+                                <span className="text-gray-600">{t('projectDetail.terrace')}:</span>
                                 <span className="font-medium">{layout.terrace_area} m²</span>
                               </div>
                             )}
                             <div className="flex justify-between">
-                              <span className="text-gray-600">Sobe:</span>
+                              <span className="text-gray-600">{t('projectDetail.rooms')}:</span>
                               <span className="font-medium">{layout.bedrooms}</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-gray-600">Kupatila:</span>
+                              <span className="text-gray-600">{t('projectDetail.bathrooms')}:</span>
                               <span className="font-medium">{layout.bathrooms}</span>
                             </div>
                           </div>
@@ -649,7 +630,7 @@ export default function ProjectDetailPage() {
           <TabsContent value="amenities" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Sadržaji i pogodnosti</CardTitle>
+                <CardTitle>{t('projectDetail.amenitiesAndFeatures')}</CardTitle>
               </CardHeader>
               <CardContent>
                 {project.amenities && project.amenities.length > 0 ? (
@@ -665,59 +646,14 @@ export default function ProjectDetailPage() {
                     })}
                   </div>
                 ) : (
-                  <p className="text-gray-600">Informacije o sadržajima će biti dostupne uskoro.</p>
+                  <p className="text-gray-600">{t('projectDetail.amenitiesComingSoon')}</p>
                 )}
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="mortgage" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Kalkulator kredita</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Cena nekretnine</label>
-                    <input
-                      type="number"
-                      className="w-full p-2 border rounded-lg"
-                      defaultValue={project.price_from || 150000}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Učešće (%)</label>
-                    <input
-                      type="number"
-                      className="w-full p-2 border rounded-lg"
-                      defaultValue={20}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Period otplate (godine)</label>
-                    <input
-                      type="number"
-                      className="w-full p-2 border rounded-lg"
-                      defaultValue={20}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Kamatna stopa (%)</label>
-                    <input
-                      type="number"
-                      className="w-full p-2 border rounded-lg"
-                      defaultValue={3.5}
-                      step={0.1}
-                    />
-                  </div>
-                  <Button className="w-full">
-                    <Calculator className="h-4 w-4 mr-2" />
-                    Izračunaj ratu
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <MortgageCalculator defaultPrice={project.price_from || 150000} />
           </TabsContent>
         </Tabs>
 

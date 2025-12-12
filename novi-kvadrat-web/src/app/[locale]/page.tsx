@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Search, TrendingUp, Home, Building2, Users, MapPin } from 'lucide-react'
+import { ArrowRight, TrendingUp, Home, Building2, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
 import { PropertyCard } from '@/components/cards/property-card'
 import { ProjectCard } from '@/components/cards/project-card'
 import { DeveloperCard } from '@/components/cards/developer-card'
+import { HeroSearchCard } from '@/components/hero'
 import { useRouter, usePathname } from 'next/navigation'
 import { useTranslations } from '@/hooks/use-translations'
 import { type Locale } from '@/i18n/config'
@@ -134,45 +134,77 @@ export default function HomePage() {
     { name: 'Kragujevac', slug: 'kragujevac', count: 5 },
   ]
 
+  // Get current city from URL or default to 'beograd'
+  // This will be synced with the header city selector
+  const getCurrentCity = () => {
+    if (segments.length >= 3 && segments[1] === 'novogradnja') {
+      return segments[2]
+    }
+    return 'beograd' // Default city
+  }
+  const currentCity = getCurrentCity()
+
+  const handleSearchProperties = (data: any) => {
+    const params = new URLSearchParams()
+    if (data.searchQuery) params.set('q', data.searchQuery)
+    if (data.purpose) params.set('purpose', data.purpose)
+    if (data.completionStatus !== 'all') params.set('status', data.completionStatus)
+    if (data.propertyTypes.length > 0) params.set('types', data.propertyTypes.join(','))
+    if (data.beds.length > 0) params.set('beds', data.beds.join(','))
+    if (data.minPrice) params.set('minPrice', String(data.minPrice))
+    if (data.maxPrice) params.set('maxPrice', String(data.maxPrice))
+    router.push(`/${currentLocale}/novogradnja/${currentCity}?${params.toString()}`)
+  }
+
+  const handleSearchProjects = (data: any) => {
+    const params = new URLSearchParams()
+    if (data.searchQuery) params.set('q', data.searchQuery)
+    if (data.propertyTypes.length > 0) params.set('types', data.propertyTypes.join(','))
+    if (data.handoverBy) params.set('handover', data.handoverBy)
+    if (data.completion !== 'any') params.set('completion', data.completion)
+    router.push(`/${currentLocale}/novogradnja/${currentCity}?${params.toString()}`)
+  }
+
+  const handleSearchAgents = (data: any) => {
+    const params = new URLSearchParams()
+    if (data.searchQuery) params.set('q', data.searchQuery)
+    if (data.purpose) params.set('purpose', data.purpose)
+    // Navigate to agents page when available
+    console.log('Search agents:', data)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+      {/* Hero Section with Background Image */}
+      <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&h=1080&fit=crop)',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 py-12 lg:py-20">
+          <div className="max-w-4xl mx-auto text-center mb-8">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-lg">
               {t('home.title')}
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-white/90 drop-shadow-md">
               {t('home.subtitle')}
             </p>
-            
-            {/* Search Bar */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <div className="flex flex-col lg:flex-row gap-4">
-                <div className="flex-1">
-                  <Input
-                    type="text"
-                    placeholder="Search by location, project, or developer..."
-                    leftIcon={<Search className="h-5 w-5" />}
-                    className="h-12"
-                  />
-                </div>
-                <Button size="lg" className="lg:w-auto">
-                  {t('common.search')}
-                </Button>
-              </div>
-              
-              {/* Quick Filters */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Button variant="outline" size="sm">Buy</Button>
-                <Button variant="outline" size="sm">Rent</Button>
-                <Button variant="outline" size="sm" onClick={() => router.push(`/${currentLocale}/novogradnja/beograd`)}>{t('nav.newDevelopments')}</Button>
-                <Button variant="outline" size="sm">Under €200k</Button>
-                <Button variant="outline" size="sm">2+ Bedrooms</Button>
-              </div>
-            </div>
           </div>
+          
+          {/* Hero Search Card */}
+          <HeroSearchCard
+            currentCity={currentCity}
+            onSearchProperties={handleSearchProperties}
+            onSearchProjects={handleSearchProjects}
+            onSearchAgents={handleSearchAgents}
+          />
         </div>
       </section>
 

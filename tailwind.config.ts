@@ -9,19 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary Blue Color Palette
+        // Primary Blue Color Palette - Matching logo blue (#1A56DB)
         primary: {
           50: '#EFF6FF',
           100: '#DBEAFE',
           200: '#BFDBFE',
-          300: '#93BBFC',
+          300: '#93C5FD',
           400: '#60A5FA',
-          500: '#3B82F6', // Main primary blue
-          600: '#2563EB',
-          700: '#1D4ED8',
-          800: '#1E40AF',
-          900: '#1E3A8A',
-          950: '#172554',
+          500: '#3B82F6',
+          600: '#1A56DB', // Logo blue
+          700: '#1E40AF',
+          800: '#1E3A8A',
+          900: '#1E293B',
+          950: '#0F172A',
         },
         // Secondary colors
         secondary: {

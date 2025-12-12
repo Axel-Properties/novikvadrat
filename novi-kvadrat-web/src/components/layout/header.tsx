@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, Search, User, MapPin, ChevronDown, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { LanguageSwitcher } from '@/components/language-switcher'
+import { CitySelector } from '@/components/city-selector'
 import { useTranslations } from '@/hooks/use-translations'
 import { type Locale } from '@/i18n/config'
 import Image from 'next/image'
@@ -15,6 +16,59 @@ interface HeaderProps {
   currentCity?: string
   currentLanguage?: string
   user?: any
+}
+
+interface NavItemProps {
+  item: {
+    label: string
+    href: string
+    dropdown?: Array<{ label: string; href: string }>
+  }
+  isActive: boolean
+  onMouseEnter: () => void
+  onMouseLeave: () => void
+}
+
+function NavItem({ item, isActive, onMouseEnter, onMouseLeave }: NavItemProps) {
+  const textRef = useRef<HTMLSpanElement>(null)
+  const [textWidth, setTextWidth] = useState(0)
+  
+  useEffect(() => {
+    if (isActive && textRef.current) {
+      setTextWidth(textRef.current.offsetWidth)
+    }
+  }, [isActive])
+  
+  return (
+    <div
+      className="relative h-full flex items-center"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <Link
+        href={item.href}
+        className={cn(
+          "px-4 py-2 text-sm font-medium text-secondary-700 hover:text-primary-500 transition-colors inline-flex items-center gap-1",
+          isActive && "text-primary-500"
+        )}
+      >
+        <span ref={textRef} className="inline-block">
+          {item.label}
+        </span>
+        {item.dropdown && <ChevronDown className="h-3 w-3" />}
+      </Link>
+      {/* Active bar at bottom of nav row (h-16), matching text width */}
+      {isActive && textWidth > 0 && (
+        <span 
+          className="absolute bottom-0 h-0.5 bg-secondary-900"
+          style={{
+            left: '1rem',
+            width: `${textWidth}px`
+          }}
+        />
+      )}
+    </div>
+  )
 }
 
 export function Header({ currentCity = 'Belgrade', user }: HeaderProps) {
@@ -58,13 +112,17 @@ export function Header({ currentCity = 'Belgrade', user }: HeaderProps) {
       ]
     },
     {
-      label: 'Mortgage',
-      href: '/mortgage'
+      label: t('nav.aboutUs'),
+      href: `/${currentLocale}/o-nama`
+    },
+    {
+      label: t('nav.contact'),
+      href: `/${currentLocale}/kontakt`
     }
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-white">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-white relative">
       <div className="container mx-auto px-4">
         {/* Desktop Header */}
         <div className="hidden lg:block">
@@ -82,40 +140,15 @@ export function Header({ currentCity = 'Belgrade', user }: HeaderProps) {
             </Link>
 
             {/* Navigation - moved 40px after logo */}
-            <nav className="flex items-center space-x-1 ml-10">
+            <nav className="flex items-center space-x-1 ml-10 relative h-full">
               {navigationItems.map((item) => (
-                <div
+                <NavItem
                   key={item.label}
-                  className="relative"
+                  item={item}
+                  isActive={pathname.startsWith(item.href)}
                   onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "px-4 py-2 text-sm font-medium text-secondary-700 hover:text-primary-500 transition-colors inline-flex items-center gap-1",
-                      pathname.startsWith(item.href) && "text-primary-500"
-                    )}
-                  >
-                    {item.label}
-                    {item.dropdown && <ChevronDown className="h-3 w-3" />}
-                  </Link>
-                  
-                  {/* Dropdown Menu */}
-                  {item.dropdown && activeDropdown === item.label && (
-                    <div className="absolute top-full left-0 mt-1 w-64 rounded-lg bg-white shadow-lg border border-border py-2">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.label}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-sm text-secondary-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                />
               ))}
             </nav>
 
@@ -126,11 +159,7 @@ export function Header({ currentCity = 'Belgrade', user }: HeaderProps) {
               </Button>
 
               {/* City Selector */}
-              <Button variant="ghost" size="sm" className="gap-1">
-                <MapPin className="h-4 w-4" />
-                {currentCity}
-                <ChevronDown className="h-3 w-3" />
-              </Button>
+              <CitySelector currentCity={currentCity} currentLocale={currentLocale} />
 
               {/* Language Selector */}
               <LanguageSwitcher currentLocale={currentLocale} />
@@ -180,6 +209,39 @@ export function Header({ currentCity = 'Belgrade', user }: HeaderProps) {
           </div>
         </div>
       </div>
+
+      {/* Full Size Dropdown Menu - positioned relative to header */}
+      {activeDropdown && (() => {
+        const activeItem = navigationItems.find(item => item.label === activeDropdown && item.dropdown)
+        if (!activeItem) return null
+        
+        return (
+          <div 
+            className="hidden lg:block absolute left-0 right-0 bg-white border-b border-border"
+            style={{ top: '100%' }}
+            onMouseEnter={() => setActiveDropdown(activeDropdown)}
+            onMouseLeave={() => setActiveDropdown(null)}
+          >
+            <div className="container mx-auto px-4">
+              <div className="py-4">
+                <div className="ml-10">
+                  <div className="flex flex-col space-y-1">
+                    {activeItem.dropdown?.map((subItem) => (
+                      <Link
+                        key={subItem.label}
+                        href={subItem.href}
+                        className="block px-4 py-2 text-sm text-secondary-700 hover:text-primary-600 transition-colors"
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      })()}
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (

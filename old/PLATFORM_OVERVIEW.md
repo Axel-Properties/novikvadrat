@@ -24,7 +24,7 @@ Novi Kvadrat is a modern real estate platform designed for the Georgian market, 
 ## Design System
 
 ### Color Palette (Blue Theme)
-- **Primary Blue**: #3B82F6
+- **Primary Blue**: #1A56DB (matching logo)
 - **Primary Variants**: 50-950 shades
 - **Secondary**: Neutral grays
 - **Semantic Colors**: Success (green), Warning (yellow), Error (red)

@@ -14,7 +14,8 @@
       "Bash(npm uninstall:*)",
       "Bash(cat:*)",
       "Bash(node:*)",
-      "Read(/var/folders/bf/hfm7q75174b48nhkmdp8kjf80000gn/T/TemporaryItems/NSIRD_screencaptureui_PBhNKI/**)"
+      "Read(/var/folders/bf/hfm7q75174b48nhkmdp8kjf80000gn/T/TemporaryItems/NSIRD_screencaptureui_PBhNKI/**)",
+      "Read(/var/folders/bf/hfm7q75174b48nhkmdp8kjf80000gn/T/TemporaryItems/NSIRD_screencaptureui_NTmtps/**)"
     ],
     "deny": [],
     "ask": []
