@@ -1,11 +1,12 @@
 import { type Locale } from '@/i18n/config'
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode
-  params: { locale: Locale }
+  params: Promise<{ locale: Locale }>
 }) {
+  await params
   return children
 }
