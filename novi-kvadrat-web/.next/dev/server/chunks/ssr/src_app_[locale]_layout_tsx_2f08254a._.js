@@ -6,7 +6,9 @@ __turbopack_context__.s([
     "default",
     ()=>LocaleLayout
 ]);
-function LocaleLayout({ children, params }) {
+async function LocaleLayout({ children, params }) {
+    // Await params as required by Next.js 16
+    const { locale } = await params;
     return children;
 }
 }),

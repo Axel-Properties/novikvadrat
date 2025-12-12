@@ -1,12 +1,17 @@
-import { type Locale } from '@/i18n/config'
+import { locales, type Locale } from '@/i18n/config'
+import { ReactNode } from 'react'
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }))
+}
+
+type Props = {
+  children: ReactNode
   params: Promise<{ locale: Locale }>
-}) {
-  await params
+}
+
+export default async function LocaleLayout({ children, params }: Props): Promise<ReactNode> {
+  // Await params as required by Next.js 16
+  const { locale } = await params
   return children
 }

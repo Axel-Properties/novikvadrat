@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/abdullahkahvecioglu/DEV/novikvadrat/novi-kvadrat-web/src/app/%5Blocale%5D/layout.tsx"],"sourcesContent":["import { type Locale } from '@/i18n/config'\n\nexport default function LocaleLayout({\n  children,\n  params,\n}: {\n  children: React.ReactNode\n  params: { locale: Locale }\n}) {\n  return children\n}"],"names":[],"mappings":";;;;AAEe,SAAS,aAAa,EACnC,QAAQ,EACR,MAAM,EAIP;IACC,OAAO;AACT"}}]
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/abdullahkahvecioglu/DEV/novikvadrat/novi-kvadrat-web/src/app/%5Blocale%5D/layout.tsx"],"sourcesContent":["import { type Locale } from '@/i18n/config'\nimport { ReactNode } from 'react'\n\ntype Props = {\n  children: ReactNode\n  params: Promise<{ locale: Locale }>\n}\n\nexport default async function LocaleLayout({ children, params }: Props): Promise<ReactNode> {\n  // Await params as required by Next.js 16\n  const { locale } = await params\n  return children\n}"],"names":[],"mappings":";;;;AAQe,eAAe,aAAa,EAAE,QAAQ,EAAE,MAAM,EAAS;IACpE,yCAAyC;IACzC,MAAM,EAAE,MAAM,EAAE,GAAG,MAAM;IACzB,OAAO;AACT"}}]
 }
