@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export function generateStaticParams(): { locale: "en" | "sr" | "sr-cyrl" }[] {
+export function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'sr' },
@@ -8,13 +8,13 @@ export function generateStaticParams(): { locale: "en" | "sr" | "sr-cyrl" }[] {
   ]
 }
 
-type Props = {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
   children: ReactNode
-  params: Promise<{ locale: "en" | "sr" | "sr-cyrl" }>
-}
-
-export default async function LocaleLayout({ children, params }: Props) {
-  // Await params as required by Next.js 16
+  params: Promise<{ locale: string }>
+}) {
   const { locale } = await params
   return children
 }
