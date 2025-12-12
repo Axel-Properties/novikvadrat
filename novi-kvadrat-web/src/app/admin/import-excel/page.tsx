@@ -71,7 +71,7 @@ export default function ImportExcelPage() {
                               Skipped: {value.skipped}
                             </Badge>
                             {value.errors.length > 0 && (
-                              <Badge variant="destructive">
+                              <Badge variant="error">
                                 Errors: {value.errors.length}
                               </Badge>
                             )}
