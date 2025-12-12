@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/admin/layout,_N_T_/admin/import-excel/layout,_N_T_/admin/import-excel/page,_N_T_/admin/import-excel"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/admin/import-excel/__PAGE__",
+    "/admin/import-excel",
+    "/admin",
+    "/_index",
+    "/_head"
+  ]
+}

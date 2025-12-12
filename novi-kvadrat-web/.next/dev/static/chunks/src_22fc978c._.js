@@ -1058,25 +1058,25 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                         className: "h-12 w-12 mx-auto mb-2"
                     }, void 0, false, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 88,
+                        lineNumber: 93,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         children: "No images available"
                     }, void 0, false, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 89,
+                        lineNumber: 94,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                lineNumber: 87,
+                lineNumber: 92,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-            lineNumber: 86,
+            lineNumber: 91,
             columnNumber: 7
         }, this);
     }
@@ -1097,14 +1097,14 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                 priority: true
                             }, void 0, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 104,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 113,
+                                lineNumber: 118,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1114,7 +1114,7 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                         className: "h-3 w-3 mr-1"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 124,
                                         columnNumber: 13
                                     }, this),
                                     currentIndex + 1,
@@ -1123,7 +1123,7 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 116,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1142,14 +1142,14 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                                 className: "h-4 w-4 mr-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 140,
                                                 columnNumber: 17
                                             }, this),
                                             "Video"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 131,
                                         columnNumber: 15
                                     }, this),
                                     virtualTourUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1165,14 +1165,14 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                                 className: "h-4 w-4 mr-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                                lineNumber: 149,
+                                                lineNumber: 154,
                                                 columnNumber: 17
                                             }, this),
                                             "3D Tour"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                        lineNumber: 140,
+                                        lineNumber: 145,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1187,18 +1187,18 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                            lineNumber: 162,
+                                            lineNumber: 167,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 158,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 124,
+                                lineNumber: 129,
                                 columnNumber: 11
                             }, this),
                             allImages.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1215,12 +1215,12 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                            lineNumber: 178,
+                                            lineNumber: 183,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 174,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1235,12 +1235,12 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                            lineNumber: 189,
+                                            lineNumber: 194,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                        lineNumber: 180,
+                                        lineNumber: 185,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -1248,7 +1248,7 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 100,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     allImages.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1263,23 +1263,23 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                     className: "object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 213,
                                     columnNumber: 17
                                 }, this)
                             }, img.id, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 199,
+                                lineNumber: 204,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 197,
+                        lineNumber: 202,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                lineNumber: 98,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             isLightboxOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1295,12 +1295,12 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                             className: "h-6 w-6"
                         }, void 0, false, {
                             fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                            lineNumber: 233,
+                            lineNumber: 238,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 227,
+                        lineNumber: 232,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1312,7 +1312,7 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 237,
+                        lineNumber: 242,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1326,7 +1326,7 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                 className: "object-contain"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 246,
+                                lineNumber: 251,
                                 columnNumber: 13
                             }, this),
                             allImages[currentIndex].caption && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1336,18 +1336,18 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                     children: allImages[currentIndex].caption
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                    lineNumber: 256,
+                                    lineNumber: 261,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 255,
+                                lineNumber: 260,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 242,
+                        lineNumber: 247,
                         columnNumber: 11
                     }, this),
                     allImages.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1364,12 +1364,12 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                     className: "h-8 w-8"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 280,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 266,
+                                lineNumber: 271,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1384,12 +1384,12 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                     className: "h-8 w-8"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                    lineNumber: 286,
+                                    lineNumber: 291,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 277,
+                                lineNumber: 282,
                                 columnNumber: 15
                             }, this)
                         ]
@@ -1409,23 +1409,23 @@ function ImageGallery({ mainImage, images, projectName, videoUrl, virtualTourUrl
                                     className: "object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                    lineNumber: 307,
+                                    lineNumber: 312,
                                     columnNumber: 19
                                 }, this)
                             }, img.id, false, {
                                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                                lineNumber: 295,
+                                lineNumber: 300,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                        lineNumber: 293,
+                        lineNumber: 298,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/project-detail/image-gallery.tsx",
-                lineNumber: 222,
+                lineNumber: 227,
                 columnNumber: 9
             }, this)
         ]

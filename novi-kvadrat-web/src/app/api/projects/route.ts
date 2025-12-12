@@ -100,7 +100,7 @@ export async function GET(request: NextRequest) {
     // Apply sorting
     switch (sort) {
       case 'price_asc':
-        query = query.order('price_from', { ascending: true, nullsLast: true })
+        query = query.order('price_from', { ascending: true, nullsFirst: false })
         break
       case 'price_desc':
         query = query.order('price_from', { ascending: false, nullsFirst: true })
@@ -109,13 +109,13 @@ export async function GET(request: NextRequest) {
         query = query.order('created_at', { ascending: false })
         break
       case 'completion':
-        query = query.order('completion_date', { ascending: true, nullsLast: true })
+        query = query.order('completion_date', { ascending: true, nullsFirst: false })
         break
       case 'featured':
       default:
         query = query
           .order('featured', { ascending: false })
-          .order('featured_order', { ascending: true, nullsLast: true })
+          .order('featured_order', { ascending: true, nullsFirst: false })
           .order('created_at', { ascending: false })
         break
     }

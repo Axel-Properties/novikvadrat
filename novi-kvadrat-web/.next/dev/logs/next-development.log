@@ -11066,3 +11066,7 @@ Import trace:
 [02:37:37.851] Browser LOG     Filter changed, resetting page to 1
 [02:37:37.851] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"vozdovac","selectedStatus":"","sortBy":"featured"}
 [02:37:37.918] Server  LOG     Municipality lookup: "vozdovac" {}
+[02:42:04.543] Server  LOG      ✓ Compiled in 160ms
+[02:51:37.950] Server  LOG      ✓ Compiled in 138ms
+[02:53:45.819] Server  LOG      ✓ Compiled in 132ms
+[02:57:32.076] Server  LOG      ✓ Compiled in 137ms

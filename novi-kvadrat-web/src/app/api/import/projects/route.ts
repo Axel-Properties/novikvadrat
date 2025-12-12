@@ -131,13 +131,15 @@ export async function POST(request: NextRequest) {
         
         // Update developer's project count if we have a developer_id
         if (developer_id) {
-          await supabase.rpc('increment', {
-            table_name: 'developers',
-            column_name: 'total_projects',
-            row_id: developer_id
-          }).catch(() => {
+          try {
+            await supabase.rpc('increment', {
+              table_name: 'developers',
+              column_name: 'total_projects',
+              row_id: developer_id
+            })
+          } catch {
             // If RPC doesn't exist, update manually
-            supabase
+            await supabase
               .from('developers')
               .update({ 
                 total_projects: project.status === 'completed' ? 0 : 1,
@@ -145,8 +147,7 @@ export async function POST(request: NextRequest) {
                 completed_projects: project.status === 'completed' ? 1 : 0
               })
               .eq('id', developer_id)
-              .then(() => {})
-          })
+          }
         }
       }
     }

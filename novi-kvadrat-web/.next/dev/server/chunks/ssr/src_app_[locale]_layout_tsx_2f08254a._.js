@@ -4,10 +4,24 @@ module.exports = [
 
 __turbopack_context__.s([
     "default",
-    ()=>LocaleLayout
+    ()=>LocaleLayout,
+    "generateStaticParams",
+    ()=>generateStaticParams
 ]);
+function generateStaticParams() {
+    return [
+        {
+            locale: 'en'
+        },
+        {
+            locale: 'sr'
+        },
+        {
+            locale: 'sr-cyrl'
+        }
+    ];
+}
 async function LocaleLayout({ children, params }) {
-    // Await params as required by Next.js 16
     const { locale } = await params;
     return children;
 }

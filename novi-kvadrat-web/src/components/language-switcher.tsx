@@ -34,12 +34,11 @@ export function LanguageSwitcher({ currentLocale = 'sr' }: LanguageSwitcherProps
     router.push(newPath)
   }
   
-  const getLanguageCode = (locale: Locale) => {
+  const getLanguageCode = (locale: Locale): string => {
     switch(locale) {
       case 'en': return 'EN'
       case 'sr': return 'SR'
       case 'sr-cyrl': return 'СР'
-      default: return locale.toUpperCase()
     }
   }
   
