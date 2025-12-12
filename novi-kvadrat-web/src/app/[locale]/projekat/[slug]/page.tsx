@@ -11,12 +11,24 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import MortgageCalculator from '@/components/mortgage-calculator'
+import {
+  ImageGallery,
+  PriceDynamicsChart,
+  ProjectMap,
+  ProjectBuildings,
+  ConstructionProgress
+} from '@/components/project-detail'
 import { 
-  MapPin, Building2, Calendar, Euro, Heart, Phone, Share2, 
-  ChevronLeft, ChevronRight, Loader2, Home, Car, Dumbbell,
+  MapPin, Building2, Calendar, Heart, Phone, Share2, 
+  Loader2, Home, Car, Dumbbell,
   ShieldCheck, Wifi, Trees, Waves, Store, Camera, ArrowUpDown,
-  Thermometer, Calculator, FileText, BarChart3, Map
+  Thermometer, FileText, BarChart3, ExternalLink
 } from 'lucide-react'
+import type { 
+  ProjectPriceHistory, 
+  ProjectBuilding, 
+  ConstructionProgressSpotWithPhotos 
+} from '@/types/database'
 
 interface Project {
   id: string
@@ -118,11 +130,10 @@ interface Project {
       name_sr_lat: string
     }
   }>
+  priceHistory?: ProjectPriceHistory[]
+  buildings?: ProjectBuilding[]
+  constructionProgress?: ConstructionProgressSpotWithPhotos[]
 }
-
-// Status labels will use translations from t() function
-
-// Heating and layout labels will use translations from t() function
 
 const amenityIcons: { [key: string]: any } = {
   'parking': Car,
@@ -143,13 +154,11 @@ export default function ProjectDetailPage() {
   const { t, locale } = useTranslations()
   const slug = params.slug as string
   
-  // Extract locale from pathname for links
   const segments = pathname.split('/').filter(Boolean)
   const currentLocale = segments[0] as Locale || 'sr'
   
   const [project, setProject] = useState<Project | null>(null)
   const [loading, setLoading] = useState(true)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isSaved, setIsSaved] = useState(false)
   const [showPhone, setShowPhone] = useState(false)
 
@@ -181,15 +190,19 @@ export default function ProjectDetailPage() {
     }).format(price)
   }
 
-  const nextImage = () => {
-    if (project?.images) {
-      setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
-    }
-  }
-
-  const previousImage = () => {
-    if (project?.images) {
-      setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: project?.name,
+          text: `Check out ${project?.name}`,
+          url: window.location.href
+        })
+      } catch (err) {
+        // User cancelled
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href)
     }
   }
 
@@ -212,11 +225,6 @@ export default function ProjectDetailPage() {
     )
   }
 
-  const allImages = [
-    ...(project.main_image_url ? [{ url: project.main_image_url, caption: project.name }] : []),
-    ...(project.images || [])
-  ]
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb */}
@@ -225,225 +233,217 @@ export default function ProjectDetailPage() {
           <nav className="text-sm">
             <Link href="/" className="text-gray-600 hover:text-blue-600">Početna</Link>
             <span className="mx-2 text-gray-400">/</span>
-            <Link href={`/novogradnja/${project.city.slug}`} className="text-gray-600 hover:text-blue-600">
-              Novogradnja {project.city.name_sr_lat}
-            </Link>
-            <span className="mx-2 text-gray-400">/</span>
+            {project.city && (
+              <>
+                <Link href={`/novogradnja/${project.city.slug}`} className="text-gray-600 hover:text-blue-600">
+                  Novogradnja {project.city.name_sr_lat}
+                </Link>
+                <span className="mx-2 text-gray-400">/</span>
+              </>
+            )}
             <span className="text-gray-900">{project.name}</span>
           </nav>
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Image Gallery */}
-          <div className="relative">
-            {allImages.length > 0 ? (
-              <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
-                <Image
-                  src={allImages[currentImageIndex].url}
-                  alt={allImages[currentImageIndex].caption || project.name}
-                  fill
-                  className="object-cover"
-                />
-                {allImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={previousImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 rounded-full hover:bg-white"
-                    >
-                      <ChevronLeft className="h-5 w-5" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 rounded-full hover:bg-white"
-                    >
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white rounded-full text-sm">
-                      {currentImageIndex + 1} / {allImages.length}
-                    </div>
-                  </>
+      {/* Hero Section with Gallery */}
+      <div className="bg-white pb-6">
+        <div className="container mx-auto px-4 py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Image Gallery - Takes 2/3 */}
+            <div className="lg:col-span-2">
+              <ImageGallery
+                mainImage={project.main_image_url}
+                images={project.images || []}
+                projectName={project.name}
+                videoUrl={project.video_url}
+                virtualTourUrl={project.virtual_tour_url}
+              />
+            </div>
+
+            {/* Quick Info Sidebar */}
+            <div className="space-y-4">
+              {/* Project Title & Actions */}
+              <div className="flex items-start justify-between">
+                <div>
+                  <h1 className="text-2xl lg:text-3xl font-bold">{project.name}</h1>
+                  <div className="flex items-center text-gray-600 mt-2">
+                    <MapPin className="h-4 w-4 mr-1" />
+                    <span className="text-sm">
+                      {project.municipality?.name_sr_lat && `${project.municipality.name_sr_lat}, `}
+                      {project.city?.name_sr_lat || 'Belgrade'}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="icon" onClick={handleShare}>
+                    <Share2 className="h-4 w-4" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    onClick={() => setIsSaved(!isSaved)}
+                  >
+                    <Heart className={`h-4 w-4 ${isSaved ? 'fill-red-500 text-red-500' : ''}`} />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Status Badges */}
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="outline" className="text-sm py-1">
+                  {t(`projects.status.${project.construction_status === 'u_izgradnji' ? 'underConstruction' : 
+                    project.construction_status === 'siva_faza' ? 'grayFrame' :
+                    project.construction_status === 'useljivo' ? 'readyToMove' :
+                    project.construction_status === 'planning' ? 'planning' :
+                    project.construction_status === 'completed' ? 'completed' : 
+                    project.construction_status}`)}
+                </Badge>
+                {project.completion_date && (
+                  <Badge variant="outline" className="text-sm py-1">
+                    <Calendar className="h-3 w-3 mr-1" />
+                    {t('common.completion')} {new Date(project.completion_date).getFullYear()}
+                  </Badge>
+                )}
+                {project.completion_percentage && (
+                  <Badge variant="outline" className="text-sm py-1">
+                    <BarChart3 className="h-3 w-3 mr-1" />
+                    {project.completion_percentage}%
+                  </Badge>
                 )}
               </div>
-            ) : (
-              <div className="h-[400px] lg:h-[500px] bg-gray-200 rounded-lg flex items-center justify-center">
-                <Building2 className="h-16 w-16 text-gray-400" />
-              </div>
-            )}
-            
-            {/* Thumbnail Strip */}
-            {allImages.length > 1 && (
-              <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
-                {allImages.map((img, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`relative w-20 h-20 rounded overflow-hidden flex-shrink-0 ${
-                      index === currentImageIndex ? 'ring-2 ring-blue-500' : ''
-                    }`}
-                  >
-                    <Image
-                      src={img.url}
-                      alt=""
-                      fill
-                      className="object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
 
-          {/* Project Info */}
-          <div>
-            <div className="flex items-start justify-between mb-4">
-              <h1 className="text-3xl font-bold">{project.name}</h1>
-              <div className="flex gap-2">
-                <button className="p-2 hover:bg-gray-100 rounded-lg">
-                  <Share2 className="h-5 w-5" />
-                </button>
-                <button 
-                  onClick={() => setIsSaved(!isSaved)}
-                  className="p-2 hover:bg-gray-100 rounded-lg"
-                >
-                  <Heart className={`h-5 w-5 ${isSaved ? 'fill-red-500 text-red-500' : ''}`} />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex items-center text-gray-600 mb-2">
-              <MapPin className="h-5 w-5 mr-2" />
-              {project.municipality?.name_sr_lat && `${project.municipality.name_sr_lat}, `}
-              {project.city?.name_sr_lat || 'Belgrade'}
-            </div>
-            
-            {project.address && (
-              <p className="text-gray-600 mb-4">{project.address}</p>
-            )}
-
-            <div className="flex flex-wrap gap-3 mb-6">
-              <Badge variant="outline" className="text-base py-1">
-                {t(`projects.status.${project.construction_status === 'u_izgradnji' ? 'underConstruction' : 
-                  project.construction_status === 'siva_faza' ? 'grayFrame' :
-                  project.construction_status === 'useljivo' ? 'readyToMove' :
-                  project.construction_status === 'planning' ? 'planning' :
-                  project.construction_status === 'completed' ? 'completed' : 
-                  project.construction_status}`)}
-              </Badge>
-              {project.completion_date && (
-                <Badge variant="outline" className="text-base py-1">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  {t('common.completion')} {new Date(project.completion_date).getFullYear()}
-                </Badge>
-              )}
-              {project.completion_percentage && (
-                <Badge variant="outline" className="text-base py-1">
-                  <BarChart3 className="h-4 w-4 mr-1" />
-                  {t('projectDetail.percentCompleted', { percent: project.completion_percentage })}
-                </Badge>
-              )}
-            </div>
-
-            <Card className="mb-6">
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <p className="text-sm text-gray-600">{t('projectDetail.priceFrom')}</p>
-                    <p className="text-2xl font-bold text-blue-600">
-                      {project.price_from ? formatPrice(project.price_from) : t('projectDetail.onRequest')}
-                    </p>
+              {/* Price Card */}
+              <Card>
+                <CardContent className="pt-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-xs text-gray-600">{t('projectDetail.priceFrom')}</p>
+                      <p className="text-xl font-bold text-blue-600">
+                        {project.price_from ? formatPrice(project.price_from) : t('projectDetail.onRequest')}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-600">{t('projectDetail.pricePerSqm')}</p>
+                      <p className="text-xl font-bold">
+                        {project.price_per_sqm_from ? formatPrice(project.price_per_sqm_from) : t('projectDetail.onRequest')}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-600">{t('projectDetail.pricePerSqm')}</p>
-                    <p className="text-2xl font-bold">
-                      {project.price_per_sqm_from ? formatPrice(project.price_per_sqm_from) : t('projectDetail.onRequest')}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="space-y-2 text-sm">
-                  {project.vat_included && (
-                    <div className="flex items-center text-green-600">
-                      <ShieldCheck className="h-4 w-4 mr-2" />
-                      {t('projectDetail.priceWithVat')}
+                  
+                  {(project.vat_included || project.first_buyer_vat_refund) && (
+                    <div className="mt-3 pt-3 border-t space-y-1">
+                      {project.vat_included && (
+                        <div className="flex items-center text-green-600 text-sm">
+                          <ShieldCheck className="h-4 w-4 mr-2" />
+                          {t('projectDetail.priceWithVat')}
+                        </div>
+                      )}
+                      {project.first_buyer_vat_refund && (
+                        <div className="flex items-center text-green-600 text-sm">
+                          <ShieldCheck className="h-4 w-4 mr-2" />
+                          {t('projectDetail.vatRefundFirstBuyer')}
+                        </div>
+                      )}
                     </div>
                   )}
-                  {project.first_buyer_vat_refund && (
-                    <div className="flex items-center text-green-600">
-                      <ShieldCheck className="h-4 w-4 mr-2" />
-                      {t('projectDetail.vatRefundFirstBuyer')}
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
 
-            {/* Developer Info */}
-            {project.developer && (
-              <Card className="mb-6">
-                <CardContent className="pt-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
+              {/* Developer Card */}
+              {project.developer && (
+                <Card>
+                  <CardContent className="pt-4">
+                    <div className="flex items-center mb-4">
                       {project.developer.logo_url ? (
                         <Image
                           src={project.developer.logo_url}
                           alt={project.developer.name}
-                          width={48}
-                          height={48}
+                          width={40}
+                          height={40}
                           className="rounded mr-3"
                         />
                       ) : (
-                        <div className="w-12 h-12 bg-gray-200 rounded mr-3 flex items-center justify-center">
-                          <Building2 className="h-6 w-6 text-gray-400" />
+                        <div className="w-10 h-10 bg-gray-200 rounded mr-3 flex items-center justify-center">
+                          <Building2 className="h-5 w-5 text-gray-400" />
                         </div>
                       )}
                       <div>
                         <Link 
                           href={`/gradjevinar/${project.developer.slug}`}
-                          className="font-semibold hover:text-blue-600"
+                          className="font-semibold hover:text-blue-600 flex items-center gap-1"
                         >
                           {project.developer.name}
+                          {project.developer.is_verified && (
+                            <ShieldCheck className="h-4 w-4 text-blue-500" />
+                          )}
                         </Link>
-                        {project.developer.is_verified && (
-                          <Badge variant="outline" className="ml-2">
-                            {t('projectDetail.verified')}
-                          </Badge>
-                        )}
-                        <p className="text-sm text-gray-600">
-                          {project.developer.total_projects} {t('projectDetail.projects')} • {project.developer.completed_projects} {t('projectDetail.completedProjects')}
+                        <p className="text-xs text-gray-600">
+                          {project.developer.total_projects} {t('projectDetail.projects')}
                         </p>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex gap-3">
-                    <Button 
-                      className="flex-1"
-                      onClick={() => setShowPhone(!showPhone)}
-                    >
-                      <Phone className="h-4 w-4 mr-2" />
-                      {showPhone ? project.developer.phone : t('projectDetail.showPhone')}
-                    </Button>
-                    <Button variant="outline" className="flex-1">
+                    
+                    <div className="flex gap-2">
+                      <Button 
+                        className="flex-1"
+                        onClick={() => setShowPhone(!showPhone)}
+                      >
+                        <Phone className="h-4 w-4 mr-2" />
+                        {showPhone ? project.developer.phone : t('projectDetail.showPhone')}
+                      </Button>
+                    </div>
+                    <Button variant="outline" className="w-full mt-2">
                       {t('projectDetail.scheduleConsultation')}
                     </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+                  </CardContent>
+                </Card>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Price Dynamics Chart */}
+      {project.priceHistory && project.priceHistory.length > 0 && (
+        <div className="container mx-auto px-4 py-6">
+          <PriceDynamicsChart 
+            priceHistory={project.priceHistory}
+            currency="€"
+            title={`Minimal price change dynamics`}
+          />
+        </div>
+      )}
+
+      {/* Map Section */}
+      <div className="container mx-auto px-4 py-6">
+        <ProjectMap
+          projectName={project.name}
+          address={project.address}
+          latitude={project.latitude}
+          longitude={project.longitude}
+          buildings={project.buildings}
+          cityName={project.city?.name_sr_lat}
+          municipalityName={project.municipality?.name_sr_lat}
+        />
+      </div>
+
+      {/* Project Buildings Section */}
+      {project.buildings && project.buildings.length > 0 && (
+        <div className="container mx-auto px-4">
+          <ProjectBuildings 
+            buildings={project.buildings}
+            title={t('projectDetail.projectHouses') || 'Project houses'}
+          />
+        </div>
+      )}
+
       {/* Tabs Section */}
-      <div className="container mx-auto px-4 pb-8">
-        <Tabs defaultValue="overview" className="mt-8">
-          <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
+      <div className="container mx-auto px-4 py-6">
+        <Tabs defaultValue="overview">
+          <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
             <TabsTrigger value="overview">{t('projectDetail.tabs.overview')}</TabsTrigger>
             <TabsTrigger value="layouts">{t('projectDetail.tabs.layouts')}</TabsTrigger>
-            <TabsTrigger value="location">{t('projectDetail.tabs.location')}</TabsTrigger>
             <TabsTrigger value="amenities">{t('projectDetail.tabs.amenities')}</TabsTrigger>
             <TabsTrigger value="mortgage">{t('projectDetail.tabs.mortgage')}</TabsTrigger>
           </TabsList>
@@ -514,21 +514,27 @@ export default function ProjectDetailPage() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {project.brochure_url && (
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => window.open(project.brochure_url, '_blank')}
+                    >
                       <FileText className="h-4 w-4 mr-2" />
                       {t('projectDetail.downloadBrochure')}
+                      <ExternalLink className="h-3 w-3 ml-auto" />
                     </Button>
                   )}
                   {project.virtual_tour_url && (
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => window.open(project.virtual_tour_url, '_blank')}
+                    >
                       <Camera className="h-4 w-4 mr-2" />
                       {t('projectDetail.virtualTour')}
+                      <ExternalLink className="h-3 w-3 ml-auto" />
                     </Button>
                   )}
-                  <Button variant="outline" className="w-full justify-start">
-                    <Map className="h-4 w-4 mr-2" />
-                    {t('projectDetail.showOnMap')}
-                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -543,7 +549,7 @@ export default function ProjectDetailPage() {
                 {project.layouts && project.layouts.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {project.layouts.map((layout) => (
-                      <Card key={layout.id} className="overflow-hidden">
+                      <Card key={layout.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                         <div className="relative h-48 bg-gray-100">
                           {layout.floor_plan_url ? (
                             <Image
@@ -590,7 +596,7 @@ export default function ProjectDetailPage() {
                               {layout.price_from ? formatPrice(layout.price_from) : t('projectDetail.onRequest')}
                             </p>
                             <p className="text-xs text-gray-600">
-                              Dostupno: {layout.available_units}/{layout.total_units}
+                              {t('projectDetail.available')}: {layout.available_units}/{layout.total_units}
                             </p>
                           </div>
                         </CardContent>
@@ -598,31 +604,8 @@ export default function ProjectDetailPage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-gray-600">Informacije o rasporedima će biti dostupne uskoro.</p>
+                  <p className="text-gray-600">{t('projectDetail.layoutsComingSoon')}</p>
                 )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="location" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Lokacija</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="h-[400px] bg-gray-200 rounded-lg flex items-center justify-center">
-                  <Map className="h-12 w-12 text-gray-400" />
-                  <p className="ml-3 text-gray-600">{t('projectDetail.mapComingSoon')}</p>
-                </div>
-                <div className="mt-4">
-                  <p className="font-semibold mb-2">{t('projectDetail.address')}:</p>
-                  <p className="text-gray-600">
-                    {project.address || 
-                     (project.municipality?.name_sr_lat && project.city?.name_sr_lat 
-                       ? `${project.municipality.name_sr_lat}, ${project.city.name_sr_lat}`
-                       : project.city?.name_sr_lat || '')}
-                  </p>
-                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -656,14 +639,26 @@ export default function ProjectDetailPage() {
             <MortgageCalculator defaultPrice={project.price_from || 150000} />
           </TabsContent>
         </Tabs>
+      </div>
 
-        {/* Similar Projects */}
-        {project.similarProjects && project.similarProjects.length > 0 && (
-          <div className="mt-12">
+      {/* Construction Progress Section */}
+      {project.constructionProgress && project.constructionProgress.length > 0 && (
+        <div className="container mx-auto px-4 pb-8">
+          <ConstructionProgress
+            projectName={project.name}
+            spots={project.constructionProgress}
+          />
+        </div>
+      )}
+
+      {/* Similar Projects */}
+      {project.similarProjects && project.similarProjects.length > 0 && (
+        <div className="bg-gray-100 py-12">
+          <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">{t('projectDetail.similarProjects')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {project.similarProjects.map((similar) => (
-                <Card key={similar.id} className="overflow-hidden">
+                <Card key={similar.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <Link href={`/projekat/${similar.slug}`}>
                     <div className="relative h-48">
                       {similar.main_image_url ? (
@@ -698,8 +693,8 @@ export default function ProjectDetailPage() {
               ))}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }

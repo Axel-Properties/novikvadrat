@@ -407,6 +407,15 @@ function ProjectsListingPage() {
     const [selectedStatus, setSelectedStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [municipalities, setMunicipalities] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [savedProjects, setSavedProjects] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(new Set());
+    // Reset page to 1 when filters change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setPage(1);
+    }, [
+        city,
+        sortBy,
+        selectedMunicipality,
+        selectedStatus
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         fetchProjects();
     }, [
@@ -479,7 +488,7 @@ function ProjectsListingPage() {
                             className: "object-cover"
                         }, void 0, false, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 173,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-full h-full bg-gray-200 flex items-center justify-center",
@@ -487,12 +496,12 @@ function ProjectsListingPage() {
                                 className: "h-12 w-12 text-gray-400"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 181,
+                                lineNumber: 186,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 180,
+                            lineNumber: 185,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -502,12 +511,12 @@ function ProjectsListingPage() {
                                 className: `h-5 w-5 ${savedProjects.has(project.id) ? 'fill-red-500 text-red-500' : 'text-gray-600'}`
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 188,
+                                lineNumber: 193,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 184,
+                            lineNumber: 189,
                             columnNumber: 9
                         }, this),
                         project.featured && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -515,13 +524,13 @@ function ProjectsListingPage() {
                             children: t('projectDetail.featured')
                         }, void 0, false, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 193,
+                            lineNumber: 198,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                    lineNumber: 171,
+                    lineNumber: 176,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -537,12 +546,12 @@ function ProjectsListingPage() {
                                         children: project.name
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 202,
+                                        lineNumber: 207,
                                         columnNumber: 13
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 201,
+                                    lineNumber: 206,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -552,7 +561,7 @@ function ProjectsListingPage() {
                                             className: "h-4 w-4 mr-1"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                            lineNumber: 206,
+                                            lineNumber: 211,
                                             columnNumber: 13
                                         }, this),
                                         project.municipality?.name_sr_lat,
@@ -561,7 +570,7 @@ function ProjectsListingPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 210,
                                     columnNumber: 11
                                 }, this),
                                 project.address && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -569,7 +578,7 @@ function ProjectsListingPage() {
                                     children: project.address
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 211,
+                                    lineNumber: 216,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -580,7 +589,7 @@ function ProjectsListingPage() {
                                             children: statusLabels[project.construction_status] || project.construction_status
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 220,
                                             columnNumber: 13
                                         }, this),
                                         project.completion_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -590,20 +599,20 @@ function ProjectsListingPage() {
                                                     className: "h-4 w-4 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 225,
                                                     columnNumber: 17
                                                 }, this),
                                                 new Date(project.completion_date).getFullYear()
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 224,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 219,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -618,7 +627,7 @@ function ProjectsListingPage() {
                                                         children: t('common.from')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                        lineNumber: 229,
+                                                        lineNumber: 234,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -626,13 +635,13 @@ function ProjectsListingPage() {
                                                         children: project.price_from ? formatPrice(project.price_from) : t('projects.onRequest')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                        lineNumber: 230,
+                                                        lineNumber: 235,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 233,
                                                 columnNumber: 15
                                             }, this),
                                             project.price_per_sqm_from && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -643,7 +652,7 @@ function ProjectsListingPage() {
                                                         children: t('common.perSqm')
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                        lineNumber: 236,
+                                                        lineNumber: 241,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -651,24 +660,24 @@ function ProjectsListingPage() {
                                                         children: formatPrice(project.price_per_sqm_from)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                        lineNumber: 237,
+                                                        lineNumber: 242,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 235,
+                                                lineNumber: 240,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 232,
                                         columnNumber: 13
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 226,
+                                    lineNumber: 231,
                                     columnNumber: 11
                                 }, this),
                                 project.developer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -681,7 +690,7 @@ function ProjectsListingPage() {
                                                 className: "h-4 w-4 mr-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 249,
+                                                lineNumber: 254,
                                                 columnNumber: 17
                                             }, this),
                                             project.developer.name,
@@ -691,24 +700,24 @@ function ProjectsListingPage() {
                                                 children: t('developer.verified')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 257,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 245,
+                                        lineNumber: 250,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 249,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 200,
+                            lineNumber: 205,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -723,14 +732,14 @@ function ProjectsListingPage() {
                                             className: "h-4 w-4 mr-1"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 268,
                                             columnNumber: 13
                                         }, this),
                                         t('common.call')
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 262,
+                                    lineNumber: 267,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -739,25 +748,25 @@ function ProjectsListingPage() {
                                     children: t('common.consultation')
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 271,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 261,
+                            lineNumber: 266,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                    lineNumber: 199,
+                    lineNumber: 204,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-            lineNumber: 170,
+            lineNumber: 175,
             columnNumber: 5
         }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -777,7 +786,7 @@ function ProjectsListingPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 279,
+                            lineNumber: 284,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -787,18 +796,18 @@ function ProjectsListingPage() {
                             })
                         }, void 0, false, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 282,
+                            lineNumber: 287,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                    lineNumber: 278,
+                    lineNumber: 283,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                lineNumber: 277,
+                lineNumber: 282,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -819,20 +828,20 @@ function ProjectsListingPage() {
                                                 className: "h-4 w-4 mr-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 294,
+                                                lineNumber: 299,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
                                                 placeholder: t('projects.filters.allMunicipalities')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 295,
+                                                lineNumber: 300,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 298,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -842,7 +851,7 @@ function ProjectsListingPage() {
                                                 children: t('projects.filters.allMunicipalities')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 298,
+                                                lineNumber: 303,
                                                 columnNumber: 17
                                             }, this),
                                             municipalities.map((municipality)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -850,19 +859,19 @@ function ProjectsListingPage() {
                                                     children: municipality.name_sr_lat
                                                 }, municipality.id, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 300,
+                                                    lineNumber: 305,
                                                     columnNumber: 19
                                                 }, this))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 297,
+                                        lineNumber: 302,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 292,
+                                lineNumber: 297,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -876,20 +885,20 @@ function ProjectsListingPage() {
                                                 className: "h-4 w-4 mr-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 309,
+                                                lineNumber: 314,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
                                                 placeholder: "Status"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 310,
+                                                lineNumber: 315,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 308,
+                                        lineNumber: 313,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -899,7 +908,7 @@ function ProjectsListingPage() {
                                                 children: t('projects.filters.allStatuses')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 313,
+                                                lineNumber: 318,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -907,7 +916,7 @@ function ProjectsListingPage() {
                                                 children: t('projects.status.underConstruction')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 314,
+                                                lineNumber: 319,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -915,7 +924,7 @@ function ProjectsListingPage() {
                                                 children: t('projects.status.grayFrame')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 315,
+                                                lineNumber: 320,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -923,7 +932,7 @@ function ProjectsListingPage() {
                                                 children: t('projects.status.readyToMove')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 316,
+                                                lineNumber: 321,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -931,19 +940,19 @@ function ProjectsListingPage() {
                                                 children: t('projects.status.completed')
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 317,
+                                                lineNumber: 322,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 312,
+                                        lineNumber: 317,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 307,
+                                lineNumber: 312,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -953,14 +962,14 @@ function ProjectsListingPage() {
                                         className: "h-4 w-4 mr-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 322,
+                                        lineNumber: 327,
                                         columnNumber: 15
                                     }, this),
                                     t('projects.filters.moreFilters')
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 321,
+                                lineNumber: 326,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -970,14 +979,14 @@ function ProjectsListingPage() {
                                         className: "h-4 w-4 mr-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 327,
+                                        lineNumber: 332,
                                         columnNumber: 15
                                     }, this),
                                     t('projects.filters.projectsOnMap')
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 326,
+                                lineNumber: 331,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -990,12 +999,12 @@ function ProjectsListingPage() {
                                             className: "w-[200px]",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                lineNumber: 334,
+                                                lineNumber: 339,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                            lineNumber: 333,
+                                            lineNumber: 338,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1005,7 +1014,7 @@ function ProjectsListingPage() {
                                                     children: t('projects.filters.recommended')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 337,
+                                                    lineNumber: 342,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1013,7 +1022,7 @@ function ProjectsListingPage() {
                                                     children: t('projects.filters.priceLowHigh')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 338,
+                                                    lineNumber: 343,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1021,7 +1030,7 @@ function ProjectsListingPage() {
                                                     children: t('projects.filters.priceHighLow')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 339,
+                                                    lineNumber: 344,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1029,7 +1038,7 @@ function ProjectsListingPage() {
                                                     children: t('projects.filters.newest')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 340,
+                                                    lineNumber: 345,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1037,40 +1046,40 @@ function ProjectsListingPage() {
                                                     children: t('projects.filters.completionDate')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                                    lineNumber: 341,
+                                                    lineNumber: 346,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                            lineNumber: 336,
+                                            lineNumber: 341,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 332,
+                                    lineNumber: 337,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 331,
+                                lineNumber: 336,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                        lineNumber: 291,
+                        lineNumber: 296,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                    lineNumber: 290,
+                    lineNumber: 295,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                lineNumber: 289,
+                lineNumber: 294,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1086,7 +1095,7 @@ function ProjectsListingPage() {
                                 children: "Stari Grad"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 353,
+                                lineNumber: 358,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1095,7 +1104,7 @@ function ProjectsListingPage() {
                                 children: "Vračar"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 356,
+                                lineNumber: 361,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1104,7 +1113,7 @@ function ProjectsListingPage() {
                                 children: "Novi Beograd"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 359,
+                                lineNumber: 364,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1113,7 +1122,7 @@ function ProjectsListingPage() {
                                 children: "Zvezdara"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 362,
+                                lineNumber: 367,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1122,7 +1131,7 @@ function ProjectsListingPage() {
                                 children: "Na rate"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 365,
+                                lineNumber: 370,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1131,7 +1140,7 @@ function ProjectsListingPage() {
                                 children: "2025"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 368,
+                                lineNumber: 373,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1140,23 +1149,23 @@ function ProjectsListingPage() {
                                 children: "Povraćaj PDV-a"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                lineNumber: 371,
+                                lineNumber: 376,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                        lineNumber: 352,
+                        lineNumber: 357,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                    lineNumber: 351,
+                    lineNumber: 356,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                lineNumber: 350,
+                lineNumber: 355,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1167,12 +1176,12 @@ function ProjectsListingPage() {
                         className: "h-8 w-8 animate-spin"
                     }, void 0, false, {
                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                        lineNumber: 382,
+                        lineNumber: 387,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                    lineNumber: 381,
+                    lineNumber: 386,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
@@ -1182,12 +1191,12 @@ function ProjectsListingPage() {
                                     project: project
                                 }, project.id, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 388,
+                                    lineNumber: 393,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 386,
+                            lineNumber: 391,
                             columnNumber: 13
                         }, this),
                         projects.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1197,7 +1206,7 @@ function ProjectsListingPage() {
                                     className: "h-12 w-12 mx-auto text-gray-400 mb-4"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 394,
+                                    lineNumber: 399,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1205,13 +1214,13 @@ function ProjectsListingPage() {
                                     children: t('projects.noProjectsFound')
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 395,
+                                    lineNumber: 400,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 393,
+                            lineNumber: 398,
                             columnNumber: 15
                         }, this),
                         totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1227,12 +1236,12 @@ function ProjectsListingPage() {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 409,
+                                        lineNumber: 414,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 402,
+                                    lineNumber: 407,
                                     columnNumber: 17
                                 }, this),
                                 Array.from({
@@ -1257,7 +1266,7 @@ function ProjectsListingPage() {
                                         children: pageNum
                                     }, pageNum, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 427,
+                                        lineNumber: 432,
                                         columnNumber: 21
                                     }, this);
                                 }),
@@ -1271,31 +1280,31 @@ function ProjectsListingPage() {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                        lineNumber: 446,
+                                        lineNumber: 451,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                                    lineNumber: 439,
+                                    lineNumber: 444,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                            lineNumber: 401,
+                            lineNumber: 406,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-                lineNumber: 379,
+                lineNumber: 384,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/[locale]/novogradnja/[city]/page.tsx",
-        lineNumber: 275,
+        lineNumber: 280,
         columnNumber: 5
     }, this);
 }

@@ -61,12 +61,46 @@ export async function GET(
       .eq('is_active', true)
       .limit(4)
     
+    // Get price history for price dynamics chart
+    const { data: priceHistory } = await supabase
+      .from('project_price_history')
+      .select('*')
+      .eq('project_id', project.id)
+      .order('recorded_at', { ascending: true })
+    
+    // Get project buildings (for multi-building projects)
+    const { data: buildings } = await supabase
+      .from('project_buildings')
+      .select('*')
+      .eq('project_id', project.id)
+      .order('sort_order', { ascending: true })
+    
+    // Get construction progress spots with photo count
+    const { data: constructionProgressRaw } = await supabase
+      .from('construction_progress_spots')
+      .select(`
+        *,
+        photos:construction_progress_photos(count)
+      `)
+      .eq('project_id', project.id)
+      .order('sort_order', { ascending: true })
+    
+    // Transform construction progress to include photo count
+    const constructionProgress = constructionProgressRaw?.map((spot: any) => ({
+      ...spot,
+      photo_count: spot.photos?.[0]?.count || 0,
+      photos: undefined // Remove the nested count query result
+    })) || []
+    
     return NextResponse.json({
       success: true,
       data: {
         ...project,
         amenities: project.amenities?.map((a: any) => a.amenity) || [],
-        similarProjects: similarProjects || []
+        similarProjects: similarProjects || [],
+        priceHistory: priceHistory || [],
+        buildings: buildings || [],
+        constructionProgress
       }
     })
   } catch (error) {

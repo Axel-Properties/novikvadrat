@@ -20,6 +20,8 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1')
     const limit = parseInt(searchParams.get('limit') || '20')
     
+    console.log('API Filters:', { city, municipality, status, sort, page })
+    
     // Start building the query
     let query = supabase
       .from('projects')
@@ -51,12 +53,15 @@ export async function GET(request: NextRequest) {
         .eq('slug', municipality)
         .single()
       
+      console.log('Municipality lookup:', municipality, municipalityData)
+      
       if (municipalityData) {
         query = query.eq('municipality_id', municipalityData.id)
       }
     }
     
     if (status) {
+      console.log('Applying status filter:', status)
       query = query.eq('construction_status', status)
     }
     

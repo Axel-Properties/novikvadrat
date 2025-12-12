@@ -170,6 +170,68 @@ export type Database = {
         Insert: Omit<Database['public']['Tables']['layouts']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['layouts']['Insert']>
       }
+      project_price_history: {
+        Row: {
+          id: string
+          project_id: string
+          price_min: number
+          price_per_sqm_min: number | null
+          currency: string
+          recorded_at: string
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['project_price_history']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['project_price_history']['Insert']>
+      }
+      project_buildings: {
+        Row: {
+          id: string
+          project_id: string
+          name: string
+          address: string | null
+          floors: number | null
+          total_units: number | null
+          available_units: number | null
+          construction_status: 'planning' | 'u_izgradnji' | 'siva_faza' | 'useljivo' | 'completed' | null
+          completion_date: string | null
+          latitude: number | null
+          longitude: number | null
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['project_buildings']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['project_buildings']['Insert']>
+      }
+      construction_progress_spots: {
+        Row: {
+          id: string
+          project_id: string
+          name: string
+          description: string | null
+          start_date: string | null
+          latest_date: string | null
+          cover_image_url: string | null
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['construction_progress_spots']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['construction_progress_spots']['Insert']>
+      }
+      construction_progress_photos: {
+        Row: {
+          id: string
+          spot_id: string
+          url: string
+          caption: string | null
+          taken_at: string
+          sort_order: number
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['construction_progress_photos']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['construction_progress_photos']['Insert']>
+      }
     }
   }
 }
@@ -182,6 +244,10 @@ export type Project = Database['public']['Tables']['projects']['Row']
 export type Amenity = Database['public']['Tables']['amenities']['Row']
 export type ProjectImage = Database['public']['Tables']['project_images']['Row']
 export type Layout = Database['public']['Tables']['layouts']['Row']
+export type ProjectPriceHistory = Database['public']['Tables']['project_price_history']['Row']
+export type ProjectBuilding = Database['public']['Tables']['project_buildings']['Row']
+export type ConstructionProgressSpot = Database['public']['Tables']['construction_progress_spots']['Row']
+export type ConstructionProgressPhoto = Database['public']['Tables']['construction_progress_photos']['Row']
 
 // Extended types with relationships
 export type ProjectWithDetails = Project & {
@@ -191,6 +257,14 @@ export type ProjectWithDetails = Project & {
   images?: ProjectImage[]
   layouts?: Layout[]
   amenities?: Amenity[]
+  priceHistory?: ProjectPriceHistory[]
+  buildings?: ProjectBuilding[]
+  constructionProgress?: ConstructionProgressSpotWithPhotos[]
+}
+
+export type ConstructionProgressSpotWithPhotos = ConstructionProgressSpot & {
+  photos?: ConstructionProgressPhoto[]
+  photo_count?: number
 }
 
 export type DeveloperWithProjects = Developer & {

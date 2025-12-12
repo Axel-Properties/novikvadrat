@@ -105,7 +105,14 @@ export default function ProjectsListingPage() {
   const [municipalities, setMunicipalities] = useState<Municipality[]>([])
   const [savedProjects, setSavedProjects] = useState<Set<string>>(new Set())
 
+  // Reset page to 1 when filters change
   useEffect(() => {
+    console.log('Filter changed, resetting page to 1')
+    setPage(1)
+  }, [city, sortBy, selectedMunicipality, selectedStatus])
+
+  useEffect(() => {
+    console.log('Fetching projects with:', { city, page, sortBy, selectedMunicipality, selectedStatus })
     fetchProjects()
   }, [city, page, sortBy, selectedMunicipality, selectedStatus])
 
@@ -289,34 +296,38 @@ export default function ProjectsListingPage() {
       <div className="bg-white border-b sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-wrap gap-3">
-            <Select value={selectedMunicipality || 'all'} onValueChange={(value) => setSelectedMunicipality(value === 'all' ? '' : value)}>
-              <SelectTrigger className="w-[200px]">
-                <MapPin className="h-4 w-4 mr-2" />
-                <SelectValue placeholder={t('projects.filters.allMunicipalities')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t('projects.filters.allMunicipalities')}</SelectItem>
-                {municipalities.map((municipality) => (
-                  <SelectItem key={municipality.id} value={municipality.slug}>
-                    {municipality.name_sr_lat}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-gray-500" />
+              <Select value={selectedMunicipality || 'all'} onValueChange={(value) => setSelectedMunicipality(value === 'all' ? '' : value)}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder={t('projects.filters.allMunicipalities')} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">{t('projects.filters.allMunicipalities')}</SelectItem>
+                  {municipalities.map((municipality) => (
+                    <SelectItem key={municipality.id} value={municipality.slug}>
+                      {municipality.name_sr_lat}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-            <Select value={selectedStatus || 'all'} onValueChange={(value) => setSelectedStatus(value === 'all' ? '' : value)}>
-              <SelectTrigger className="w-[180px]">
-                <Home className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t('projects.filters.allStatuses')}</SelectItem>
-                <SelectItem value="u_izgradnji">{t('projects.status.underConstruction')}</SelectItem>
-                <SelectItem value="siva_faza">{t('projects.status.grayFrame')}</SelectItem>
-                <SelectItem value="useljivo">{t('projects.status.readyToMove')}</SelectItem>
-                <SelectItem value="completed">{t('projects.status.completed')}</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex items-center gap-2">
+              <Home className="h-4 w-4 text-gray-500" />
+              <Select value={selectedStatus || 'all'} onValueChange={(value) => setSelectedStatus(value === 'all' ? '' : value)}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">{t('projects.filters.allStatuses')}</SelectItem>
+                  <SelectItem value="u_izgradnji">{t('projects.status.underConstruction')}</SelectItem>
+                  <SelectItem value="siva_faza">{t('projects.status.grayFrame')}</SelectItem>
+                  <SelectItem value="useljivo">{t('projects.status.readyToMove')}</SelectItem>
+                  <SelectItem value="completed">{t('projects.status.completed')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
             <Button variant="outline">
               <Filter className="h-4 w-4 mr-2" />

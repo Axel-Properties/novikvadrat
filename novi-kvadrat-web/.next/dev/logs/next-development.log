@@ -10998,3 +10998,71 @@ Import trace:
 [01:59:24.867] Server  ERROR   TypeError: fetch failed
 [02:16:28.427] Server  ERROR   TypeError: fetch failed
 [02:16:28.434] Server  ERROR   TypeError: fetch failed
+[02:29:04.044] Server  LOG      ✓ Compiled in 804ms
+[02:29:54.053] Server  LOG      ✓ Compiled in 153ms
+[02:29:58.999] Server  ERROR   TypeError: fetch failed
+[02:29:59.006] Server  ERROR   TypeError: fetch failed
+[02:30:25.835] Server  LOG      ✓ Compiled in 122ms
+[02:30:48.990] Server  LOG      ✓ Compiled in 135ms
+[02:31:20.738] Server  LOG      ✓ Compiled in 143ms
+[02:31:52.458] Server  LOG      ✓ Compiled in 145ms
+[02:33:21.411] Server  LOG      ✓ Compiled in 1091ms
+[02:33:29.956] Server  ERROR   TypeError: fetch failed
+[02:33:29.965] Server  ERROR   TypeError: fetch failed
+[02:33:57.472] Server  LOG      ✓ Compiled in 6ms
+[02:34:10.515] Server  ERROR   Projects API error: {}
+[02:34:12.327] Server  ERROR   Projects API error: {}
+[02:34:14.894] Server  ERROR   Projects API error: {}
+[02:34:35.241] Server  LOG      ✓ Compiled in 14ms
+[02:35:05.913] Server  LOG      ✓ Compiled in 17ms
+[02:35:27.315] Server  LOG      ✓ Compiled in 127ms
+[02:35:44.320] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:54.408] Browser WARN    Image with src "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:35:54.408] Browser WARN    Image with src "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:35:54.408] Browser WARN    Image with src "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:35:54.408] Browser WARN    Image with src "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:35:55.555] Server  ERROR   TypeError: fetch failed
+[02:35:55.563] Server  ERROR   TypeError: fetch failed
+[02:36:11.869] Server  ERROR   TypeError: fetch failed
+[02:36:11.877] Server  ERROR   TypeError: fetch failed
+[02:36:12.966] Server  LOG     API Filters: {}
+[02:36:13.542] Server  LOG     API Filters: {}
+[02:36:18.557] Server  LOG     API Filters: {}
+[02:36:18.741] Server  LOG     Municipality lookup: "novi-beograd" {}
+[02:36:20.772] Server  LOG     API Filters: {}
+[02:36:20.936] Server  LOG     Municipality lookup: "savski-venac" {}
+[02:36:23.944] Server  LOG     API Filters: {}
+[02:36:24.104] Server  LOG     Municipality lookup: "vracar" {}
+[02:36:26.183] Server  LOG     API Filters: {}
+[02:36:26.346] Server  LOG     Municipality lookup: "zemun" {}
+[02:36:40.146] Server  LOG      ✓ Compiled in 186ms
+[02:36:45.369] Server  ERROR   TypeError: fetch failed
+[02:36:45.376] Server  ERROR   TypeError: fetch failed
+[02:37:04.519] Server  LOG      ✓ Compiled in 134ms
+[02:37:27.518] Server  LOG     API Filters: {}
+[02:37:27.607] Browser LOG     Filter changed, resetting page to 1
+[02:37:27.607] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"","selectedStatus":"","sortBy":"featured"}
+[02:37:27.607] Browser LOG     Filter changed, resetting page to 1
+[02:37:27.607] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"","selectedStatus":"","sortBy":"featured"}
+[02:37:28.141] Server  LOG     API Filters: {}
+[02:37:30.047] Server  LOG     API Filters: {}
+[02:37:30.136] Browser LOG     Filter changed, resetting page to 1
+[02:37:30.136] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"palilula","selectedStatus":"","sortBy":"featured"}
+[02:37:30.196] Server  LOG     Municipality lookup: "palilula" {}
+[02:37:32.487] Server  LOG     API Filters: {}
+[02:37:32.572] Browser LOG     Filter changed, resetting page to 1
+[02:37:32.573] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"savski-venac","selectedStatus":"","sortBy":"featured"}
+[02:37:32.628] Server  LOG     Municipality lookup: "savski-venac" {}
+[02:37:34.830] Server  LOG     API Filters: {}
+[02:37:34.919] Browser LOG     Filter changed, resetting page to 1
+[02:37:34.919] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"vozdovac","selectedStatus":"","sortBy":"featured"}
+[02:37:34.977] Server  LOG     Municipality lookup: "vozdovac" {}
+[02:37:36.270] Server  LOG     API Filters: {}
+[02:37:36.359] Browser LOG     Filter changed, resetting page to 1
+[02:37:36.359] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"vozdovac","selectedStatus":"siva_faza","sortBy":"featured"}
+[02:37:36.414] Server  LOG     Municipality lookup: "vozdovac" {}
+[02:37:36.414] Server  LOG     Applying status filter: "siva_faza"
+[02:37:37.763] Server  LOG     API Filters: {}
+[02:37:37.851] Browser LOG     Filter changed, resetting page to 1
+[02:37:37.851] Browser LOG     Fetching projects with: {"city":"beograd","page":1,"selectedMunicipality":"vozdovac","selectedStatus":"","sortBy":"featured"}
+[02:37:37.918] Server  LOG     Municipality lookup: "vozdovac" {}
