@@ -1,0 +1,145 @@
+{
+  "common": {
+    "search": "Pretraži",
+    "searchPlaceholder": "Pretraži po lokaciji, projektu ili građevinaru...",
+    "viewAll": "Vidi sve",
+    "from": "Od",
+    "perSqm": "po m²",
+    "completion": "Završetak",
+    "showPhone": "Prikaži broj",
+    "getConsultation": "Zakaži konsultaciju",
+    "save": "Sačuvaj",
+    "saved": "Sačuvano",
+    "call": "Pozovi",
+    "consultation": "Konsultacija"
+  },
+  
+  "nav": {
+    "home": "Početna",
+    "newDevelopments": "Novogradnja",
+    "developers": "Građevinari",
+    "aboutUs": "O nama",
+    "contact": "Kontakt"
+  },
+  
+  "home": {
+    "title": "Pronađite savršenu nekretninu u Srbiji",
+    "subtitle": "Otkrijte novogradnju, stanove, kuće i poslovne prostore",
+    "featuredProjects": "Istaknuti projekti",
+    "latestProperties": "Najnovije nekretnine",
+    "topDevelopers": "Top građevinari",
+    "popularCities": "Popularne lokacije",
+    "statistics": {
+      "projects": "Projekata",
+      "apartments": "Stanova",
+      "developers": "Građevinara",
+      "cities": "Gradova"
+    }
+  },
+  
+  "projects": {
+    "title": "Novogradnja {city}",
+    "projectsCount": "{count} projekata",
+    "filters": {
+      "allMunicipalities": "Sve opštine",
+      "allStatuses": "Svi statusi",
+      "moreFilters": "Više filtera",
+      "projectsOnMap": "Projekti na mapi",
+      "sortBy": "Sortiraj po",
+      "recommended": "Preporučeno",
+      "priceLowHigh": "Cena: najniža prva",
+      "priceHighLow": "Cena: najviša prva",
+      "newest": "Najnoviji",
+      "completionDate": "Datum završetka"
+    },
+    "onRequest": "Na upit",
+    "status": {
+      "planning": "U planiranju",
+      "underConstruction": "U izgradnji",
+      "grayFrame": "Siva faza",
+      "readyToMove": "Useljivo",
+      "completed": "Završeno"
+    },
+    "noProjectsFound": "Nema projekata koji odgovaraju vašim kriterijumima"
+  },
+  
+  "projectDetail": {
+    "constructionProgress": "Napredak izgradnje",
+    "completed": "završeno",
+    "aboutProject": "O projektu",
+    "numberOfBuildings": "Broj zgrada",
+    "numberOfFloors": "Broj spratova",
+    "totalApartments": "Ukupno stanova",
+    "availableApartments": "Dostupno stanova",
+    "parkingSpaces": "Parking mesta",
+    "heating": "Grejanje",
+    "documents": "Dokumenti",
+    "downloadBrochure": "Preuzmi brošuru",
+    "virtualTour": "Virtuelna tura",
+    "showOnMap": "Prikaži na mapi",
+    "layouts": "Raspored",
+    "location": "Lokacija",
+    "amenities": "Sadržaji",
+    "mortgage": "Kalkulator kredita",
+    "similarProjects": "Slični projekti",
+    "onRequest": "Na upit",
+    "address": "Adresa",
+    "mapComingSoon": "Mapa će biti dodata uskoro",
+    "featured": "Istaknuto"
+  },
+  
+  "developer": {
+    "verified": "Verifikovan",
+    "activeProjects": "Aktivni projekti",
+    "completedProjects": "Završeni projekti",
+    "startingFrom": "Počev od"
+  },
+  
+  "cities": {
+    "belgrade": "Beograd",
+    "noviSad": "Novi Sad",
+    "nis": "Niš",
+    "kragujevac": "Kragujevac"
+  },
+  
+  "contact": {
+    "title": "Kontaktirajte nas",
+    "subtitle": "Tu smo da vam pomognemo da pronađete savršenu nekretninu",
+    "form": {
+      "name": "Ime i prezime",
+      "namePlaceholder": "Unesite vaše ime i prezime",
+      "email": "Email adresa",
+      "emailPlaceholder": "Unesite vašu email adresu",
+      "phone": "Broj telefona",
+      "phonePlaceholder": "Unesite vaš broj telefona",
+      "subject": "Tema",
+      "subjectPlaceholder": "Izaberite temu",
+      "subjects": {
+        "general": "Opšti upit",
+        "property": "Pitanje o nekretnini",
+        "developer": "Saradnja sa građevinarima",
+        "technical": "Tehnička podrška"
+      },
+      "message": "Poruka",
+      "messagePlaceholder": "Kako vam možemo pomoći?",
+      "submit": "Pošalji poruku",
+      "sending": "Slanje...",
+      "success": "Poruka je uspešno poslata!",
+      "error": "Slanje poruke nije uspelo. Molimo pokušajte ponovo."
+    },
+    "info": {
+      "title": "Stupite u kontakt",
+      "address": "Adresa",
+      "addressValue": "Green Heart Complex, Bulevar Milutina Milankovića 11g, 11000 Beograd, Srbija",
+      "phone": "Telefon",
+      "email": "Email",
+      "workingHours": "Radno vreme",
+      "workingHoursValue": "Pon - Pet: 9:00 - 18:00",
+      "followUs": "Pratite nas"
+    },
+    "office": {
+      "title": "Naša kancelarija",
+      "description": "Posetite nas u našem sedištu u Beogradu"
+    }
+  }
+}

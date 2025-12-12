@@ -1,0 +1,140 @@
+{
+  "common": {
+    "search": "Претражи",
+    "searchPlaceholder": "Претражи по локацији, пројекту или грађевинару...",
+    "viewAll": "Види све",
+    "from": "Од",
+    "perSqm": "по m²",
+    "completion": "Завршетак",
+    "showPhone": "Прикажи број",
+    "getConsultation": "Закажи консултацију",
+    "save": "Сачувај",
+    "saved": "Сачувано",
+    "call": "Позови",
+    "consultation": "Консултација"
+  },
+  
+  "nav": {
+    "home": "Почетна",
+    "newDevelopments": "Новоградња",
+    "developers": "Грађевинари",
+    "aboutUs": "О нама",
+    "contact": "Контакт"
+  },
+  
+  "home": {
+    "title": "Пронађите савршену некретнину у Србији",
+    "subtitle": "Откријте новоградњу, станове, куће и пословне просторе",
+    "featuredProjects": "Истакнути пројекти",
+    "latestProperties": "Најновије некретнине",
+    "topDevelopers": "Топ грађевинари",
+    "popularCities": "Популарне локације",
+    "statistics": {
+      "projects": "Пројеката",
+      "apartments": "Станова",
+      "developers": "Грађевинара",
+      "cities": "Градова"
+    }
+  },
+  
+  "projects": {
+    "title": "Новоградња {city}",
+    "projectsCount": "{count} пројеката",
+    "filters": {
+      "allMunicipalities": "Све општине",
+      "allStatuses": "Сви статуси",
+      "moreFilters": "Више филтера",
+      "projectsOnMap": "Пројекти на мапи",
+      "sortBy": "Сортирај по",
+      "recommended": "Препоручено",
+      "priceLowHigh": "Цена: најнижа прва",
+      "priceHighLow": "Цена: највиша прва",
+      "newest": "Најновији",
+      "completionDate": "Датум завршетка"
+    },
+    "onRequest": "На упит",
+    "status": {
+      "planning": "У планирању",
+      "underConstruction": "У изградњи",
+      "grayFrame": "Сива фаза",
+      "readyToMove": "Усељиво",
+      "completed": "Завршено"
+    }
+  },
+  
+  "projectDetail": {
+    "constructionProgress": "Напредак изградње",
+    "completed": "завршено",
+    "aboutProject": "О пројекту",
+    "numberOfBuildings": "Број зграда",
+    "numberOfFloors": "Број спратова",
+    "totalApartments": "Укупно станова",
+    "availableApartments": "Доступно станова",
+    "parkingSpaces": "Паркинг места",
+    "heating": "Грејање",
+    "documents": "Документи",
+    "downloadBrochure": "Преузми брошуру",
+    "virtualTour": "Виртуелна тура",
+    "showOnMap": "Прикажи на мапи",
+    "layouts": "Распоред",
+    "location": "Локација",
+    "amenities": "Садржаји",
+    "mortgage": "Калкулатор кредита",
+    "similarProjects": "Слични пројекти"
+  },
+  
+  "developer": {
+    "verified": "Верификован",
+    "activeProjects": "Активни пројекти",
+    "completedProjects": "Завршени пројекти",
+    "startingFrom": "Почев од"
+  },
+  
+  "cities": {
+    "belgrade": "Београд",
+    "noviSad": "Нови Сад",
+    "nis": "Ниш",
+    "kragujevac": "Крагујевац"
+  },
+  
+  "contact": {
+    "title": "Контактирајте нас",
+    "subtitle": "Ту смо да вам помогнемо да пронађете савршену некретнину",
+    "form": {
+      "name": "Име и презиме",
+      "namePlaceholder": "Унесите ваше име и презиме",
+      "email": "Емаил адреса",
+      "emailPlaceholder": "Унесите вашу емаил адресу",
+      "phone": "Број телефона",
+      "phonePlaceholder": "Унесите ваш број телефона",
+      "subject": "Тема",
+      "subjectPlaceholder": "Изаберите тему",
+      "subjects": {
+        "general": "Општи упит",
+        "property": "Питање о некретнини",
+        "developer": "Сарадња са грађевинарима",
+        "technical": "Техничка подршка"
+      },
+      "message": "Порука",
+      "messagePlaceholder": "Како вам можемо помоћи?",
+      "submit": "Пошаљи поруку",
+      "sending": "Слање...",
+      "success": "Порука је успешно послата!",
+      "error": "Слање поруке није успело. Молимо покушајте поново."
+    },
+    "info": {
+      "title": "Ступите у контакт",
+      "address": "Адреса",
+      "addressValue": "Green Heart Complex, Булевар Милутина Миланковића 11г, 11000 Београд, Србија",
+      "phone": "Телефон",
+      "email": "Емаил",
+      "workingHours": "Радно време",
+      "workingHoursValue": "Пон - Пет: 9:00 - 18:00",
+      "followUs": "Пратите нас"
+    },
+    "office": {
+      "title": "Наша канцеларија",
+      "description": "Посетите нас у нашем седишту у Београду"
+    }
+  }
+}

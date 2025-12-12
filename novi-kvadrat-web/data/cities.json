@@ -1,0 +1,122 @@
+[
+  {
+    "name_en": "Belgrade",
+    "name_sr_lat": "Beograd",
+    "name_sr_cyr": "Београд",
+    "slug": "beograd",
+    "latitude": 44.7866,
+    "longitude": 20.4489,
+    "priority": "High",
+    "notes": "Capital"
+  },
+  {
+    "name_en": "Novi Sad",
+    "name_sr_lat": "Novi Sad",
+    "name_sr_cyr": "Нови Сад",
+    "slug": "novi-sad",
+    "latitude": 45.2671,
+    "longitude": 19.8335,
+    "priority": "High",
+    "notes": "Tech/Cultural Hub"
+  },
+  {
+    "name_en": "Niš",
+    "name_sr_lat": "Niš",
+    "name_sr_cyr": "Ниш",
+    "slug": "nis",
+    "latitude": 43.3209,
+    "longitude": 21.8958,
+    "priority": "Medium",
+    "notes": "South Serbia Hub"
+  },
+  {
+    "name_en": "Kragujevac",
+    "name_sr_lat": "Kragujevac",
+    "name_sr_cyr": "Крагујевац",
+    "slug": "kragujevac",
+    "latitude": 44.0128,
+    "longitude": 20.9114,
+    "priority": "Medium",
+    "notes": "Industrial Hub"
+  },
+  {
+    "name_en": "Zlatibor",
+    "name_sr_lat": "Zlatibor",
+    "name_sr_cyr": "Златибор",
+    "slug": "zlatibor",
+    "latitude": 43.731,
+    "longitude": 19.7036,
+    "priority": "Seasonal",
+    "notes": "Tourist/Investment"
+  },
+  {
+    "name_en": "Kopaonik",
+    "name_sr_lat": "Kopaonik",
+    "name_sr_cyr": "Копаоник",
+    "slug": "kopaonik",
+    "latitude": 43.2856,
+    "longitude": 20.8094,
+    "priority": "Seasonal",
+    "notes": "Tourist/Investment"
+  },
+  {
+    "name_en": "Vrnjacka Banja",
+    "name_sr_lat": "Vrnjacka Banja",
+    "name_sr_cyr": "Врњачка Бања",
+    "slug": "vrnjacka-banja",
+    "latitude": 43.6253,
+    "longitude": 20.8952,
+    "priority": "Seasonal",
+    "notes": "Tourist/Investment"
+  },
+  {
+    "name_en": "Požarevac",
+    "name_sr_lat": "Požarevac",
+    "name_sr_cyr": "Пожаревац",
+    "slug": "pozarevac",
+    "latitude": 44.621,
+    "longitude": 21.1845,
+    "priority": "Medium",
+    "notes": "Industrial/Cultural/Technical Hub"
+  },
+  {
+    "name_en": "Orbovac",
+    "name_sr_lat": "Orbovac",
+    "name_sr_cyr": "Орбовац",
+    "slug": "orbovac",
+    "latitude": 45.3205,
+    "longitude": 19.35,
+    "priority": "Low",
+    "notes": "Industrial/ Local Hub"
+  },
+  {
+    "name_en": "Subotica",
+    "name_sr_lat": "Subotica",
+    "name_sr_cyr": "Суботица",
+    "slug": "subotica",
+    "latitude": 46.1028,
+    "longitude": 19.6496,
+    "priority": "Medium",
+    "notes": "Cultural.Industrial/Technical Hub"
+  },
+  {
+    "name_en": "Ruma",
+    "name_sr_lat": "Ruma",
+    "name_sr_cyr": "Рума",
+    "slug": "ruma",
+    "latitude": 45.0081,
+    "longitude": 19.816,
+    "priority": "Medium",
+    "notes": "Industrial/Technical Hub"
+  },
+  {
+    "name_en": "Aranđelovac",
+    "name_sr_lat": "Aranđelovac",
+    "name_sr_cyr": "Аранђеловац",
+    "slug": "arandjelovac",
+    "latitude": 44.3069,
+    "longitude": 20.56,
+    "priority": "Seasonal",
+    "notes": "Tourist/Industrial Hub"
+  }
+]

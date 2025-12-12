@@ -1,0 +1,147 @@
+[
+  {
+    "Term (Serbian)": "Novogradnja",
+    "Term (English)": "New Construction",
+    "Description": "Newly built property",
+    "Category": "Status"
+  },
+  {
+    "Term (Serbian)": "U izgradnji",
+    "Term (English)": "Under Construction",
+    "Description": "Currently being built",
+    "Category": "Status"
+  },
+  {
+    "Term (Serbian)": "Useljivo",
+    "Term (English)": "Ready to Move In",
+    "Description": "Construction complete, ready for occupancy",
+    "Category": "Status"
+  },
+  {
+    "Term (Serbian)": "Siva faza",
+    "Term (English)": "Grey Phase",
+    "Description": "Unfinished interior, raw walls",
+    "Category": "Status"
+  },
+  {
+    "Term (Serbian)": "Ključ u ruke",
+    "Term (English)": "Turnkey",
+    "Description": "Fully finished and ready",
+    "Category": "Status"
+  },
+  {
+    "Term (Serbian)": "Povraćaj PDV-a",
+    "Term (English)": "VAT Refund",
+    "Description": "VAT refund available for first-time buyers",
+    "Category": "Financial"
+  },
+  {
+    "Term (Serbian)": "Sa PDV-om",
+    "Term (English)": "VAT Included",
+    "Description": "Price includes 10% VAT",
+    "Category": "Financial"
+  },
+  {
+    "Term (Serbian)": "Bez PDV-a",
+    "Term (English)": "Without VAT",
+    "Description": "Price excludes VAT",
+    "Category": "Financial"
+  },
+  {
+    "Term (Serbian)": "Garsonjera",
+    "Term (English)": "Studio",
+    "Description": "Single room apartment",
+    "Category": "Layout"
+  },
+  {
+    "Term (Serbian)": "Jednosoban",
+    "Term (English)": "1 Room",
+    "Description": "Living/bedroom combined or separate kitchen",
+    "Category": "Layout"
+  },
+  {
+    "Term (Serbian)": "Dvosoban",
+    "Term (English)": "2 Rooms",
+    "Description": "1 Living + 1 Bedroom",
+    "Category": "Layout"
+  },
+  {
+    "Term (Serbian)": "Trosoban",
+    "Term (English)": "3 Rooms",
+    "Description": "1 Living + 2 Bedrooms",
+    "Category": "Layout"
+  },
+  {
+    "Term (Serbian)": "Četvorosoban",
+    "Term (English)": "4 Rooms",
+    "Description": "1 Living + 3 Bedrooms",
+    "Category": "Layout"
+  },
+  {
+    "Term (Serbian)": "Dnevna soba",
+    "Term (English)": "Living Room",
+    "Category": "Room"
+  },
+  {
+    "Term (Serbian)": "Spavaća soba",
+    "Term (English)": "Bedroom",
+    "Category": "Room"
+  },
+  {
+    "Term (Serbian)": "Kuhinja",
+    "Term (English)": "Kitchen",
+    "Category": "Room"
+  },
+  {
+    "Term (Serbian)": "Kupatilo",
+    "Term (English)": "Bathroom",
+    "Category": "Room"
+  },
+  {
+    "Term (Serbian)": "Terasa",
+    "Term (English)": "Terrace",
+    "Category": "Room"
+  },
+  {
+    "Term (Serbian)": "Centralno grejanje",
+    "Term (English)": "Central Heating",
+    "Description": "District/building heating system",
+    "Category": "Heating"
+  },
+  {
+    "Term (Serbian)": "Etažno grejanje",
+    "Term (English)": "Individual Heating",
+    "Description": "Apartment-level heating",
+    "Category": "Heating"
+  },
+  {
+    "Term (Serbian)": "Toplotna pumpa",
+    "Term (English)": "Heat Pump",
+    "Description": "Heat pump system",
+    "Category": "Heating"
+  },
+  {
+    "Term (Serbian)": "Opština",
+    "Term (English)": "Municipality",
+    "Description": "Administrative district",
+    "Category": "Location"
+  },
+  {
+    "Term (Serbian)": "Naselje",
+    "Term (English)": "Neighborhood",
+    "Description": "Residential area within municipality",
+    "Category": "Location"
+  },
+  {
+    "Term (Serbian)": "Kvadratura",
+    "Term (English)": "Square Meters",
+    "Description": "Area measurement (m²)",
+    "Category": "Measurement"
+  },
+  {
+    "Term (Serbian)": "PIB",
+    "Term (English)": "Tax ID",
+    "Description": "Company tax identification number",
+    "Category": "Business"
+  }
+]

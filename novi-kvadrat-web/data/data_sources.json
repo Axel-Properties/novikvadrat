@@ -1,0 +1,50 @@
+[
+  {
+    "Source Name": "Halo Oglasi",
+    "URL": "halooglasi.com/nekretnine",
+    "Use For": "Listings, prices per m²",
+    "Priority": "Primary"
+  },
+  {
+    "Source Name": "4zida",
+    "URL": "4zida.rs",
+    "Use For": "New projects (Novogradnja section)",
+    "Priority": "Primary"
+  },
+  {
+    "Source Name": "City Expert",
+    "URL": "cityexpert.rs",
+    "Use For": "Verified floor plans, 360 views",
+    "Priority": "Primary"
+  },
+  {
+    "Source Name": "Sasomange",
+    "URL": "sasomange.rs",
+    "Use For": "Secondary validation",
+    "Priority": "Secondary"
+  },
+  {
+    "Source Name": "Beobuild",
+    "URL": "beobuild.rs",
+    "Use For": "Construction progress news/photos",
+    "Priority": "Secondary"
+  },
+  {
+    "Source Name": "GeoSrbija (Katastar)",
+    "URL": "geosrbija.rs",
+    "Use For": "Verifying lot numbers, building outlines",
+    "Priority": "Verification"
+  },
+  {
+    "Source Name": "APR",
+    "URL": "apr.gov.rs",
+    "Use For": "Verifying developer company status",
+    "Priority": "Verification"
+  },
+  {
+    "Source Name": "Google Street View",
+    "URL": "maps.google.com",
+    "Use For": "Checking actual location surroundings",
+    "Priority": "Verification"
+  }
+]

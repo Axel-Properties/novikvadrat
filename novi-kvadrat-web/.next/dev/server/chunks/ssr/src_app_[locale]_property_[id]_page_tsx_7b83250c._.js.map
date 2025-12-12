@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/abdullahkahvecioglu/DEV/novikvadrat/novi-kvadrat-web/src/app/%5Blocale%5D/property/%5Bid%5D/page.tsx"],"sourcesContent":["'use client'\n\nimport { useEffect } from 'react'\nimport { useRouter } from 'next/navigation'\n\nexport default function PropertyRedirect() {\n  const router = useRouter()\n  \n  useEffect(() => {\n    // Redirect to projects page for now\n    router.push('/novogradnja/beograd')\n  }, [router])\n  \n  return (\n    <div className=\"min-h-screen flex items-center justify-center\">\n      <p>Redirecting...</p>\n    </div>\n  )\n}"],"names":[],"mappings":";;;;;AAEA;AACA;AAHA;;;;AAKe,SAAS;IACtB,MAAM,SAAS,IAAA,+IAAS;IAExB,IAAA,kNAAS,EAAC;QACR,oCAAoC;QACpC,OAAO,IAAI,CAAC;IACd,GAAG;QAAC;KAAO;IAEX,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;sBAAE;;;;;;;;;;;AAGT"}}]
+}

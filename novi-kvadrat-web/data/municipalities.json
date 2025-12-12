@@ -1,0 +1,110 @@
+[
+  {
+    "city": "Belgrade",
+    "name_en": "Stari Grad",
+    "name_sr": "Stari Grad",
+    "type": "Municipality",
+    "priority": "High",
+    "notes": "Historical Center"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Vračar",
+    "name_sr": "Vračar",
+    "type": "Municipality",
+    "priority": "High",
+    "notes": "Premium/Historical"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Savski Venac",
+    "name_sr": "Savski Venac",
+    "type": "Municipality",
+    "priority": "Critical",
+    "notes": "Belgrade Waterfront Area"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Novi Beograd",
+    "name_sr": "Novi Beograd",
+    "type": "Municipality",
+    "priority": "Critical",
+    "notes": "Business Hub"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Zvezdara",
+    "name_sr": "Zvezdara",
+    "type": "Municipality",
+    "priority": "Medium",
+    "notes": "Residential"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Voždovac",
+    "name_sr": "Voždovac",
+    "type": "Municipality",
+    "priority": "Medium",
+    "notes": "Mixed"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Zemun",
+    "name_sr": "Zemun",
+    "type": "Municipality",
+    "priority": "Medium",
+    "notes": "Historical/Residential"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Palilula",
+    "name_sr": "Palilula",
+    "type": "Municipality",
+    "priority": "Medium",
+    "notes": "Developing"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Čukarica",
+    "name_sr": "Čukarica",
+    "type": "Municipality",
+    "priority": "Medium",
+    "notes": "Banovo Brdo"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Blok 65",
+    "name_sr": "Blok 65",
+    "type": "Neighborhood",
+    "parent_municipality": "Novi Beograd",
+    "notes": "West 65, Airport City"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Savski Blokovi",
+    "name_sr": "Savski Blokovi",
+    "type": "Neighborhood",
+    "parent_municipality": "Novi Beograd"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Bežanijska Kosa",
+    "name_sr": "Bežanijska Kosa",
+    "type": "Neighborhood",
+    "parent_municipality": "Novi Beograd"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Belville",
+    "name_sr": "Belville",
+    "type": "Neighborhood",
+    "parent_municipality": "Novi Beograd"
+  },
+  {
+    "city": "Belgrade",
+    "name_en": "Ušće",
+    "name_sr": "Ušće",
+    "type": "Neighborhood",
+    "parent_municipality": "Novi Beograd"
+  }
+]
