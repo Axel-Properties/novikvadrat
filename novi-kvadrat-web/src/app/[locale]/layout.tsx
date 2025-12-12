@@ -1,16 +1,13 @@
-import { locales, type Locale } from '@/i18n/config'
+import { locales } from '@/i18n/config'
 import { ReactNode } from 'react'
 
-// Generate static params for all locales from config
-// This ensures new locales added to config are automatically included
-export function generateStaticParams(): Array<{ locale: Locale }> {
+export function generateStaticParams(): Array<{ locale: "en" | "sr" | "sr-cyrl" }> {
   return locales.map((locale) => ({ locale }))
 }
 
 type Props = {
   children: ReactNode
-  // Use Locale type to maintain consistency with generateStaticParams and config
-  params: Promise<{ locale: Locale }>
+  params: Promise<{ locale: "en" | "sr" | "sr-cyrl" }>
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
