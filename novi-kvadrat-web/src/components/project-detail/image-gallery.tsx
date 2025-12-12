@@ -13,11 +13,16 @@ import {
   Play,
   View
 } from 'lucide-react'
-import type { ProjectImage } from '@/types/database'
+interface GalleryImage {
+  id: string
+  url: string
+  caption?: string | null
+  image_type?: string
+}
 
 interface ImageGalleryProps {
   mainImage?: string | null
-  images: ProjectImage[]
+  images: GalleryImage[]
   projectName: string
   videoUrl?: string | null
   virtualTourUrl?: string | null
