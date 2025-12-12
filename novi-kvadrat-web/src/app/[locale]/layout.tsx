@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
-export function generateStaticParams() {
+export function generateStaticParams(): { locale: "en" | "sr" | "sr-cyrl" }[] {
   return [
-    { locale: 'en' as const },
-    { locale: 'sr' as const },
-    { locale: 'sr-cyrl' as const }
+    { locale: 'en' },
+    { locale: 'sr' },
+    { locale: 'sr-cyrl' }
   ]
 }
 
