@@ -140,3 +140,4 @@ CREATE TRIGGER trigger_update_spot_stats
 AFTER INSERT OR UPDATE OR DELETE ON construction_progress_photos
 FOR EACH ROW
 EXECUTE FUNCTION update_spot_photo_stats();
+

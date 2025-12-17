@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/abdullahkahvecioglu/DEV/novikvadrat/novi-kvadrat-web/src/app/%5Blocale%5D/layout.tsx"],"sourcesContent":["import { ReactNode } from 'react'\n\nexport function generateStaticParams() {\n  return [\n    { locale: 'en' },\n    { locale: 'sr' },\n    { locale: 'sr-cyrl' }\n  ]\n}\n\nexport default async function LocaleLayout({\n  children,\n  params,\n}: {\n  children: ReactNode\n  params: Promise<{ locale: string }>\n}) {\n  const { locale } = await params\n  return children\n}"],"names":[],"mappings":";;;;;;AAEO,SAAS;IACd,OAAO;QACL;YAAE,QAAQ;QAAK;QACf;YAAE,QAAQ;QAAK;QACf;YAAE,QAAQ;QAAU;KACrB;AACH;AAEe,eAAe,aAAa,EACzC,QAAQ,EACR,MAAM,EAIP;IACC,MAAM,EAAE,MAAM,EAAE,GAAG,MAAM;IACzB,OAAO;AACT"}}]
-}

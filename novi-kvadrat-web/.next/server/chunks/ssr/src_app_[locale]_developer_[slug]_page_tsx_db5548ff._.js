@@ -1,3 +1,0 @@
-module.exports=[42597,a=>{"use strict";var b=a.i(87924),c=a.i(72131),d=a.i(50944);function e(){let a=(0,d.useRouter)();return(0,c.useEffect)(()=>{a.push("/novogradnja/beograd")},[a]),(0,b.jsx)("div",{className:"min-h-screen flex items-center justify-center",children:(0,b.jsx)("p",{children:"Redirecting..."})})}a.s(["default",()=>e])}];
-
-//# sourceMappingURL=src_app_%5Blocale%5D_developer_%5Bslug%5D_page_tsx_db5548ff._.js.map
