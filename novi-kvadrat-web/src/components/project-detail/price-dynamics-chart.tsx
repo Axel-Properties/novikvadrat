@@ -184,3 +184,4 @@ export function PriceDynamicsChart({
     </Card>
   )
 }
+
