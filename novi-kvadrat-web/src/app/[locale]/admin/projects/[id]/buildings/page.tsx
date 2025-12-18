@@ -120,7 +120,10 @@ export default function BuildingsPage() {
       key: 'building_type',
       title: 'Type',
       render: (building) => building.building_type ? (
-        <Badge style={{ backgroundColor: building.building_type.color + '20', color: building.building_type.color }}>
+        <Badge style={{ 
+          backgroundColor: (building.building_type.color || '#666666') + '20', 
+          color: building.building_type.color || '#666666' 
+        }}>
           {building.building_type.name}
         </Badge>
       ) : (

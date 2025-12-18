@@ -409,8 +409,8 @@ export default function PropertiesDashboardPage() {
                             {building.building_type && (
                               <Badge
                                 style={{
-                                  backgroundColor: building.building_type.color + '20',
-                                  color: building.building_type.color
+                                  backgroundColor: (building.building_type.color || '#666666') + '20',
+                                  color: building.building_type.color || '#666666'
                                 }}
                                 className="mt-1"
                               >
@@ -611,11 +611,10 @@ export default function PropertiesDashboardPage() {
                           {dayEvents.slice(0, 2).map((event) => (
                             <div
                               key={event.id}
-                              className={`text-xs p-1 rounded truncate ${
-                                event.type === 'availability' ? 'bg-green-100 text-green-800' :
-                                event.type === 'completion' ? 'bg-blue-100 text-blue-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}
+                              className={`text-xs p-1 rounded truncate ${event.type === 'availability' ? 'bg-green-100 text-green-800' :
+                                  event.type === 'completion' ? 'bg-blue-100 text-blue-800' :
+                                    'bg-gray-100 text-gray-800'
+                                }`}
                               title={event.title}
                             >
                               {event.title}
@@ -644,9 +643,8 @@ export default function PropertiesDashboardPage() {
                       .slice(0, 5)
                       .map((event) => (
                         <div key={event.id} className="flex items-center gap-3 p-2 border rounded">
-                          <div className={`w-2 h-2 rounded ${
-                            event.type === 'availability' ? 'bg-green-500' : 'bg-blue-500'
-                          }`} />
+                          <div className={`w-2 h-2 rounded ${event.type === 'availability' ? 'bg-green-500' : 'bg-blue-500'
+                            }`} />
                           <div className="flex-1">
                             <div className="font-medium text-sm">{event.title}</div>
                             <div className="text-xs text-gray-500">
