@@ -17,10 +17,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  ChevronsLeft, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
   ChevronsRight,
   Search,
   MoreHorizontal,
@@ -34,7 +34,7 @@ import { cn } from '@/lib/utils'
 
 export interface Column<T> {
   key: keyof T | string
-  title: string
+  title: React.ReactNode
   render?: (item: T) => React.ReactNode
   sortable?: boolean
   className?: string
@@ -84,12 +84,12 @@ export function DataTable<T extends { id: string }>({
   // Filter data based on search
   const filteredData = searchKey
     ? data.filter(item => {
-        const value = item[searchKey]
-        if (typeof value === 'string') {
-          return value.toLowerCase().includes(search.toLowerCase())
-        }
-        return true
-      })
+      const value = item[searchKey]
+      if (typeof value === 'string') {
+        return value.toLowerCase().includes(search.toLowerCase())
+      }
+      return true
+    })
     : data
 
   // Pagination
@@ -133,8 +133,8 @@ export function DataTable<T extends { id: string }>({
           <TableHeader>
             <TableRow className="bg-gray-50">
               {columns.map((column) => (
-                <TableHead 
-                  key={String(column.key)} 
+                <TableHead
+                  key={String(column.key)}
                   className={cn("font-semibold", column.className)}
                 >
                   {column.title}
@@ -165,7 +165,7 @@ export function DataTable<T extends { id: string }>({
                 <TableRow key={item.id} className="hover:bg-gray-50">
                   {columns.map((column) => (
                     <TableCell key={String(column.key)} className={column.className}>
-                      {column.render 
+                      {column.render
                         ? column.render(item)
                         : getValue(item, String(column.key))
                       }
@@ -211,7 +211,7 @@ export function DataTable<T extends { id: string }>({
                             )
                           )}
                           {onDelete && (
-                            <DropdownMenuItem 
+                            <DropdownMenuItem
                               onClick={() => onDelete(item)}
                               className="text-red-600"
                             >
