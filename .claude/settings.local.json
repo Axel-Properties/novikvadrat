@@ -18,7 +18,9 @@
       "Read(/var/folders/bf/hfm7q75174b48nhkmdp8kjf80000gn/T/TemporaryItems/NSIRD_screencaptureui_NTmtps/**)",
       "Bash(find:*)",
       "Bash(ls:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

@@ -79,19 +79,23 @@ export async function POST(
     if (error) throw error
 
     // Update project total_buildings count
-    await supabase.rpc('update_project_building_count', { p_project_id: id }).catch(() => {
-      // If RPC doesn't exist, update manually
-      supabase
-        .from('project_buildings')
-        .select('id')
-        .eq('project_id', id)
-        .then(({ data: buildings }) => {
-          supabase
-            .from('projects')
-            .update({ total_buildings: buildings?.length || 0 })
-            .eq('id', id)
-        })
-    })
+    try {
+      const { error: rpcError } = await supabase.rpc('update_project_building_count', { p_project_id: id })
+      if (rpcError) {
+        // If RPC doesn't exist, update manually
+        const { data: buildings } = await supabase
+          .from('project_buildings')
+          .select('id')
+          .eq('project_id', id)
+
+        await supabase
+          .from('projects')
+          .update({ total_buildings: buildings?.length || 0 })
+          .eq('id', id)
+      }
+    } catch {
+      // Silently fail - count update is not critical
+    }
 
     return NextResponse.json(data)
   } catch (error) {
