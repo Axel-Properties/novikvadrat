@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/select'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
-import { Loader2, Image, Layers, Sparkles, Building2, Camera, TrendingUp } from 'lucide-react'
+import { Loader2, Image, Layers, Sparkles, Building2, Camera, TrendingUp, Home, LayoutGrid, Tags } from 'lucide-react'
 
 interface City {
   id: string
@@ -249,10 +249,14 @@ export default function EditProjectPage() {
   }
 
   const subPages = [
+    { label: 'Properties', href: `/admin/projects/${params.id}/properties`, icon: LayoutGrid, highlight: true },
+    { label: 'Buildings', href: `/admin/projects/${params.id}/buildings`, icon: Building2 },
+    { label: 'Units', href: `/admin/projects/${params.id}/units`, icon: Home },
+    { label: 'Building Types', href: `/admin/projects/${params.id}/building-types`, icon: Tags },
+    { label: 'Unit Types', href: `/admin/projects/${params.id}/unit-types`, icon: Tags },
     { label: 'Images', href: `/admin/projects/${params.id}/images`, icon: Image },
     { label: 'Layouts', href: `/admin/projects/${params.id}/layouts`, icon: Layers },
     { label: 'Amenities', href: `/admin/projects/${params.id}/amenities`, icon: Sparkles },
-    { label: 'Buildings', href: `/admin/projects/${params.id}/buildings`, icon: Building2 },
     { label: 'Progress', href: `/admin/projects/${params.id}/progress`, icon: Camera },
     { label: 'Price History', href: `/admin/projects/${params.id}/price-history`, icon: TrendingUp },
   ]
@@ -268,8 +272,11 @@ export default function EditProjectPage() {
       {/* Sub-navigation */}
       <div className="flex flex-wrap gap-2 mb-6">
         {subPages.map((page) => (
-          <Link key={page.href} href={page.href}>
-            <Button variant="outline" size="sm">
+          <Link key={page.href} href={`/${locale}${page.href}`}>
+            <Button
+              variant={(page as { highlight?: boolean }).highlight ? "default" : "outline"}
+              size="sm"
+            >
               <page.icon className="h-4 w-4 mr-2" />
               {page.label}
             </Button>

@@ -117,7 +117,8 @@ export type Database = {
           name_en: string
           name_sr: string
           icon: string | null
-          category: 'building' | 'apartment' | 'location' | 'outdoor' | 'security' | 'other'
+          category: 'unit_features' | 'building_amenities' | 'appliances' | 'smart_features' | 'security_features'
+          sort_order: number
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['amenities']['Row'], 'id' | 'created_at'>
@@ -197,11 +198,115 @@ export type Database = {
           latitude: number | null
           longitude: number | null
           sort_order: number
+          building_type_id: string | null
+          building_group: string | null
           created_at: string
           updated_at: string
         }
         Insert: Omit<Database['public']['Tables']['project_buildings']['Row'], 'id' | 'created_at' | 'updated_at'>
         Update: Partial<Database['public']['Tables']['project_buildings']['Insert']>
+      }
+      building_types: {
+        Row: {
+          id: string
+          project_id: string
+          name: string
+          name_sr: string | null
+          description: string | null
+          color: string | null
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['building_types']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['building_types']['Insert']>
+      }
+      unit_types: {
+        Row: {
+          id: string
+          project_id: string
+          name: string
+          name_sr: string | null
+          description: string | null
+          default_price_multiplier: number
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['unit_types']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['unit_types']['Insert']>
+      }
+      units: {
+        Row: {
+          id: string
+          project_id: string
+          building_id: string
+          unit_number: string
+          floor: number
+          unit_type_id: string | null
+          layout_id: string | null
+          property_category: 'apartment' | 'studio' | 'penthouse' | 'duplex' | 'loft' | 'commercial' | 'parking' | 'storage'
+          status: 'available' | 'reserved' | 'sold' | 'rented' | 'unavailable' | 'coming_soon'
+          orientation: 'north' | 'south' | 'east' | 'west' | 'northeast' | 'northwest' | 'southeast' | 'southwest' | null
+          view_type: 'city' | 'park' | 'river' | 'sea' | 'mountain' | 'courtyard' | 'street' | 'garden' | null
+          furnishing_status: 'unfurnished' | 'semi_furnished' | 'fully_furnished' | 'turnkey'
+          total_area: number
+          living_area: number | null
+          terrace_area: number | null
+          balcony_area: number | null
+          garden_area: number | null
+          bedrooms: number
+          bathrooms: number
+          has_terrace: boolean
+          has_balcony: boolean
+          has_garden: boolean
+          has_parking: boolean
+          has_storage: boolean
+          parking_spots: number
+          parking_type: 'indoor' | 'outdoor' | 'underground' | 'covered' | null
+          description: string | null
+          internal_notes: string | null
+          price: number | null
+          price_per_sqm: number | null
+          original_price: number | null
+          available_from: string | null
+          hero_image_url: string | null
+          floor_plan_2d_url: string | null
+          floor_plan_3d_url: string | null
+          floor_plan_with_dimensions_url: string | null
+          virtual_tour_url: string | null
+          is_active: boolean
+          is_featured: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['units']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['units']['Insert']>
+      }
+      unit_features: {
+        Row: {
+          id: string
+          unit_id: string
+          amenity_id: string
+          notes: string | null
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['unit_features']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['unit_features']['Insert']>
+      }
+      unit_images: {
+        Row: {
+          id: string
+          unit_id: string
+          url: string
+          caption: string | null
+          image_type: 'interior' | 'exterior' | 'floor_plan' | 'view' | 'bathroom' | 'kitchen' | 'bedroom' | 'living_room' | 'other'
+          is_primary: boolean
+          sort_order: number
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['unit_images']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['unit_images']['Insert']>
       }
       construction_progress_spots: {
         Row: {
@@ -248,6 +353,11 @@ export type ProjectPriceHistory = Database['public']['Tables']['project_price_hi
 export type ProjectBuilding = Database['public']['Tables']['project_buildings']['Row']
 export type ConstructionProgressSpot = Database['public']['Tables']['construction_progress_spots']['Row']
 export type ConstructionProgressPhoto = Database['public']['Tables']['construction_progress_photos']['Row']
+export type BuildingType = Database['public']['Tables']['building_types']['Row']
+export type UnitType = Database['public']['Tables']['unit_types']['Row']
+export type Unit = Database['public']['Tables']['units']['Row']
+export type UnitFeature = Database['public']['Tables']['unit_features']['Row']
+export type UnitImage = Database['public']['Tables']['unit_images']['Row']
 
 // Extended types with relationships
 export type ProjectWithDetails = Project & {
@@ -258,7 +368,7 @@ export type ProjectWithDetails = Project & {
   layouts?: Layout[]
   amenities?: Amenity[]
   priceHistory?: ProjectPriceHistory[]
-  buildings?: ProjectBuilding[]
+  buildings?: ProjectBuildingWithType[]
   constructionProgress?: ConstructionProgressSpotWithPhotos[]
 }
 
@@ -269,4 +379,39 @@ export type ConstructionProgressSpotWithPhotos = ConstructionProgressSpot & {
 
 export type DeveloperWithProjects = Developer & {
   projects?: Project[]
+}
+
+export type ProjectBuildingWithType = ProjectBuilding & {
+  building_type?: BuildingType
+  units?: Unit[]
+}
+
+export type UnitWithDetails = Unit & {
+  building?: ProjectBuilding
+  unit_type?: UnitType
+  layout?: Layout
+  images?: UnitImage[]
+  features?: (UnitFeature & { amenity: Amenity })[]
+}
+
+// Amenity category type
+export type AmenityCategory = 'unit_features' | 'building_amenities' | 'appliances' | 'smart_features' | 'security_features'
+
+// Amenity category display names
+export const AMENITY_CATEGORIES: Record<AmenityCategory, { label: string; labelSr: string; icon: string }> = {
+  unit_features: { label: 'Unit Features', labelSr: 'Karakteristike stana', icon: 'home' },
+  building_amenities: { label: 'Building Amenities', labelSr: 'Sadržaji zgrade', icon: 'building-2' },
+  appliances: { label: 'Included Appliances', labelSr: 'Uključeni uređaji', icon: 'plug' },
+  smart_features: { label: 'Smart Features', labelSr: 'Smart funkcije', icon: 'cpu' },
+  security_features: { label: 'Security Features', labelSr: 'Sigurnosne funkcije', icon: 'shield' },
+}
+
+// Unit status display
+export const UNIT_STATUS: Record<string, { label: string; labelSr: string; color: string }> = {
+  available: { label: 'Available', labelSr: 'Dostupno', color: 'bg-green-100 text-green-800' },
+  reserved: { label: 'Reserved', labelSr: 'Rezervisano', color: 'bg-yellow-100 text-yellow-800' },
+  sold: { label: 'Sold', labelSr: 'Prodato', color: 'bg-blue-100 text-blue-800' },
+  rented: { label: 'Rented', labelSr: 'Iznajmljeno', color: 'bg-purple-100 text-purple-800' },
+  unavailable: { label: 'Unavailable', labelSr: 'Nedostupno', color: 'bg-gray-100 text-gray-800' },
+  coming_soon: { label: 'Coming Soon', labelSr: 'Uskoro', color: 'bg-orange-100 text-orange-800' },
 }

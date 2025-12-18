@@ -44,19 +44,26 @@ interface Amenity {
 }
 
 const categories = [
-  { value: 'building', label: 'Building' },
-  { value: 'apartment', label: 'Apartment' },
-  { value: 'location', label: 'Location' },
-  { value: 'outdoor', label: 'Outdoor' },
-  { value: 'security', label: 'Security' },
-  { value: 'other', label: 'Other' },
+  { value: 'unit_features', label: 'Unit Features', labelSr: 'Karakteristike stana' },
+  { value: 'building_amenities', label: 'Building Amenities', labelSr: 'Sadržaji zgrade' },
+  { value: 'appliances', label: 'Included Appliances', labelSr: 'Uključeni uređaji' },
+  { value: 'smart_features', label: 'Smart Features', labelSr: 'Smart funkcije' },
+  { value: 'security_features', label: 'Security Features', labelSr: 'Sigurnosne funkcije' },
 ]
+
+const categoryColors: Record<string, string> = {
+  unit_features: 'bg-blue-100 text-blue-800',
+  building_amenities: 'bg-green-100 text-green-800',
+  appliances: 'bg-orange-100 text-orange-800',
+  smart_features: 'bg-purple-100 text-purple-800',
+  security_features: 'bg-red-100 text-red-800',
+}
 
 const emptyAmenity = {
   name_en: '',
   name_sr: '',
   icon: '',
-  category: 'building'
+  category: 'unit_features'
 }
 
 export default function AmenitiesPage() {
@@ -210,11 +217,14 @@ export default function AmenitiesPage() {
     {
       key: 'category',
       title: 'Category',
-      render: (amenity) => (
-        <Badge variant="outline" className="capitalize">
-          {amenity.category}
-        </Badge>
-      )
+      render: (amenity) => {
+        const cat = categories.find(c => c.value === amenity.category)
+        return (
+          <Badge className={categoryColors[amenity.category] || 'bg-gray-100 text-gray-800'}>
+            {cat?.label || amenity.category}
+          </Badge>
+        )
+      }
     },
     {
       key: 'projects_count',
