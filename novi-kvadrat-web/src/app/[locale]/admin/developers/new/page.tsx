@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
 import { Loader2 } from 'lucide-react'
+import { FileUpload } from '@/components/admin/file-upload'
 
 export default function NewDeveloperPage() {
   const router = useRouter()
@@ -292,55 +293,47 @@ export default function NewDeveloperPage() {
           </TabsContent>
 
           <TabsContent value="media">
-            <Card>
-              <CardHeader>
-                <CardTitle>Media</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              {/* Logo */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Company Logo</CardTitle>
+                </CardHeader>
+                <CardContent>
                   <div className="space-y-2">
-                    <Label htmlFor="logo_url">Logo URL</Label>
-                    <Input
-                      id="logo_url"
-                      type="url"
+                    <Label>Developer Logo</Label>
+                    <FileUpload
                       value={formData.logo_url}
-                      onChange={(e) => setFormData(prev => ({ ...prev, logo_url: e.target.value }))}
-                      placeholder="https://..."
+                      onChange={(url) => setFormData(prev => ({ ...prev, logo_url: url }))}
+                      folder="developers"
+                      accept="image/*"
+                      placeholder="Drop logo image here or click to upload"
+                      showPreview={true}
                     />
-                    {formData.logo_url && (
-                      <div className="mt-2">
-                        <img 
-                          src={formData.logo_url} 
-                          alt="Logo preview" 
-                          className="h-20 w-auto rounded border"
-                          onError={(e) => (e.currentTarget.style.display = 'none')}
-                        />
-                      </div>
-                    )}
                   </div>
+                </CardContent>
+              </Card>
+
+              {/* Cover Image */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Cover Image</CardTitle>
+                </CardHeader>
+                <CardContent>
                   <div className="space-y-2">
-                    <Label htmlFor="cover_image_url">Cover Image URL</Label>
-                    <Input
-                      id="cover_image_url"
-                      type="url"
+                    <Label>Developer Cover Image</Label>
+                    <FileUpload
                       value={formData.cover_image_url}
-                      onChange={(e) => setFormData(prev => ({ ...prev, cover_image_url: e.target.value }))}
-                      placeholder="https://..."
+                      onChange={(url) => setFormData(prev => ({ ...prev, cover_image_url: url }))}
+                      folder="developers"
+                      accept="image/*"
+                      placeholder="Drop cover image here or click to upload"
+                      showPreview={true}
                     />
-                    {formData.cover_image_url && (
-                      <div className="mt-2">
-                        <img 
-                          src={formData.cover_image_url} 
-                          alt="Cover preview" 
-                          className="h-32 w-auto rounded border"
-                          onError={(e) => (e.currentTarget.style.display = 'none')}
-                        />
-                      </div>
-                    )}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import { PageHeader } from '@/components/admin'
+import { PageHeader, ProjectSubNav } from '@/components/admin'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -90,12 +90,13 @@ export default function EditUnitPage() {
 
   const [buildings, setBuildings] = useState<ProjectBuildingWithType[]>([])
   const [unitTypes, setUnitTypes] = useState<UnitType[]>([])
-  const [layouts, setLayouts] = useState<Layout[]>([])
+  const [allLayouts, setAllLayouts] = useState<Layout[]>([])
   const [amenities, setAmenities] = useState<Amenity[]>([])
   const [selectedFeatures, setSelectedFeatures] = useState<Set<string>>(new Set())
   const [projectName, setProjectName] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   const [formData, setFormData] = useState({
     // Basic Info
     building_id: '',
@@ -147,6 +148,24 @@ export default function EditUnitPage() {
     virtual_tour_url: '',
     gallery: [] as string[]
   })
+
+  // Filter layouts based on selected unit type
+  const filteredLayouts = formData.unit_type_id
+    ? (() => {
+        const selectedUnitType = unitTypes.find(t => t.id === formData.unit_type_id)
+        if (!selectedUnitType) return allLayouts
+
+        // Match unit type name (lowercase) with layout_type
+        const unitTypeNameLower = selectedUnitType.name.toLowerCase()
+        return allLayouts.filter(layout => {
+          if (!layout.layout_type) return false
+          // Try to match layout_type with unit type name
+          return layout.layout_type.toLowerCase() === unitTypeNameLower ||
+                 layout.layout_type.toLowerCase().includes(unitTypeNameLower) ||
+                 unitTypeNameLower.includes(layout.layout_type.toLowerCase())
+        })
+      })()
+    : allLayouts
 
   useEffect(() => {
     fetchInitialData()
@@ -205,7 +224,7 @@ export default function EditUnitPage() {
       const response = await fetch(`/api/admin/projects/${projectId}/layouts`)
       if (response.ok) {
         const data = await response.json()
-        setLayouts(data)
+        setAllLayouts(data)
       }
     } catch (error) {
       console.error('Failed to fetch layouts:', error)
@@ -392,10 +411,12 @@ export default function EditUnitPage() {
   return (
     <>
       <PageHeader
-        title="Edit Unit"
-        description={`${projectName} • ${formData.unit_number}`}
+        title={`Edit Unit: ${formData.unit_number}`}
+        description={projectName}
         backHref={`/${locale}/admin/projects/${projectId}/units`}
       />
+
+      <ProjectSubNav />
 
       <form onSubmit={handleSubmit}>
         <Tabs defaultValue="basic" className="w-full">
@@ -497,7 +518,26 @@ export default function EditUnitPage() {
                     <Label htmlFor="unit_type_id">Unit Type</Label>
                     <Select
                       value={formData.unit_type_id}
-                      onValueChange={(v) => setFormData(prev => ({ ...prev, unit_type_id: v }))}
+                      onValueChange={(v) => {
+                        setFormData(prev => {
+                          // Clear layout if it doesn't match the new unit type
+                          const newLayoutId = prev.layout_id
+                          const selectedUnitType = unitTypes.find(t => t.id === v)
+                          if (newLayoutId && selectedUnitType) {
+                            const currentLayout = allLayouts.find(l => l.id === newLayoutId)
+                            if (currentLayout) {
+                              const unitTypeNameLower = selectedUnitType.name.toLowerCase()
+                              const matches = currentLayout.layout_type?.toLowerCase() === unitTypeNameLower ||
+                                            currentLayout.layout_type?.toLowerCase().includes(unitTypeNameLower) ||
+                                            unitTypeNameLower.includes(currentLayout.layout_type?.toLowerCase() || '')
+                              if (!matches) {
+                                return { ...prev, unit_type_id: v, layout_id: '' }
+                              }
+                            }
+                          }
+                          return { ...prev, unit_type_id: v }
+                        })
+                      }}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select type" />
@@ -505,7 +545,7 @@ export default function EditUnitPage() {
                       <SelectContent>
                         {unitTypes.map((type) => (
                           <SelectItem key={type.id} value={type.id}>
-                            {type.name}
+                            {type.name_sr ? `${type.name_sr} (${type.name})` : type.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -516,16 +556,21 @@ export default function EditUnitPage() {
                     <Select
                       value={formData.layout_id}
                       onValueChange={(v) => setFormData(prev => ({ ...prev, layout_id: v }))}
+                      disabled={Boolean(formData.unit_type_id) && filteredLayouts.length === 0}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select layout" />
+                        <SelectValue placeholder={formData.unit_type_id && filteredLayouts.length === 0 ? "No layouts for this type" : "Select layout"} />
                       </SelectTrigger>
                       <SelectContent>
-                        {layouts.map((layout) => (
-                          <SelectItem key={layout.id} value={layout.id}>
-                            {layout.name}
-                          </SelectItem>
-                        ))}
+                        {filteredLayouts.length > 0 ? (
+                          filteredLayouts.map((layout) => (
+                            <SelectItem key={layout.id} value={layout.id}>
+                              {layout.name}
+                            </SelectItem>
+                          ))
+                        ) : (
+                          <SelectItem value="none" disabled>No layouts available</SelectItem>
+                        )}
                       </SelectContent>
                     </Select>
                   </div>

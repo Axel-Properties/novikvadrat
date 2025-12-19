@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { PageHeader } from '@/components/admin'
 import { Card, CardContent } from '@/components/ui/card'
@@ -8,9 +8,24 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
 import { Loader2 } from 'lucide-react'
+
+interface Country {
+  id: string
+  name_en: string
+  name_sr_lat: string
+  country_code: string
+  is_active: boolean
+}
 
 export default function NewCityPage() {
   const router = useRouter()
@@ -18,17 +33,40 @@ export default function NewCityPage() {
   const locale = params.locale as string || 'en'
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [countries, setCountries] = useState<Country[]>([])
   const [formData, setFormData] = useState({
     name_en: '',
     name_sr_lat: '',
     name_sr_cyr: '',
     slug: '',
-    country: 'Serbia',
+    country: '',
     latitude: '',
     longitude: '',
     is_active: true,
     sort_order: 0
   })
+
+  useEffect(() => {
+    fetchCountries()
+  }, [])
+
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch('/api/admin/countries')
+      if (response.ok) {
+        const data = await response.json()
+        const activeCountries = data.filter((c: Country) => c.is_active)
+        setCountries(activeCountries)
+        // Set default to Serbia if available
+        const serbia = activeCountries.find((c: Country) => c.country_code === 'RS')
+        if (serbia) {
+          setFormData(prev => ({ ...prev, country: serbia.name_en }))
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch countries:', error)
+    }
+  }
 
   const generateSlug = (name: string) => {
     return name
@@ -143,13 +181,22 @@ export default function NewCityPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="country">Country *</Label>
-                <Input
-                  id="country"
-                  value={formData.country}
-                  onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
-                  placeholder="e.g., Serbia"
+                <Select 
+                  value={formData.country} 
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, country: value }))}
                   required
-                />
+                >
+                  <SelectTrigger id="country">
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {countries.map((country) => (
+                      <SelectItem key={country.id} value={country.name_en}>
+                        {country.name_en} ({country.country_code})
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 

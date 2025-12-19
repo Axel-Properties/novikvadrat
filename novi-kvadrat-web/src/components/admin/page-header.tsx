@@ -29,7 +29,7 @@ export function PageHeader({ title, description, backHref, action, children }: P
   }
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
       <div className="flex items-center gap-4">
         {backHref && (
           <Link href={getHref(backHref)}>

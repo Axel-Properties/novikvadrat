@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import { PageHeader } from '@/components/admin'
+import { PageHeader, ProjectSubNav } from '@/components/admin'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -168,12 +168,14 @@ export default function ProjectAmenitiesPage() {
   return (
     <>
       <PageHeader
-        title="Project Amenities"
-        description={`Managing amenities for: ${projectName}`}
+        title="Amenities"
+        description={projectName}
         backHref={`/admin/projects/${params.id}`}
       />
 
-      <div className="mb-6 flex items-center justify-between">
+      <ProjectSubNav />
+
+      <div className="mb-4 flex items-center justify-between">
         <div className="relative w-64">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
           <Input

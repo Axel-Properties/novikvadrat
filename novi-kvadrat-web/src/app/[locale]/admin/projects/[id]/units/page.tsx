@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import { PageHeader, DataTable, Column } from '@/components/admin'
+import { PageHeader, DataTable, Column, ProjectSubNav } from '@/components/admin'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -50,9 +50,9 @@ export default function UnitsPage() {
   const [deleteUnits, setDeleteUnits] = useState<string[] | null>(null)
 
   // Filters
-  const [filterBuilding, setFilterBuilding] = useState<string>('')
-  const [filterStatus, setFilterStatus] = useState<string>('')
-  const [filterFloor, setFilterFloor] = useState<string>('')
+  const [filterBuilding, setFilterBuilding] = useState<string>('all')
+  const [filterStatus, setFilterStatus] = useState<string>('all')
+  const [filterFloor, setFilterFloor] = useState<string>('all')
 
   useEffect(() => {
     fetchData()
@@ -98,9 +98,9 @@ export default function UnitsPage() {
     setIsLoading(true)
     try {
       const params = new URLSearchParams()
-      if (filterBuilding) params.set('building_id', filterBuilding)
-      if (filterStatus) params.set('status', filterStatus)
-      if (filterFloor) params.set('floor', filterFloor)
+      if (filterBuilding && filterBuilding !== 'all') params.set('building_id', filterBuilding)
+      if (filterStatus && filterStatus !== 'all') params.set('status', filterStatus)
+      if (filterFloor && filterFloor !== 'all') params.set('floor', filterFloor)
 
       const response = await fetch(`/api/admin/projects/${projectId}/units?${params}`)
       if (response.ok) {
@@ -321,13 +321,15 @@ export default function UnitsPage() {
     <>
       <PageHeader
         title="Units"
-        description={`Manage units for: ${projectName}`}
+        description={projectName}
         backHref={`/${locale}/admin/projects/${projectId}`}
         action={{
           label: 'Add Unit',
           href: `/${locale}/admin/projects/${projectId}/units/new`
         }}
       />
+
+      <ProjectSubNav />
 
       {/* Filters and Bulk Actions */}
       <div className="flex flex-wrap gap-4 mb-6">
@@ -338,7 +340,7 @@ export default function UnitsPage() {
               <SelectValue placeholder="All Buildings" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Buildings</SelectItem>
+              <SelectItem value="all">All Buildings</SelectItem>
               {buildings.map((building) => (
                 <SelectItem key={building.id} value={building.id}>
                   {building.name}
@@ -352,7 +354,7 @@ export default function UnitsPage() {
               <SelectValue placeholder="All Status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Status</SelectItem>
+              <SelectItem value="all">All Status</SelectItem>
               {Object.entries(UNIT_STATUS).map(([value, { label }]) => (
                 <SelectItem key={value} value={value}>
                   {label}
@@ -366,7 +368,7 @@ export default function UnitsPage() {
               <SelectValue placeholder="All Floors" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Floors</SelectItem>
+              <SelectItem value="all">All Floors</SelectItem>
               {floors.map((floor) => (
                 <SelectItem key={floor} value={floor.toString()}>
                   Floor {floor}

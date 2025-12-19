@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { PageHeader, DataTable, Column } from '@/components/admin'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -26,61 +27,45 @@ import {
 } from '@/components/ui/dialog'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
-import { Loader2, Home } from 'lucide-react'
-import { UnitType } from '@/types/database'
+import { Loader2 } from 'lucide-react'
+import { BuildingType } from '@/types/database'
 
-const emptyUnitType = {
+const emptyBuildingType = {
   name: '',
   name_sr: '',
   description: '',
-  default_price_multiplier: 1,
-  sort_order: 0
+  color: '#3B82F6'
 }
 
-export default function UnitTypesPage() {
+export default function BuildingTypesPage() {
   const params = useParams()
-  const projectId = params.id as string
   const locale = params.locale as string || 'en'
   const { toast } = useToast()
 
-  const [unitTypes, setUnitTypes] = useState<UnitType[]>([])
-  const [projectName, setProjectName] = useState('')
+  const [buildingTypes, setBuildingTypes] = useState<BuildingType[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [deleteType, setDeleteType] = useState<UnitType | null>(null)
+  const [deleteType, setDeleteType] = useState<BuildingType | null>(null)
   const [showDialog, setShowDialog] = useState(false)
-  const [editingType, setEditingType] = useState<UnitType | null>(null)
-  const [formData, setFormData] = useState(emptyUnitType)
+  const [editingType, setEditingType] = useState<BuildingType | null>(null)
+  const [formData, setFormData] = useState(emptyBuildingType)
 
   useEffect(() => {
-    fetchUnitTypes()
-    fetchProjectName()
-  }, [projectId])
+    fetchBuildingTypes()
+  }, [])
 
-  const fetchProjectName = async () => {
+  const fetchBuildingTypes = async () => {
     try {
-      const response = await fetch(`/api/admin/projects/${projectId}`)
+      const response = await fetch('/api/admin/building-types')
       if (response.ok) {
         const data = await response.json()
-        setProjectName(data.name)
+        setBuildingTypes(data)
       }
     } catch (error) {
-      console.error('Failed to fetch project:', error)
-    }
-  }
-
-  const fetchUnitTypes = async () => {
-    try {
-      const response = await fetch(`/api/admin/projects/${projectId}/unit-types`)
-      if (response.ok) {
-        const data = await response.json()
-        setUnitTypes(data)
-      }
-    } catch (error) {
-      console.error('Failed to fetch unit types:', error)
+      console.error('Failed to fetch building types:', error)
       toast({
         title: 'Error',
-        description: 'Failed to load unit types',
+        description: 'Failed to load building types',
         variant: 'destructive'
       })
     } finally {
@@ -88,19 +73,18 @@ export default function UnitTypesPage() {
     }
   }
 
-  const handleOpenDialog = (type?: UnitType) => {
+  const handleOpenDialog = (type?: BuildingType) => {
     if (type) {
       setEditingType(type)
       setFormData({
         name: type.name,
         name_sr: type.name_sr || '',
         description: type.description || '',
-        default_price_multiplier: type.default_price_multiplier || 1,
-        sort_order: type.sort_order || 0
+        color: type.color || '#3B82F6'
       })
     } else {
       setEditingType(null)
-      setFormData(emptyUnitType)
+      setFormData(emptyBuildingType)
     }
     setShowDialog(true)
   }
@@ -118,39 +102,35 @@ export default function UnitTypesPage() {
     setIsSubmitting(true)
     try {
       const url = editingType
-        ? `/api/admin/projects/${projectId}/unit-types/${editingType.id}`
-        : `/api/admin/projects/${projectId}/unit-types`
+        ? `/api/admin/building-types/${editingType.id}`
+        : '/api/admin/building-types'
 
       const response = await fetch(url, {
         method: editingType ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          default_price_multiplier: parseFloat(String(formData.default_price_multiplier)) || 1,
-          sort_order: parseInt(String(formData.sort_order)) || 0
-        })
+        body: JSON.stringify(formData)
       })
 
       if (response.ok) {
         const savedType = await response.json()
         if (editingType) {
-          setUnitTypes(prev => prev.map(t => t.id === savedType.id ? savedType : t))
+          setBuildingTypes(prev => prev.map(t => t.id === savedType.id ? savedType : t))
         } else {
-          setUnitTypes(prev => [...prev, savedType])
+          setBuildingTypes(prev => [...prev, savedType])
         }
         setShowDialog(false)
         toast({
           title: 'Success',
-          description: `Unit type ${editingType ? 'updated' : 'created'} successfully`
+          description: `Building type ${editingType ? 'updated' : 'created'} successfully`
         })
       } else {
         const error = await response.json()
-        throw new Error(error.error || 'Failed to save unit type')
+        throw new Error(error.error || 'Failed to save building type')
       }
     } catch (error) {
       toast({
         title: 'Error',
-        description: error instanceof Error ? error.message : 'Failed to save unit type',
+        description: error instanceof Error ? error.message : 'Failed to save building type',
         variant: 'destructive'
       })
     } finally {
@@ -163,15 +143,15 @@ export default function UnitTypesPage() {
 
     try {
       const response = await fetch(
-        `/api/admin/projects/${projectId}/unit-types/${deleteType.id}`,
+        `/api/admin/building-types/${deleteType.id}`,
         { method: 'DELETE' }
       )
 
       if (response.ok) {
-        setUnitTypes(prev => prev.filter(t => t.id !== deleteType.id))
+        setBuildingTypes(prev => prev.filter(t => t.id !== deleteType.id))
         toast({
           title: 'Success',
-          description: 'Unit type deleted successfully'
+          description: 'Building type deleted successfully'
         })
       } else {
         throw new Error('Failed to delete')
@@ -179,7 +159,7 @@ export default function UnitTypesPage() {
     } catch (error) {
       toast({
         title: 'Error',
-        description: 'Failed to delete unit type',
+        description: 'Failed to delete building type',
         variant: 'destructive'
       })
     } finally {
@@ -187,16 +167,22 @@ export default function UnitTypesPage() {
     }
   }
 
-  const columns: Column<UnitType>[] = [
+  const columns: Column<BuildingType>[] = [
+    {
+      key: 'color',
+      title: 'Color',
+      className: 'w-[60px]',
+      render: (type) => (
+        <div
+          className="w-6 h-6 rounded border"
+          style={{ backgroundColor: type.color || '#3B82F6' }}
+        />
+      )
+    },
     {
       key: 'name',
       title: 'Name',
-      render: (type) => (
-        <div className="flex items-center gap-2">
-          <Home className="h-4 w-4 text-gray-400" />
-          <span className="font-medium">{type.name}</span>
-        </div>
-      )
+      render: (type) => <span className="font-medium">{type.name}</span>
     },
     {
       key: 'name_sr',
@@ -204,11 +190,11 @@ export default function UnitTypesPage() {
       render: (type) => type.name_sr || '-'
     },
     {
-      key: 'default_price_multiplier',
-      title: 'Price Multiplier',
+      key: 'description',
+      title: 'Description',
       render: (type) => (
-        <span className={type.default_price_multiplier !== 1 ? 'text-blue-600 font-medium' : ''}>
-          {type.default_price_multiplier?.toFixed(2) || '1.00'}x
+        <span className="text-gray-500 truncate max-w-[200px] block">
+          {type.description || '-'}
         </span>
       )
     },
@@ -222,31 +208,30 @@ export default function UnitTypesPage() {
   return (
     <>
       <PageHeader
-        title="Unit Types"
-        description={`Configure unit categories for: ${projectName}`}
-        backHref={`/${locale}/admin/projects/${projectId}`}
+        title="Building Types"
+        description="Manage building types that can be used across all projects"
         action={{
-          label: 'Add Unit Type',
+          label: 'Add Type',
           onClick: () => handleOpenDialog()
         }}
       />
 
       <DataTable
         columns={columns}
-        data={unitTypes}
+        data={buildingTypes}
         searchKey="name"
-        searchPlaceholder="Search unit types..."
+        searchPlaceholder="Search building types..."
         isLoading={isLoading}
-        emptyMessage="No unit types configured. Add your first unit type."
+        emptyMessage="No building types configured. Add your first building type."
         onEdit={(type) => handleOpenDialog(type)}
         onDelete={(type) => setDeleteType(type)}
       />
 
-      {/* Unit Type Form Dialog */}
+      {/* Building Type Form Dialog */}
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="max-w-md">
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle>{editingType ? 'Edit Unit Type' : 'Add Unit Type'}</DialogTitle>
+            <DialogTitle>{editingType ? 'Edit Building Type' : 'Add Building Type'}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
@@ -255,7 +240,7 @@ export default function UnitTypesPage() {
                 id="name"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                placeholder="e.g., Studio, Apartment"
+                placeholder="e.g., Street Front, Central, Premium"
               />
             </div>
             <div className="space-y-2">
@@ -264,7 +249,7 @@ export default function UnitTypesPage() {
                 id="name_sr"
                 value={formData.name_sr}
                 onChange={(e) => setFormData(prev => ({ ...prev, name_sr: e.target.value }))}
-                placeholder="e.g., Garsonjera, Stan"
+                placeholder="e.g., Uličn Front, Centralni, Premium"
               />
             </div>
             <div className="space-y-2">
@@ -273,36 +258,26 @@ export default function UnitTypesPage() {
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                placeholder="Optional description for this unit type"
-                rows={2}
+                placeholder="Optional description for this building type"
+                rows={3}
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="default_price_multiplier">Price Multiplier</Label>
-                <Input
-                  id="default_price_multiplier"
-                  type="number"
-                  step="0.01"
-                  min="0.1"
-                  max="10"
-                  value={formData.default_price_multiplier}
-                  onChange={(e) => setFormData(prev => ({ ...prev, default_price_multiplier: parseFloat(e.target.value) || 1 }))}
-                  placeholder="1.00"
+            <div className="space-y-2">
+              <Label htmlFor="color">Color</Label>
+              <div className="flex gap-2 items-center">
+                <input
+                  type="color"
+                  id="color"
+                  value={formData.color}
+                  onChange={(e) => setFormData(prev => ({ ...prev, color: e.target.value }))}
+                  className="w-10 h-10 rounded border cursor-pointer"
                 />
-                <p className="text-xs text-gray-500">Affects unit pricing calculations</p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="sort_order">Sort Order</Label>
                 <Input
-                  id="sort_order"
-                  type="number"
-                  min="0"
-                  value={formData.sort_order}
-                  onChange={(e) => setFormData(prev => ({ ...prev, sort_order: parseInt(e.target.value) || 0 }))}
-                  placeholder="0"
+                  value={formData.color}
+                  onChange={(e) => setFormData(prev => ({ ...prev, color: e.target.value }))}
+                  placeholder="#3B82F6"
+                  className="w-28"
                 />
-                <p className="text-xs text-gray-500">Lower = appears first</p>
               </div>
             </div>
           </div>
@@ -322,10 +297,10 @@ export default function UnitTypesPage() {
       <AlertDialog open={!!deleteType} onOpenChange={() => setDeleteType(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Unit Type</AlertDialogTitle>
+            <AlertDialogTitle>Delete Building Type</AlertDialogTitle>
             <AlertDialogDescription>
               Are you sure you want to delete "{deleteType?.name}"?
-              Units using this type will no longer be categorized.
+              Buildings using this type will no longer be categorized.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

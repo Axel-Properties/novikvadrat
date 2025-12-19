@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import { PageHeader, DataTable, Column } from '@/components/admin'
+import { PageHeader, DataTable, Column, ProjectSubNav } from '@/components/admin'
 import { Badge } from '@/components/ui/badge'
 import {
   AlertDialog,
@@ -167,13 +167,15 @@ export default function BuildingsPage() {
     <>
       <PageHeader
         title="Buildings"
-        description={`Manage buildings for: ${projectName}`}
+        description={projectName}
         backHref={`/${locale}/admin/projects/${projectId}`}
         action={{
           label: 'Add Building',
           href: `/${locale}/admin/projects/${projectId}/buildings/new`
         }}
       />
+
+      <ProjectSubNav />
 
       <DataTable
         columns={columns}

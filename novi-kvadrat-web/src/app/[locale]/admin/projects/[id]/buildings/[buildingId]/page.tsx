@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import { PageHeader } from '@/components/admin'
+import { PageHeader, ProjectSubNav } from '@/components/admin'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -69,7 +69,7 @@ export default function EditBuildingPage() {
 
   const fetchBuildingTypes = async () => {
     try {
-      const response = await fetch(`/api/admin/projects/${projectId}/building-types`)
+      const response = await fetch('/api/admin/building-types')
       if (response.ok) {
         const data = await response.json()
         setBuildingTypes(data)
@@ -167,10 +167,12 @@ export default function EditBuildingPage() {
   return (
     <>
       <PageHeader
-        title="Edit Building"
-        description={`${projectName} • ${formData.name}`}
+        title={`Edit Building: ${formData.name}`}
+        description={projectName}
         backHref={`/${locale}/admin/projects/${projectId}/buildings`}
       />
+
+      <ProjectSubNav />
 
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

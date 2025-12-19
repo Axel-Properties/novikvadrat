@@ -29,7 +29,7 @@ import {
   Eye
 } from 'lucide-react'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
 export interface Column<T> {
@@ -50,6 +50,7 @@ interface DataTableProps<T> {
   onView?: (item: T) => void
   editHref?: (item: T) => string
   viewHref?: (item: T) => string
+  rowHref?: (item: T) => string
   isLoading?: boolean
   emptyMessage?: string
   pageSize?: number
@@ -65,11 +66,13 @@ export function DataTable<T extends { id: string }>({
   onView,
   editHref,
   viewHref,
+  rowHref,
   isLoading = false,
   emptyMessage = 'No data found',
   pageSize = 10
 }: DataTableProps<T>) {
   const params = useParams()
+  const router = useRouter()
   const locale = params.locale as string || 'en'
   const [search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -161,70 +164,89 @@ export function DataTable<T extends { id: string }>({
                 </TableCell>
               </TableRow>
             ) : (
-              paginatedData.map((item) => (
-                <TableRow key={item.id} className="hover:bg-gray-50">
-                  {columns.map((column) => (
-                    <TableCell key={String(column.key)} className={column.className}>
-                      {column.render
-                        ? column.render(item)
-                        : getValue(item, String(column.key))
+              paginatedData.map((item) => {
+                const href = rowHref ? getHref(rowHref(item)) : undefined
+                return (
+                  <TableRow 
+                    key={item.id} 
+                    className={cn(
+                      "hover:bg-gray-50",
+                      href && "cursor-pointer"
+                    )}
+                    onClick={(e) => {
+                      // Don't navigate if clicking on the actions dropdown or its trigger
+                      const target = e.target as HTMLElement
+                      if (target.closest('[role="menu"]') || target.closest('button[aria-haspopup="menu"]')) {
+                        return
                       }
-                    </TableCell>
-                  ))}
-                  {(onEdit || onDelete || onView || editHref || viewHref) && (
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          {(onView || viewHref) && (
-                            viewHref ? (
-                              <Link href={getHref(viewHref(item))}>
-                                <DropdownMenuItem>
+                      if (href) {
+                        router.push(href)
+                      }
+                    }}
+                  >
+                    {columns.map((column) => (
+                      <TableCell key={String(column.key)} className={column.className}>
+                        {column.render
+                          ? column.render(item)
+                          : getValue(item, String(column.key))
+                        }
+                      </TableCell>
+                    ))}
+                    {(onEdit || onDelete || onView || editHref || viewHref) && (
+                      <TableCell onClick={(e) => e.stopPropagation()}>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="icon" className="h-8 w-8">
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            {(onView || viewHref) && (
+                              viewHref ? (
+                                <Link href={getHref(viewHref(item))}>
+                                  <DropdownMenuItem>
+                                    <Eye className="mr-2 h-4 w-4" />
+                                    View
+                                  </DropdownMenuItem>
+                                </Link>
+                              ) : (
+                                <DropdownMenuItem onClick={() => onView?.(item)}>
                                   <Eye className="mr-2 h-4 w-4" />
                                   View
                                 </DropdownMenuItem>
-                              </Link>
-                            ) : (
-                              <DropdownMenuItem onClick={() => onView?.(item)}>
-                                <Eye className="mr-2 h-4 w-4" />
-                                View
-                              </DropdownMenuItem>
-                            )
-                          )}
-                          {(onEdit || editHref) && (
-                            editHref ? (
-                              <Link href={getHref(editHref(item))}>
-                                <DropdownMenuItem>
+                              )
+                            )}
+                            {(onEdit || editHref) && (
+                              editHref ? (
+                                <Link href={getHref(editHref(item))}>
+                                  <DropdownMenuItem>
+                                    <Pencil className="mr-2 h-4 w-4" />
+                                    Edit
+                                  </DropdownMenuItem>
+                                </Link>
+                              ) : (
+                                <DropdownMenuItem onClick={() => onEdit?.(item)}>
                                   <Pencil className="mr-2 h-4 w-4" />
                                   Edit
                                 </DropdownMenuItem>
-                              </Link>
-                            ) : (
-                              <DropdownMenuItem onClick={() => onEdit?.(item)}>
-                                <Pencil className="mr-2 h-4 w-4" />
-                                Edit
+                              )
+                            )}
+                            {onDelete && (
+                              <DropdownMenuItem
+                                onClick={() => onDelete(item)}
+                                className="text-red-600"
+                              >
+                                <Trash2 className="mr-2 h-4 w-4" />
+                                Delete
                               </DropdownMenuItem>
-                            )
-                          )}
-                          {onDelete && (
-                            <DropdownMenuItem
-                              onClick={() => onDelete(item)}
-                              className="text-red-600"
-                            >
-                              <Trash2 className="mr-2 h-4 w-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          )}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  )}
-                </TableRow>
-              ))
+                            )}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    )}
+                  </TableRow>
+                )
+              })
             )}
           </TableBody>
         </Table>
@@ -238,18 +260,18 @@ export function DataTable<T extends { id: string }>({
           </p>
           <div className="flex items-center gap-2">
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 text-gray-600 hover:text-gray-900 hover:bg-gray-100 disabled:text-gray-300 disabled:hover:bg-transparent"
               onClick={() => setCurrentPage(1)}
               disabled={currentPage === 1}
             >
               <ChevronsLeft className="h-4 w-4" />
             </Button>
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 text-gray-600 hover:text-gray-900 hover:bg-gray-100 disabled:text-gray-300 disabled:hover:bg-transparent"
               onClick={() => setCurrentPage(p => p - 1)}
               disabled={currentPage === 1}
             >
@@ -259,18 +281,18 @@ export function DataTable<T extends { id: string }>({
               Page {currentPage} of {totalPages}
             </span>
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 text-gray-600 hover:text-gray-900 hover:bg-gray-100 disabled:text-gray-300 disabled:hover:bg-transparent"
               onClick={() => setCurrentPage(p => p + 1)}
               disabled={currentPage === totalPages}
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 text-gray-600 hover:text-gray-900 hover:bg-gray-100 disabled:text-gray-300 disabled:hover:bg-transparent"
               onClick={() => setCurrentPage(totalPages)}
               disabled={currentPage === totalPages}
             >

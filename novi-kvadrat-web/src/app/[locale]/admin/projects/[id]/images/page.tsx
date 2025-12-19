@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import { PageHeader } from '@/components/admin'
+import { PageHeader, ProjectSubNav } from '@/components/admin'
+import { FileUpload } from '@/components/admin/file-upload'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -106,7 +107,7 @@ export default function ProjectImagesPage() {
     if (!newImage.url) {
       toast({
         title: 'Error',
-        description: 'Image URL is required',
+        description: 'Please upload an image',
         variant: 'destructive'
       })
       return
@@ -209,14 +210,16 @@ export default function ProjectImagesPage() {
   return (
     <>
       <PageHeader
-        title="Project Images"
-        description={`Managing images for: ${projectName}`}
+        title="Images"
+        description={projectName}
         backHref={`/admin/projects/${params.id}`}
         action={{
           label: 'Add Image',
           onClick: () => setShowAddDialog(true)
         }}
       />
+
+      <ProjectSubNav />
 
       {images.length === 0 ? (
         <Card>
@@ -288,23 +291,15 @@ export default function ProjectImagesPage() {
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="url">Image URL *</Label>
-              <Input
-                id="url"
+              <Label>Image *</Label>
+              <FileUpload
                 value={newImage.url}
-                onChange={(e) => setNewImage(prev => ({ ...prev, url: e.target.value }))}
-                placeholder="https://..."
+                onChange={(url) => setNewImage(prev => ({ ...prev, url }))}
+                folder="project-images"
+                accept="image/*"
+                placeholder="Upload project image"
+                showPreview={true}
               />
-              {newImage.url && (
-                <div className="mt-2">
-                  <img 
-                    src={newImage.url} 
-                    alt="Preview" 
-                    className="h-32 w-auto rounded border"
-                    onError={(e) => (e.currentTarget.style.display = 'none')}
-                  />
-                </div>
-              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="caption">Caption</Label>

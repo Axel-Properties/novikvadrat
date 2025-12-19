@@ -16,7 +16,31 @@ const routeRewrites: Record<string, string> = {
   'грађевинар': 'gradjevinar',
 }
 
-export function middleware(request: NextRequest) {
+// Check if the user has a valid admin session
+function isAuthenticated(request: NextRequest): boolean {
+  const sessionCookie = request.cookies.get('admin_session')
+  
+  if (!sessionCookie) {
+    return false
+  }
+
+  try {
+    const sessionData = JSON.parse(
+      Buffer.from(sessionCookie.value, 'base64').toString('utf-8')
+    )
+
+    // Check if session has expired
+    if (sessionData.exp && Date.now() > sessionData.exp) {
+      return false
+    }
+
+    return true
+  } catch {
+    return false
+  }
+}
+
+export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   
   // Check if pathname is missing a locale
@@ -80,6 +104,26 @@ export function middleware(request: NextRequest) {
   if (needsRewrite) {
     const rewrittenPath = rewrittenSegments.join('/')
     return NextResponse.rewrite(new URL(rewrittenPath, request.url))
+  }
+  
+  // Check admin route protection
+  const isAdminRoute = pathname.includes('/admin')
+  const isLoginPage = pathname.includes('/admin/login')
+  
+  if (isAdminRoute && !isLoginPage) {
+    // Protect admin routes - redirect to login if not authenticated
+    if (!isAuthenticated(request)) {
+      return NextResponse.redirect(
+        new URL(`/${locale}/admin/login`, request.url)
+      )
+    }
+  }
+  
+  // If already authenticated and trying to access login page, redirect to admin dashboard
+  if (isLoginPage && isAuthenticated(request)) {
+    return NextResponse.redirect(
+      new URL(`/${locale}/admin`, request.url)
+    )
   }
   
   // Set locale cookie

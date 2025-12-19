@@ -8,9 +8,24 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
 import { Loader2 } from 'lucide-react'
+
+interface Country {
+  id: string
+  name_en: string
+  name_sr_lat: string
+  country_code: string
+  is_active: boolean
+}
 
 export default function EditCityPage() {
   const router = useRouter()
@@ -19,6 +34,7 @@ export default function EditCityPage() {
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [countries, setCountries] = useState<Country[]>([])
   const [formData, setFormData] = useState({
     name_en: '',
     name_sr_lat: '',
@@ -33,7 +49,20 @@ export default function EditCityPage() {
 
   useEffect(() => {
     fetchCity()
+    fetchCountries()
   }, [params.id])
+
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch('/api/admin/countries')
+      if (response.ok) {
+        const data = await response.json()
+        setCountries(data.filter((c: Country) => c.is_active))
+      }
+    } catch (error) {
+      console.error('Failed to fetch countries:', error)
+    }
+  }
 
   const fetchCity = async () => {
     try {
@@ -168,13 +197,22 @@ export default function EditCityPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="country">Country *</Label>
-                <Input
-                  id="country"
-                  value={formData.country}
-                  onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
-                  placeholder="e.g., Serbia"
+                <Select 
+                  value={formData.country} 
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, country: value }))}
                   required
-                />
+                >
+                  <SelectTrigger id="country">
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {countries.map((country) => (
+                      <SelectItem key={country.id} value={country.name_en}>
+                        {country.name_en} ({country.country_code})
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 

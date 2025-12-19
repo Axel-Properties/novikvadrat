@@ -260,6 +260,7 @@ export default function ProjectsPage() {
         searchPlaceholder="Search projects..."
         isLoading={isLoading}
         emptyMessage="No projects found. Add your first project."
+        rowHref={(project) => `/admin/projects/${project.id}`}
         editHref={(project) => `/admin/projects/${project.id}`}
         onDelete={(project) => setDeleteProject(project)}
       />

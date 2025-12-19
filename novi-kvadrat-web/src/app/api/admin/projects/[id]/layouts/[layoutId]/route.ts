@@ -6,6 +6,31 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string; layoutId: string }> }
+) {
+  try {
+    const { layoutId } = await params
+
+    const { data, error } = await supabase
+      .from('layouts')
+      .select('*')
+      .eq('id', layoutId)
+      .single()
+
+    if (error) throw error
+
+    return NextResponse.json(data)
+  } catch (error) {
+    console.error('Failed to fetch layout:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch layout' },
+      { status: 500 }
+    )
+  }
+}
+
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string; layoutId: string }> }

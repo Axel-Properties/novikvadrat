@@ -1,242 +1,120 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter, useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import { PageHeader } from '@/components/admin'
+import { PageHeader, ProjectSubNav } from '@/components/admin'
+import { StatsCard } from '@/components/admin/stats-card'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Switch } from '@/components/ui/switch'
-import { Textarea } from '@/components/ui/textarea'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
-import { Loader2, Image, Layers, Sparkles, Building2, Camera, TrendingUp, Home, LayoutGrid, Tags } from 'lucide-react'
+import {
+  Building2,
+  Home,
+  Loader2,
+  Plus,
+  CheckCircle,
+  Clock,
+  XCircle,
+  BarChart3,
+  Settings,
+  MapPin,
+  Euro
+} from 'lucide-react'
+import { UNIT_STATUS } from '@/types/database'
 
-interface City {
-  id: string
-  name_sr_lat: string
+interface PropertyStats {
+  total_units: number
+  available: number
+  reserved: number
+  sold: number
+  rented: number
+  unavailable: number
+  coming_soon: number
+  total_buildings: number
+  total_value: number
+  avg_price: number
+  total_area: number
+  avg_area: number
 }
 
-interface Municipality {
-  id: string
-  name_sr_lat: string
-  city_id: string
-}
-
-interface Developer {
+interface ProjectData {
   id: string
   name: string
+  slug: string
+  description: string | null
+  address: string | null
+  construction_status: string
+  completion_percentage: number
+  price_from: number | null
+  price_to: number | null
+  is_active: boolean
+  city?: { name_sr_lat: string }
+  developer?: { name: string }
 }
 
-export default function EditProjectPage() {
-  const router = useRouter()
+const statusColors: Record<string, string> = {
+  planning: 'bg-gray-100 text-gray-800',
+  u_izgradnji: 'bg-yellow-100 text-yellow-800',
+  siva_faza: 'bg-orange-100 text-orange-800',
+  useljivo: 'bg-green-100 text-green-800',
+  completed: 'bg-blue-100 text-blue-800'
+}
+
+const statusLabels: Record<string, string> = {
+  planning: 'Planning',
+  u_izgradnji: 'Under Construction',
+  siva_faza: 'Gray Phase',
+  useljivo: 'Move-in Ready',
+  completed: 'Completed'
+}
+
+export default function ProjectOverviewPage() {
   const params = useParams()
+  const projectId = params.id as string
   const locale = params.locale as string || 'en'
   const { toast } = useToast()
-  const [cities, setCities] = useState<City[]>([])
-  const [municipalities, setMunicipalities] = useState<Municipality[]>([])
-  const [developers, setDevelopers] = useState<Developer[]>([])
+
+  const [project, setProject] = useState<ProjectData | null>(null)
+  const [stats, setStats] = useState<PropertyStats | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    slug: '',
-    developer_id: '',
-    description: '',
-    city_id: '',
-    municipality_id: '',
-    address: '',
-    latitude: '',
-    longitude: '',
-    construction_status: 'planning',
-    construction_start_date: '',
-    completion_date: '',
-    completion_percentage: '0',
-    total_buildings: '',
-    total_floors: '',
-    total_units: '',
-    available_units: '',
-    parking_spaces: '',
-    heating_type: '',
-    elevator: false,
-    garage: false,
-    energy_class: '',
-    price_from: '',
-    price_to: '',
-    price_per_sqm_from: '',
-    price_per_sqm_to: '',
-    vat_included: true,
-    first_buyer_vat_refund: false,
-    main_image_url: '',
-    video_url: '',
-    virtual_tour_url: '',
-    brochure_url: '',
-    featured: false,
-    featured_order: '',
-    is_active: true
-  })
 
   useEffect(() => {
-    fetchCities()
-    fetchDevelopers()
-    fetchProject()
-  }, [params.id])
+    fetchAllData()
+  }, [projectId])
 
-  useEffect(() => {
-    if (formData.city_id) {
-      fetchMunicipalities(formData.city_id)
-    }
-  }, [formData.city_id])
-
-  const fetchCities = async () => {
-    try {
-      const response = await fetch('/api/admin/cities')
-      if (response.ok) {
-        setCities(await response.json())
-      }
-    } catch (error) {
-      console.error('Failed to fetch cities:', error)
-    }
-  }
-
-  const fetchMunicipalities = async (cityId: string) => {
-    try {
-      const response = await fetch(`/api/admin/municipalities?city_id=${cityId}`)
-      if (response.ok) {
-        setMunicipalities(await response.json())
-      }
-    } catch (error) {
-      console.error('Failed to fetch municipalities:', error)
-    }
-  }
-
-  const fetchDevelopers = async () => {
-    try {
-      const response = await fetch('/api/admin/developers')
-      if (response.ok) {
-        setDevelopers(await response.json())
-      }
-    } catch (error) {
-      console.error('Failed to fetch developers:', error)
-    }
+  const fetchAllData = async () => {
+    setIsLoading(true)
+    await Promise.all([
+      fetchProject(),
+      fetchStats()
+    ])
+    setIsLoading(false)
   }
 
   const fetchProject = async () => {
     try {
-      const response = await fetch(`/api/admin/projects/${params.id}`)
+      const response = await fetch(`/api/admin/projects/${projectId}`)
       if (response.ok) {
         const data = await response.json()
-        setFormData({
-          name: data.name || '',
-          slug: data.slug || '',
-          developer_id: data.developer_id || '',
-          description: data.description || '',
-          city_id: data.city_id || '',
-          municipality_id: data.municipality_id || '',
-          address: data.address || '',
-          latitude: data.latitude?.toString() || '',
-          longitude: data.longitude?.toString() || '',
-          construction_status: data.construction_status || 'planning',
-          construction_start_date: data.construction_start_date?.split('T')[0] || '',
-          completion_date: data.completion_date?.split('T')[0] || '',
-          completion_percentage: data.completion_percentage?.toString() || '0',
-          total_buildings: data.total_buildings?.toString() || '',
-          total_floors: data.total_floors?.toString() || '',
-          total_units: data.total_units?.toString() || '',
-          available_units: data.available_units?.toString() || '',
-          parking_spaces: data.parking_spaces?.toString() || '',
-          heating_type: data.heating_type || '',
-          elevator: data.elevator || false,
-          garage: data.garage || false,
-          energy_class: data.energy_class || '',
-          price_from: data.price_from?.toString() || '',
-          price_to: data.price_to?.toString() || '',
-          price_per_sqm_from: data.price_per_sqm_from?.toString() || '',
-          price_per_sqm_to: data.price_per_sqm_to?.toString() || '',
-          vat_included: data.vat_included ?? true,
-          first_buyer_vat_refund: data.first_buyer_vat_refund || false,
-          main_image_url: data.main_image_url || '',
-          video_url: data.video_url || '',
-          virtual_tour_url: data.virtual_tour_url || '',
-          brochure_url: data.brochure_url || '',
-          featured: data.featured || false,
-          featured_order: data.featured_order?.toString() || '',
-          is_active: data.is_active ?? true
-        })
-      } else {
-        throw new Error('Project not found')
+        setProject(data)
       }
     } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to load project',
-        variant: 'destructive'
-      })
-      router.push(`/${locale}/admin/projects`)
-    } finally {
-      setIsLoading(false)
+      console.error('Failed to fetch project:', error)
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
+  const fetchStats = async () => {
     try {
-      const payload = {
-        ...formData,
-        latitude: formData.latitude ? parseFloat(formData.latitude) : null,
-        longitude: formData.longitude ? parseFloat(formData.longitude) : null,
-        completion_percentage: formData.completion_percentage ? parseInt(formData.completion_percentage) : 0,
-        total_buildings: formData.total_buildings ? parseInt(formData.total_buildings) : null,
-        total_floors: formData.total_floors ? parseInt(formData.total_floors) : null,
-        total_units: formData.total_units ? parseInt(formData.total_units) : null,
-        available_units: formData.available_units ? parseInt(formData.available_units) : null,
-        parking_spaces: formData.parking_spaces ? parseInt(formData.parking_spaces) : null,
-        price_from: formData.price_from ? parseFloat(formData.price_from) : null,
-        price_to: formData.price_to ? parseFloat(formData.price_to) : null,
-        price_per_sqm_from: formData.price_per_sqm_from ? parseFloat(formData.price_per_sqm_from) : null,
-        price_per_sqm_to: formData.price_per_sqm_to ? parseFloat(formData.price_per_sqm_to) : null,
-        featured_order: formData.featured_order ? parseInt(formData.featured_order) : null,
-        developer_id: formData.developer_id || null,
-        municipality_id: formData.municipality_id || null
-      }
-
-      const response = await fetch(`/api/admin/projects/${params.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-
+      const response = await fetch(`/api/admin/properties/stats?project_id=${projectId}`)
       if (response.ok) {
-        toast({
-          title: 'Success',
-          description: 'Project updated successfully'
-        })
-        router.push(`/${locale}/admin/projects`)
-      } else {
-        const error = await response.json()
-        throw new Error(error.message || 'Failed to update project')
+        const data = await response.json()
+        setStats(data)
       }
-    } catch (error: any) {
-      toast({
-        title: 'Error',
-        description: error.message || 'Failed to update project',
-        variant: 'destructive'
-      })
-    } finally {
-      setIsSubmitting(false)
+    } catch (error) {
+      console.error('Failed to fetch stats:', error)
     }
   }
 
@@ -248,561 +126,190 @@ export default function EditProjectPage() {
     )
   }
 
-  const subPages = [
-    { label: 'Properties', href: `/admin/projects/${params.id}/properties`, icon: LayoutGrid, highlight: true },
-    { label: 'Buildings', href: `/admin/projects/${params.id}/buildings`, icon: Building2 },
-    { label: 'Units', href: `/admin/projects/${params.id}/units`, icon: Home },
-    { label: 'Building Types', href: `/admin/projects/${params.id}/building-types`, icon: Tags },
-    { label: 'Unit Types', href: `/admin/projects/${params.id}/unit-types`, icon: Tags },
-    { label: 'Images', href: `/admin/projects/${params.id}/images`, icon: Image },
-    { label: 'Layouts', href: `/admin/projects/${params.id}/layouts`, icon: Layers },
-    { label: 'Amenities', href: `/admin/projects/${params.id}/amenities`, icon: Sparkles },
-    { label: 'Progress', href: `/admin/projects/${params.id}/progress`, icon: Camera },
-    { label: 'Price History', href: `/admin/projects/${params.id}/price-history`, icon: TrendingUp },
-  ]
-
   return (
     <>
       <PageHeader
-        title="Edit Project"
-        description={`Editing: ${formData.name}`}
+        title={project?.name || 'Project'}
+        description="Project Overview"
         backHref="/admin/projects"
-      />
+      >
+        <Link href={`/${locale}/admin/projects/${projectId}/edit`}>
+          <Button variant="outline">
+            <Settings className="h-4 w-4 mr-2" />
+            Edit Project
+          </Button>
+        </Link>
+      </PageHeader>
 
-      {/* Sub-navigation */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {subPages.map((page) => (
-          <Link key={page.href} href={`/${locale}${page.href}`}>
-            <Button
-              variant={(page as { highlight?: boolean }).highlight ? "default" : "outline"}
-              size="sm"
-            >
-              <page.icon className="h-4 w-4 mr-2" />
-              {page.label}
-            </Button>
-          </Link>
-        ))}
-      </div>
+      <ProjectSubNav />
 
-      <form onSubmit={handleSubmit}>
-        <Tabs defaultValue="basic" className="space-y-6">
-          <TabsList className="flex-wrap h-auto gap-1">
-            <TabsTrigger value="basic">Basic Info</TabsTrigger>
-            <TabsTrigger value="location">Location</TabsTrigger>
-            <TabsTrigger value="construction">Construction</TabsTrigger>
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="pricing">Pricing</TabsTrigger>
-            <TabsTrigger value="media">Media</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="basic">
-            <Card>
-              <CardHeader>
-                <CardTitle>Basic Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Project Name *</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="slug">Slug *</Label>
-                    <Input
-                      id="slug"
-                      value={formData.slug}
-                      onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="developer_id">Developer</Label>
-                  <Select 
-                    value={formData.developer_id} 
-                    onValueChange={(value) => setFormData(prev => ({ ...prev, developer_id: value }))}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a developer" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {developers.map((dev) => (
-                        <SelectItem key={dev.id} value={dev.id}>
-                          {dev.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea
-                    id="description"
-                    value={formData.description}
-                    onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                    rows={5}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="location">
-            <Card>
-              <CardHeader>
-                <CardTitle>Location</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="city_id">City *</Label>
-                    <Select 
-                      value={formData.city_id} 
-                      onValueChange={(value) => setFormData(prev => ({ 
-                        ...prev, 
-                        city_id: value,
-                        municipality_id: '' 
-                      }))}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a city" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {cities.map((city) => (
-                          <SelectItem key={city.id} value={city.id}>
-                            {city.name_sr_lat}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="municipality_id">Municipality</Label>
-                    <Select 
-                      value={formData.municipality_id} 
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, municipality_id: value }))}
-                      disabled={!formData.city_id}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a municipality" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {municipalities.map((m) => (
-                          <SelectItem key={m.id} value={m.id}>
-                            {m.name_sr_lat}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="address">Address</Label>
-                  <Input
-                    id="address"
-                    value={formData.address}
-                    onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="latitude">Latitude</Label>
-                    <Input
-                      id="latitude"
-                      type="number"
-                      step="any"
-                      value={formData.latitude}
-                      onChange={(e) => setFormData(prev => ({ ...prev, latitude: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="longitude">Longitude</Label>
-                    <Input
-                      id="longitude"
-                      type="number"
-                      step="any"
-                      value={formData.longitude}
-                      onChange={(e) => setFormData(prev => ({ ...prev, longitude: e.target.value }))}
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="construction">
-            <Card>
-              <CardHeader>
-                <CardTitle>Construction Details</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="construction_status">Construction Status *</Label>
-                    <Select 
-                      value={formData.construction_status} 
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, construction_status: value }))}
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="planning">Planning</SelectItem>
-                        <SelectItem value="u_izgradnji">Under Construction</SelectItem>
-                        <SelectItem value="siva_faza">Gray Phase</SelectItem>
-                        <SelectItem value="useljivo">Move-in Ready</SelectItem>
-                        <SelectItem value="completed">Completed</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="construction_start_date">Start Date</Label>
-                    <Input
-                      id="construction_start_date"
-                      type="date"
-                      value={formData.construction_start_date}
-                      onChange={(e) => setFormData(prev => ({ ...prev, construction_start_date: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="completion_date">Completion Date</Label>
-                    <Input
-                      id="completion_date"
-                      type="date"
-                      value={formData.completion_date}
-                      onChange={(e) => setFormData(prev => ({ ...prev, completion_date: e.target.value }))}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="completion_percentage">Completion Percentage: {formData.completion_percentage}%</Label>
-                  <Input
-                    id="completion_percentage"
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={formData.completion_percentage}
-                    onChange={(e) => setFormData(prev => ({ ...prev, completion_percentage: e.target.value }))}
-                    className="h-2"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="total_buildings">Buildings</Label>
-                    <Input
-                      id="total_buildings"
-                      type="number"
-                      value={formData.total_buildings}
-                      onChange={(e) => setFormData(prev => ({ ...prev, total_buildings: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="total_floors">Floors</Label>
-                    <Input
-                      id="total_floors"
-                      type="number"
-                      value={formData.total_floors}
-                      onChange={(e) => setFormData(prev => ({ ...prev, total_floors: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="total_units">Total Units</Label>
-                    <Input
-                      id="total_units"
-                      type="number"
-                      value={formData.total_units}
-                      onChange={(e) => setFormData(prev => ({ ...prev, total_units: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="available_units">Available</Label>
-                    <Input
-                      id="available_units"
-                      type="number"
-                      value={formData.available_units}
-                      onChange={(e) => setFormData(prev => ({ ...prev, available_units: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="parking_spaces">Parking</Label>
-                    <Input
-                      id="parking_spaces"
-                      type="number"
-                      value={formData.parking_spaces}
-                      onChange={(e) => setFormData(prev => ({ ...prev, parking_spaces: e.target.value }))}
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="features">
-            <Card>
-              <CardHeader>
-                <CardTitle>Features</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="heating_type">Heating Type</Label>
-                    <Select 
-                      value={formData.heating_type} 
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, heating_type: value }))}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select heating type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="centralno">Central Heating</SelectItem>
-                        <SelectItem value="etazno">Floor Heating</SelectItem>
-                        <SelectItem value="gas">Gas</SelectItem>
-                        <SelectItem value="toplotna_pumpa">Heat Pump</SelectItem>
-                        <SelectItem value="podno">Underfloor Heating</SelectItem>
-                        <SelectItem value="ta_pec">Storage Heater</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="energy_class">Energy Class</Label>
-                    <Select 
-                      value={formData.energy_class} 
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, energy_class: value }))}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select energy class" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="A+">A+</SelectItem>
-                        <SelectItem value="A">A</SelectItem>
-                        <SelectItem value="B">B</SelectItem>
-                        <SelectItem value="C">C</SelectItem>
-                        <SelectItem value="D">D</SelectItem>
-                        <SelectItem value="E">E</SelectItem>
-                        <SelectItem value="F">F</SelectItem>
-                        <SelectItem value="G">G</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-6">
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      id="elevator"
-                      checked={formData.elevator}
-                      onCheckedChange={(checked) => setFormData(prev => ({ ...prev, elevator: checked }))}
-                    />
-                    <Label htmlFor="elevator">Elevator</Label>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      id="garage"
-                      checked={formData.garage}
-                      onCheckedChange={(checked) => setFormData(prev => ({ ...prev, garage: checked }))}
-                    />
-                    <Label htmlFor="garage">Garage</Label>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="pricing">
-            <Card>
-              <CardHeader>
-                <CardTitle>Pricing</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="price_from">Price From (EUR)</Label>
-                    <Input
-                      id="price_from"
-                      type="number"
-                      value={formData.price_from}
-                      onChange={(e) => setFormData(prev => ({ ...prev, price_from: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="price_to">Price To (EUR)</Label>
-                    <Input
-                      id="price_to"
-                      type="number"
-                      value={formData.price_to}
-                      onChange={(e) => setFormData(prev => ({ ...prev, price_to: e.target.value }))}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="price_per_sqm_from">Price/m² From (EUR)</Label>
-                    <Input
-                      id="price_per_sqm_from"
-                      type="number"
-                      value={formData.price_per_sqm_from}
-                      onChange={(e) => setFormData(prev => ({ ...prev, price_per_sqm_from: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="price_per_sqm_to">Price/m² To (EUR)</Label>
-                    <Input
-                      id="price_per_sqm_to"
-                      type="number"
-                      value={formData.price_per_sqm_to}
-                      onChange={(e) => setFormData(prev => ({ ...prev, price_per_sqm_to: e.target.value }))}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-6">
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      id="vat_included"
-                      checked={formData.vat_included}
-                      onCheckedChange={(checked) => setFormData(prev => ({ ...prev, vat_included: checked }))}
-                    />
-                    <Label htmlFor="vat_included">VAT Included</Label>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      id="first_buyer_vat_refund"
-                      checked={formData.first_buyer_vat_refund}
-                      onCheckedChange={(checked) => setFormData(prev => ({ ...prev, first_buyer_vat_refund: checked }))}
-                    />
-                    <Label htmlFor="first_buyer_vat_refund">First Buyer VAT Refund</Label>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="media">
-            <Card>
-              <CardHeader>
-                <CardTitle>Media</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="main_image_url">Main Image URL</Label>
-                  <Input
-                    id="main_image_url"
-                    type="url"
-                    value={formData.main_image_url}
-                    onChange={(e) => setFormData(prev => ({ ...prev, main_image_url: e.target.value }))}
-                  />
-                  {formData.main_image_url && (
-                    <div className="mt-2">
-                      <img 
-                        src={formData.main_image_url} 
-                        alt="Main image preview" 
-                        className="h-40 w-auto rounded border"
-                        onError={(e) => (e.currentTarget.style.display = 'none')}
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="video_url">Video URL</Label>
-                    <Input
-                      id="video_url"
-                      type="url"
-                      value={formData.video_url}
-                      onChange={(e) => setFormData(prev => ({ ...prev, video_url: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="virtual_tour_url">Virtual Tour URL</Label>
-                    <Input
-                      id="virtual_tour_url"
-                      type="url"
-                      value={formData.virtual_tour_url}
-                      onChange={(e) => setFormData(prev => ({ ...prev, virtual_tour_url: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="brochure_url">Brochure URL</Label>
-                    <Input
-                      id="brochure_url"
-                      type="url"
-                      value={formData.brochure_url}
-                      onChange={(e) => setFormData(prev => ({ ...prev, brochure_url: e.target.value }))}
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="settings">
-            <Card>
-              <CardHeader>
-                <CardTitle>Settings</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id="featured"
-                    checked={formData.featured}
-                    onCheckedChange={(checked) => setFormData(prev => ({ ...prev, featured: checked }))}
-                  />
-                  <Label htmlFor="featured">Featured Project</Label>
-                </div>
-
-                {formData.featured && (
-                  <div className="space-y-2">
-                    <Label htmlFor="featured_order">Featured Order</Label>
-                    <Input
-                      id="featured_order"
-                      type="number"
-                      value={formData.featured_order}
-                      onChange={(e) => setFormData(prev => ({ ...prev, featured_order: e.target.value }))}
-                    />
-                  </div>
+      <div className="space-y-6">
+        {/* Project Info Card */}
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex flex-wrap gap-6">
+              <div className="flex items-center gap-2">
+                <Badge className={statusColors[project?.construction_status || 'planning']}>
+                  {statusLabels[project?.construction_status || 'planning']}
+                </Badge>
+                {project?.is_active ? (
+                  <Badge variant="outline" className="text-green-600 border-green-600">Active</Badge>
+                ) : (
+                  <Badge variant="outline" className="text-gray-500">Inactive</Badge>
                 )}
-
-                <div className="flex items-center gap-2">
-                  <Switch
-                    id="is_active"
-                    checked={formData.is_active}
-                    onCheckedChange={(checked) => setFormData(prev => ({ ...prev, is_active: checked }))}
-                  />
-                  <Label htmlFor="is_active">Active (visible on website)</Label>
+              </div>
+              {project?.city && (
+                <div className="flex items-center gap-2 text-gray-600">
+                  <MapPin className="h-4 w-4" />
+                  <span>{project.city.name_sr_lat}</span>
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              )}
+              {project?.developer && (
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Building2 className="h-4 w-4" />
+                  <span>{project.developer.name}</span>
+                </div>
+              )}
+              {(project?.price_from || project?.price_to) && (
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Euro className="h-4 w-4" />
+                  <span>
+                    {project.price_from?.toLocaleString() || '?'} - {project.price_to?.toLocaleString() || '?'}
+                  </span>
+                </div>
+              )}
+              {project?.completion_percentage !== undefined && (
+                <div className="flex items-center gap-2 text-gray-600">
+                  <span className="text-sm">Progress: {project.completion_percentage}%</span>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
 
-        <div className="flex justify-end gap-4 mt-6">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => router.push(`/${locale}/admin/projects`)}
-          >
-            Cancel
-          </Button>
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-            Save Changes
-          </Button>
+        {/* Stats Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <StatsCard
+            title="Total Units"
+            value={stats?.total_units || 0}
+            icon={Home}
+          />
+          <StatsCard
+            title="Available"
+            value={stats?.available || 0}
+            icon={CheckCircle}
+            className="border-l-4 border-l-green-500"
+          />
+          <StatsCard
+            title="Reserved"
+            value={stats?.reserved || 0}
+            icon={Clock}
+            className="border-l-4 border-l-yellow-500"
+          />
+          <StatsCard
+            title="Sold"
+            value={stats?.sold || 0}
+            icon={XCircle}
+            className="border-l-4 border-l-blue-500"
+          />
         </div>
-      </form>
+
+        {/* Additional Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-500">Buildings</p>
+                  <p className="text-2xl font-bold text-gray-900 mt-1">{stats?.total_buildings || 0}</p>
+                </div>
+                <Building2 className="h-8 w-8 text-gray-400" />
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-500">Total Value</p>
+                  <p className="text-2xl font-bold text-gray-900 mt-1">
+                    €{(stats?.total_value || 0).toLocaleString()}
+                  </p>
+                </div>
+                <BarChart3 className="h-8 w-8 text-gray-400" />
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-500">Avg. Price</p>
+                  <p className="text-2xl font-bold text-gray-900 mt-1">
+                    €{(stats?.avg_price || 0).toLocaleString()}
+                  </p>
+                </div>
+                <BarChart3 className="h-8 w-8 text-gray-400" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Quick Actions & Status Distribution */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Quick Actions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <Link href={`/${locale}/admin/projects/${projectId}/buildings/new`}>
+                <Button variant="outline" className="w-full justify-start">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Building
+                </Button>
+              </Link>
+              <Link href={`/${locale}/admin/projects/${projectId}/units/new`}>
+                <Button variant="outline" className="w-full justify-start">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Unit
+                </Button>
+              </Link>
+              <Link href={`/${locale}/admin/projects/${projectId}/layouts/new`}>
+                <Button variant="outline" className="w-full justify-start">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Layout
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Status Distribution</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {Object.entries(UNIT_STATUS).map(([key, { label, color }]) => {
+                  const count = stats?.[key as keyof PropertyStats] as number || 0
+                  const percentage = stats?.total_units ? Math.round((count / stats.total_units) * 100) : 0
+                  return (
+                    <div key={key} className="flex items-center gap-3">
+                      <div className="w-24 text-sm">{label}</div>
+                      <div className="flex-1 bg-gray-100 rounded-full h-2">
+                        <div
+                          className={`h-2 rounded-full ${color.split(' ')[0]}`}
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
+                      <div className="w-12 text-sm text-right text-gray-500">{count}</div>
+                    </div>
+                  )
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
 
       <Toaster />
     </>

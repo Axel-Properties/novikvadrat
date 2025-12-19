@@ -173,6 +173,7 @@ export default function DevelopersPage() {
         searchPlaceholder="Search developers..."
         isLoading={isLoading}
         emptyMessage="No developers found. Add your first developer."
+        rowHref={(dev) => `/admin/developers/${dev.id}`}
         editHref={(dev) => `/admin/developers/${dev.id}`}
         onDelete={(dev) => setDeleteDeveloper(dev)}
       />

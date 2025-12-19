@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 import { PageHeader, DataTable, Column } from '@/components/admin'
+import { FileUpload } from '@/components/admin/file-upload'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -63,7 +65,9 @@ const emptyUser = {
 }
 
 export default function UsersPage() {
+  const params = useParams()
   const { toast } = useToast()
+  const locale = params.locale as string || 'en'
   const [users, setUsers] = useState<UserData[]>([])
   const [roles, setRoles] = useState<Role[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -109,21 +113,16 @@ export default function UsersPage() {
     }
   }
 
-  const handleOpenDialog = (user?: UserData) => {
-    if (user) {
-      setEditingUser(user)
-      setFormData({
-        email: user.email,
-        full_name: user.full_name,
-        avatar_url: user.avatar_url || '',
-        role_id: user.role_id || '',
-        is_active: user.is_active,
-        password: ''
-      })
-    } else {
-      setEditingUser(null)
-      setFormData(emptyUser)
-    }
+  const handleOpenDialog = (user: UserData) => {
+    setEditingUser(user)
+    setFormData({
+      email: user.email,
+      full_name: user.full_name,
+      avatar_url: user.avatar_url || '',
+      role_id: user.role_id || '',
+      is_active: user.is_active,
+      password: ''
+    })
     setShowDialog(true)
   }
 
@@ -137,21 +136,10 @@ export default function UsersPage() {
       return
     }
 
-    if (!editingUser && !formData.password) {
-      toast({
-        title: 'Error',
-        description: 'Password is required for new users',
-        variant: 'destructive'
-      })
-      return
-    }
+    if (!editingUser) return
 
     setIsSubmitting(true)
     try {
-      const url = editingUser 
-        ? `/api/admin/users/${editingUser.id}`
-        : '/api/admin/users'
-
       const payload: any = {
         email: formData.email,
         full_name: formData.full_name,
@@ -164,32 +152,28 @@ export default function UsersPage() {
         payload.password = formData.password
       }
 
-      const response = await fetch(url, {
-        method: editingUser ? 'PUT' : 'POST',
+      const response = await fetch(`/api/admin/users/${editingUser.id}`, {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       })
 
       if (response.ok) {
         const savedUser = await response.json()
-        if (editingUser) {
-          setUsers(prev => prev.map(u => u.id === savedUser.id ? savedUser : u))
-        } else {
-          setUsers(prev => [...prev, savedUser])
-        }
+        setUsers(prev => prev.map(u => u.id === savedUser.id ? savedUser : u))
         setShowDialog(false)
         toast({
           title: 'Success',
-          description: `User ${editingUser ? 'updated' : 'created'} successfully`
+          description: 'User updated successfully'
         })
       } else {
         const error = await response.json()
-        throw new Error(error.message || 'Failed to save user')
+        throw new Error(error.message || 'Failed to update user')
       }
     } catch (error: any) {
       toast({
         title: 'Error',
-        description: error.message || 'Failed to save user',
+        description: error.message || 'Failed to update user',
         variant: 'destructive'
       })
     } finally {
@@ -304,7 +288,7 @@ export default function UsersPage() {
         description="Manage admin and portal users"
         action={{
           label: 'Add User',
-          onClick: () => handleOpenDialog()
+          href: `/${locale}/admin/users/new`
         }}
       />
 
@@ -319,11 +303,11 @@ export default function UsersPage() {
         onDelete={(user) => setDeleteUser(user)}
       />
 
-      {/* User Form Dialog */}
+      {/* Edit User Dialog */}
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{editingUser ? 'Edit User' : 'Add User'}</DialogTitle>
+            <DialogTitle>Edit User</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
@@ -376,13 +360,14 @@ export default function UsersPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="avatar_url">Avatar URL</Label>
-              <Input
-                id="avatar_url"
-                type="url"
+              <Label>Avatar</Label>
+              <FileUpload
                 value={formData.avatar_url}
-                onChange={(e) => setFormData(prev => ({ ...prev, avatar_url: e.target.value }))}
-                placeholder="https://..."
+                onChange={(url) => setFormData(prev => ({ ...prev, avatar_url: url }))}
+                folder="avatars"
+                accept="image/*"
+                placeholder="Upload avatar image"
+                showPreview={true}
               />
             </div>
             <div className="flex items-center gap-2">
@@ -400,7 +385,7 @@ export default function UsersPage() {
             </Button>
             <Button onClick={handleSubmit} disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              {editingUser ? 'Save Changes' : 'Add User'}
+              Save Changes
             </Button>
           </DialogFooter>
         </DialogContent>

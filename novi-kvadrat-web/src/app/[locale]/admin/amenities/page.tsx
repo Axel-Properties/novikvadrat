@@ -32,7 +32,7 @@ import {
 } from '@/components/ui/dialog'
 import { useToast } from '@/components/ui/use-toast'
 import { Toaster } from '@/components/ui/toaster'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Search } from 'lucide-react'
 
 interface Amenity {
   id: string
@@ -76,6 +76,7 @@ export default function AmenitiesPage() {
   const [editingAmenity, setEditingAmenity] = useState<Amenity | null>(null)
   const [formData, setFormData] = useState(emptyAmenity)
   const [filterCategory, setFilterCategory] = useState<string>('all')
+  const [searchQuery, setSearchQuery] = useState<string>('')
 
   useEffect(() => {
     fetchAmenities()
@@ -192,9 +193,17 @@ export default function AmenitiesPage() {
     }
   }
 
-  const filteredAmenities = filterCategory === 'all' 
-    ? amenities 
-    : amenities.filter(a => a.category === filterCategory)
+  const filteredAmenities = amenities.filter(amenity => {
+    // Filter by category
+    const matchesCategory = filterCategory === 'all' || amenity.category === filterCategory
+    
+    // Filter by search query
+    const matchesSearch = searchQuery === '' || 
+      amenity.name_en.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      amenity.name_sr.toLowerCase().includes(searchQuery.toLowerCase())
+    
+    return matchesCategory && matchesSearch
+  })
 
   const columns: Column<Amenity>[] = [
     {
@@ -244,27 +253,55 @@ export default function AmenitiesPage() {
           label: 'Add Amenity',
           onClick: () => handleOpenDialog()
         }}
-      >
-        <Select value={filterCategory} onValueChange={setFilterCategory}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Filter by category" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
-            {categories.map((cat) => (
-              <SelectItem key={cat.value} value={cat.value}>
-                {cat.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </PageHeader>
+      />
+
+      {/* Filters Bar */}
+      <div className="mb-4 p-4 bg-white border rounded-lg shadow-sm">
+        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          {/* Search Bar */}
+          <div className="relative flex-1 w-full sm:max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Input
+              type="search"
+              placeholder="Search amenities..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <Label htmlFor="category-filter" className="text-sm font-medium text-gray-700 whitespace-nowrap">
+              Category:
+            </Label>
+            <Select value={filterCategory} onValueChange={setFilterCategory}>
+              <SelectTrigger id="category-filter" className="w-[200px]">
+                <SelectValue placeholder="All Categories" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Categories</SelectItem>
+                {categories.map((cat) => (
+                  <SelectItem key={cat.value} value={cat.value}>
+                    {cat.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Results Count */}
+          <div className="flex items-center gap-2 ml-auto">
+            <Badge variant="secondary" className="text-sm">
+              {filteredAmenities.length} {filteredAmenities.length === 1 ? 'result' : 'results'}
+            </Badge>
+          </div>
+        </div>
+      </div>
 
       <DataTable
         columns={columns}
         data={filteredAmenities}
-        searchKey="name_en"
-        searchPlaceholder="Search amenities..."
         isLoading={isLoading}
         emptyMessage="No amenities found. Add your first amenity."
         onEdit={(amenity) => handleOpenDialog(amenity)}

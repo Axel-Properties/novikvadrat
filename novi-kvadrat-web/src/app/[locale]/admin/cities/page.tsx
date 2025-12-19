@@ -31,14 +31,23 @@ interface City {
   municipalities_count?: number
 }
 
+interface Country {
+  id: string
+  name_en: string
+  name_sr_lat: string
+  country_code: string
+}
+
 export default function CitiesPage() {
   const [cities, setCities] = useState<City[]>([])
+  const [countries, setCountries] = useState<Country[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [deleteCity, setDeleteCity] = useState<City | null>(null)
   const { toast } = useToast()
 
   useEffect(() => {
     fetchCities()
+    fetchCountries()
   }, [])
 
   const fetchCities = async () => {
@@ -58,6 +67,36 @@ export default function CitiesPage() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch('/api/admin/countries')
+      if (response.ok) {
+        const data = await response.json()
+        setCountries(data.filter((c: any) => c.is_active !== false))
+      }
+    } catch (error) {
+      console.error('Failed to fetch countries:', error)
+    }
+  }
+
+  const getCountryName = (countryValue: string) => {
+    if (!countryValue) return '-'
+    
+    // Try to find by country code first
+    const country = countries.find(c => c.country_code === countryValue)
+    if (country) return country.name_en
+    
+    // Try to find by name
+    const countryByName = countries.find(c => 
+      c.name_en === countryValue || 
+      c.name_sr_lat === countryValue
+    )
+    if (countryByName) return countryByName.name_en
+    
+    // Fallback to original value
+    return countryValue
   }
 
   const handleDelete = async () => {
@@ -113,7 +152,13 @@ export default function CitiesPage() {
     },
     {
       key: 'country',
-      title: 'Country'
+      title: 'Country',
+      render: (city) => {
+        const countryName = getCountryName(city.country)
+        return (
+          <span className="text-gray-700">{countryName}</span>
+        )
+      }
     },
     {
       key: 'municipalities_count',

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import { PageHeader, DataTable, Column } from '@/components/admin'
+import { PageHeader, DataTable, Column, ProjectSubNav } from '@/components/admin'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -224,13 +224,15 @@ export default function BuildingTypesPage() {
     <>
       <PageHeader
         title="Building Types"
-        description={`Configure building categories for: ${projectName}`}
+        description={projectName}
         backHref={`/${locale}/admin/projects/${projectId}`}
         action={{
           label: 'Add Type',
           onClick: () => handleOpenDialog()
         }}
       />
+
+      <ProjectSubNav />
 
       <DataTable
         columns={columns}
