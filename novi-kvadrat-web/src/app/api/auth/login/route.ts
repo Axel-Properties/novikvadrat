@@ -71,14 +71,15 @@ export async function POST(request: NextRequest) {
 
     // Create session token (simple base64 encoded user data)
     // In production, use JWT or secure session management
+    const role = Array.isArray(user.role) ? user.role[0] : user.role
     const sessionData = {
       userId: user.id,
       email: user.email,
       fullName: user.full_name,
       avatarUrl: user.avatar_url,
       roleId: user.role_id,
-      roleName: user.role?.name || null,
-      permissions: user.role?.permissions || {},
+      roleName: role?.name || null,
+      permissions: role?.permissions || {},
       exp: Date.now() + (7 * 24 * 60 * 60 * 1000) // 7 days
     }
 
@@ -101,7 +102,7 @@ export async function POST(request: NextRequest) {
         email: user.email,
         fullName: user.full_name,
         avatarUrl: user.avatar_url,
-        roleName: user.role?.name || null
+        roleName: role?.name || null
       }
     })
   } catch (error) {

@@ -24,16 +24,18 @@ export default function LayoutsLoading() {
 
       {/* Table Skeleton */}
       <div className="rounded-lg border bg-white">
-        <div className="p-4 border-b">
+        <div className="p-4 border-b flex items-center gap-4">
           <Skeleton className="h-10 w-64" />
         </div>
         <div className="divide-y">
-          {Array.from({ length: 5 }).map((_, i) => (
+          {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="p-4 flex items-center gap-4">
-              <Skeleton className="h-5 w-32" />
               <Skeleton className="h-5 w-24" />
+              <Skeleton className="h-5 w-32" />
               <Skeleton className="h-5 w-20" />
-              <Skeleton className="h-5 w-16" />
+              <Skeleton className="h-5 w-24" />
+              <Skeleton className="h-5 w-32" />
+              <Skeleton className="h-5 w-20" />
               <div className="ml-auto">
                 <Skeleton className="h-8 w-8 rounded" />
               </div>
@@ -44,4 +46,3 @@ export default function LayoutsLoading() {
     </div>
   )
 }
-
