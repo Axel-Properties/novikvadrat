@@ -389,7 +389,7 @@ export default function ExpensesPage() {
       render: (expense) => (
         expense.category_name ? (
           <Badge
-            style={{ backgroundColor: expense.category_color + '20', color: expense.category_color }}
+            style={{ backgroundColor: (expense.category_color || '#666666') + '20', color: expense.category_color || '#666666' }}
           >
             {expense.category_name}
           </Badge>

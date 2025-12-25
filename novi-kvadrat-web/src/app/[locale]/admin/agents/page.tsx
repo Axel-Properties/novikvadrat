@@ -73,7 +73,36 @@ interface Agent {
   created_at: string
 }
 
-const emptyAgent = {
+interface AgentFormData {
+  first_name: string
+  last_name: string
+  email: string
+  phone: string
+  phone_secondary: string
+  photo_url: string
+  bio_en: string
+  bio_sr: string
+  title: string
+  license_number: string
+  license_expiry_date: string
+  years_experience: string
+  languages: string[]
+  specializations: string[]
+  property_types: string[]
+  areas_served: string[]
+  default_commission_rate: string
+  commission_split_rate: string
+  linkedin_url: string
+  instagram_url: string
+  facebook_url: string
+  is_active: boolean
+  is_featured: boolean
+  availability_status: string
+  notes: string
+  hired_date: string
+}
+
+const emptyAgent: AgentFormData = {
   first_name: '',
   last_name: '',
   email: '',
@@ -119,7 +148,7 @@ export default function AgentsPage() {
   const [deleteAgent, setDeleteAgent] = useState<Agent | null>(null)
   const [showDialog, setShowDialog] = useState(false)
   const [editingAgent, setEditingAgent] = useState<Agent | null>(null)
-  const [formData, setFormData] = useState(emptyAgent)
+  const [formData, setFormData] = useState<AgentFormData>(emptyAgent)
 
   useEffect(() => {
     fetchAgents()
