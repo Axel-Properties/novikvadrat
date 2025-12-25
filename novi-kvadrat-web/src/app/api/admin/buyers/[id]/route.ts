@@ -1,0 +1,138 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params
+
+    const { data, error } = await supabase
+      .from('buyers')
+      .select(`
+        *,
+        agent:agents(id, first_name, last_name)
+      `)
+      .eq('id', id)
+      .single()
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return NextResponse.json({ error: 'Buyer not found' }, { status: 404 })
+      }
+      throw error
+    }
+
+    return NextResponse.json({
+      ...data,
+      full_name: `${data.first_name} ${data.last_name}`,
+      agent_name: data.agent ? `${data.agent.first_name} ${data.agent.last_name}` : null
+    })
+  } catch (error) {
+    console.error('Failed to fetch buyer:', error)
+    return NextResponse.json({ error: 'Failed to fetch buyer' }, { status: 500 })
+  }
+}
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params
+    const body = await request.json()
+
+    const { data, error } = await supabase
+      .from('buyers')
+      .update({
+        first_name: body.first_name,
+        last_name: body.last_name,
+        email: body.email || null,
+        phone: body.phone || null,
+        phone_secondary: body.phone_secondary || null,
+        id_number: body.id_number || null,
+        id_type: body.id_type || 'personal_id',
+        address: body.address || null,
+        city: body.city || null,
+        postal_code: body.postal_code || null,
+        country: body.country || 'Serbia',
+        is_company: body.is_company || false,
+        company_name: body.company_name || null,
+        company_tax_id: body.company_tax_id || null,
+        budget_min: body.budget_min || null,
+        budget_max: body.budget_max || null,
+        preferred_locations: body.preferred_locations || [],
+        preferred_property_types: body.preferred_property_types || [],
+        preferred_bedrooms_min: body.preferred_bedrooms_min || null,
+        preferred_bedrooms_max: body.preferred_bedrooms_max || null,
+        source: body.source || 'website',
+        source_details: body.source_details || null,
+        assigned_agent_id: body.assigned_agent_id || null,
+        status: body.status || 'active',
+        priority: body.priority || 'medium',
+        purchase_timeline: body.purchase_timeline || null,
+        financing_type: body.financing_type || null,
+        pre_approved: body.pre_approved || false,
+        notes: body.notes || null
+      })
+      .eq('id', id)
+      .select(`
+        *,
+        agent:agents(id, first_name, last_name)
+      `)
+      .single()
+
+    if (error) throw error
+
+    return NextResponse.json({
+      ...data,
+      full_name: `${data.first_name} ${data.last_name}`,
+      agent_name: data.agent ? `${data.agent.first_name} ${data.agent.last_name}` : null
+    })
+  } catch (error) {
+    console.error('Failed to update buyer:', error)
+    return NextResponse.json({ message: 'Failed to update buyer' }, { status: 500 })
+  }
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params
+
+    // Check if buyer has active sales
+    const { data: activeSales } = await supabase
+      .from('sales')
+      .select('id')
+      .eq('buyer_id', id)
+      .not('status', 'in', '("cancelled","refunded")')
+      .limit(1)
+
+    if (activeSales && activeSales.length > 0) {
+      return NextResponse.json(
+        { message: 'Cannot delete buyer with active sales' },
+        { status: 400 }
+      )
+    }
+
+    const { error } = await supabase
+      .from('buyers')
+      .delete()
+      .eq('id', id)
+
+    if (error) throw error
+
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error('Failed to delete buyer:', error)
+    return NextResponse.json({ message: 'Failed to delete buyer' }, { status: 500 })
+  }
+}

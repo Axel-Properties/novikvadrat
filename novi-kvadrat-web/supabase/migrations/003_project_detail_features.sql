@@ -143,3 +143,4 @@ EXECUTE FUNCTION update_spot_photo_stats();
 
 
 
+

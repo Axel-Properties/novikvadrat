@@ -17,7 +17,16 @@ import {
   Upload,
   Tags,
   LogOut,
-  User
+  User,
+  Home,
+  CreditCard,
+  Receipt,
+  UserCheck,
+  Truck,
+  ShoppingCart,
+  MessageSquare,
+  UserPlus,
+  Briefcase
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -53,6 +62,37 @@ const navItems: NavItem[] = [
     title: 'Projects',
     href: '/admin/projects',
     icon: <FolderKanban className="h-5 w-5" />
+  },
+  {
+    title: 'Rentals',
+    icon: <Home className="h-5 w-5" />,
+    children: [
+      { title: 'Contracts', href: '/admin/rentals' },
+      { title: 'Tenants', href: '/admin/tenants' },
+      { title: 'Payments', href: '/admin/payments' }
+    ]
+  },
+  {
+    title: 'Expenses',
+    icon: <Receipt className="h-5 w-5" />,
+    children: [
+      { title: 'All Expenses', href: '/admin/expenses' },
+      { title: 'Vendors', href: '/admin/vendors' }
+    ]
+  },
+  {
+    title: 'Sales',
+    icon: <ShoppingCart className="h-5 w-5" />,
+    children: [
+      { title: 'All Sales', href: '/admin/sales' },
+      { title: 'Buyers', href: '/admin/buyers' },
+      { title: 'Inquiries', href: '/admin/inquiries' }
+    ]
+  },
+  {
+    title: 'Agents',
+    href: '/admin/agents',
+    icon: <Briefcase className="h-5 w-5" />
   },
   {
     title: 'Amenities',
